@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapBuy</title>
+    <!-- hover lib -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <!-- animate lib -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"> 
+    <!-- font awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- css header -->
+    <link rel="stylesheet" href="css/header.css">
+</head>
+
+<body>
+    <!-- start & nav home -->
+    <section class="header w-100  overflow-x-hidden ">
+        <div class="login-header d-none  bg-dark d-md-flex align-items-center text-light ">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div>Free shipping on domestic orders over $150</div>
+                <div class="login-btn">
+                    <i class="fa-regular fa-user"></i>
+                    <button id="openLogin" class="btn-head ">Login / Register</button>
+                </div>
+            </div>
+        </div>
+        <!-- start nav -->
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" class="cover">
+            <nav id="navbar-example2" class="navbar navbar-expand-lg  bg-light   ">
+                <div class="container  d-flex justify-content-between ">
+                    <div class="d-flex justify-content-between w-100 align-items-center">
+                        <a class="navbar-brand text-black" href="#">E-comes</a>
+                        <div class="d-flex">
+                            <i class="fa-solid d-flex d-lg-none p-3 fa-cart-shopping"></i>
+                            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="fa-solid fa-bars"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="links ">
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav d-flex flex-column flex-lg-row gap-4 ">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a class="nav-link" aria-current="page" href="#">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="#">Services</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="#">Works</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="#">Clients</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="#">Team</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="#">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shop-cont d-lg-flex d-none ps-5 gx-3">
+                        <i class="fa-solid p-3 fa-magnifying-glass"></i>
+                        <i class="fa-regular p-3 fa-heart"></i>
+                        <i class="fa-solid  p-3 fa-cart-shopping"></i>
+                    </div>
+                </div>
+            </nav>
+            <!-- end nav -->
+            <!-- start Carousel -->
+            <div class="owl-carousel carousel1 owl-theme">
+                <div class="item ">
+                    <img src="img/bg-2.jpg" alt="Image 1" />
+                    <div class="overlay-content text-white ">
+                        <p>Winter Special Collection</p>
+                        <h1 class="display-4 mb-5 fw-bold">New Collection With <br>Modern Style</h1>
+                        <a href="#" class="hvr-sweep-to-right  text-decoration-none px-5 py-3 swep-a">Shop Now <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/bg-3.jpg" alt="Image 2" />
+                    <div class="overlay-content text-white text-decoration-none">
+                        <p>Winter Special Collection</p>
+                        <h1 class="display-4 mb-5 fw-bold">New Collection With <br>Modern Style</h1>
+                        <a href="#" class="hvr-sweep-to-right text-decoration-none px-5 py-3 swep-a">Shop Now <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="img/bg-4.jpg" alt="Image 3" />
+                    <div class="overlay-content text-white ">
+                        <p>Winter Special Collection</p>
+                        <h1 class="display-4 mb-5 fw-bold">New Collection With <br>Modern Style</h1>
+                        <a href="#" class="hvr-sweep-to-right text-decoration-none px-5 py-3 swep-a">Shop Now <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- end Carousel -->
+    </section>
+    <!-- end home -->
+    <!-- start feature wrapper-->
+    <section class="feature-wrapper my-5 container w-100  ">
+        <div class="row ">
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="feature-item p-4  d-flex align-items-center">
+                    <div class="icon pe-3"> <i class="fa-solid fs-1 fa-truck" style=" color: var(--second-color);"></i>
+                    </div>
+                    <div class="content">
+                        <p class="m-0">Free Delivary</p>
+                        <p class="m-0 fw-light">Orders from all item</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="feature-item p-4  d-flex align-items-center">
+                    <div class="icon pe-3"> <i class="fa-solid fs-1 fa-dollar-sign"
+                            style=" color: var(--second-color);"></i> </div>
+                    <div class="content">
+                        <p class="m-0">Return & Refunf</p>
+                        <p class="m-0 fw-light">Maney back guarantee</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="feature-item p-4  d-flex align-items-center">
+                    <div class="icon pe-3"> <i class="fa-solid fs-1 fa-percent"
+                            style=" color: var(--second-color);"></i>
+                    </div>
+                    <div class="content">
+                        <p class="m-0">
+                            Member Discount</p>
+                        <p class="m-0 fw-light">Onevery order over $140.00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="feature-item p-4  d-flex align-items-center">
+                    <div class="icon pe-3"> <i class="fa-solid fs-1 fa-headphones"
+                            style=" color: var(--second-color);"></i>
+                    </div>
+                    <div class="content">
+                        <p class="m-0">Support 24/7</p>
+                        <p class="m-0 fw-light">Contact us 24 hours a day</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end feature wrapper-->
+    <!-- start shop section-->
+    <section class="shop-bg-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="#" class="bg-img position-relative d-block">
+                        <img src="img/14.jpg" class="mb-3 img-fluid" alt="">
+                        <div class="overlay-text">
+                            <h3>Accessories</h3>
+                            <p class="text-secondary">2025 Collection</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a href="#" class="bg-img position-relative d-block">
+                        <img src="img/15.jpg" class="mb-3 img-fluid" alt="">
+                        <div class="overlay-text">
+                            <h3>Man</h3>
+                            <p class="text-secondary">2025 Collection</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="bg-img position-relative d-block">
+                        <img src="img/16.jpg" class="img-fluid" alt="">
+                        <div class="overlay-text">
+                            <h3>Woman</h3>
+                            <p class="text-secondary">2025 Collection</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end shop section-->
+    <!-- start Our Product-->
+    <section class="Our-Product my-5">
+        <div class="container">
+            <div class="section-title my-5 text-center">
+                <h5 style="color: var(--second-color);">Top views in this week</h5>
+                <h2 class="fs-1">Our Product In Store</h2>
+            </div>
+
+            <div class="tab-List">
+                <ul class="nav nav-pills flex-wrap justify-content-start justify-content-md-center gap-2" id="pills-tab"
+                    role="tablist">
+                    <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
+                        <button class="nav-link p-2 text-secondary active w-100" id="pills-home-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-New-Products" type="button" role="tab"
+                            aria-controls="pills-New-Products" aria-selected="true">New Products</button>
+                    </li>
+                    <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
+                        <button class="nav-link p-2 text-secondary w-100" id="pills-profile-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-Featured-Products" type="button" role="tab"
+                            aria-controls="pills-Featured-Products" aria-selected="false">Featured Products</button>
+                    </li>
+                    <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
+                        <button class="nav-link p-2 text-secondary w-100" id="pills-contact-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-On-Sale-Products" type="button" role="tab"
+                            aria-controls="pills-On-Sale-Products" aria-selected="false">On Sale Products</button>
+                    </li>
+                    <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
+                        <button class="nav-link p-2 text-secondary w-100" id="pills-contact-tab2" data-bs-toggle="pill"
+                            data-bs-target="#pills-Trending-Products" type="button" role="tab"
+                            aria-controls="pills-Trending-Products" aria-selected="false">Trending Products</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content mt-5" id="pills-tabContent">
+
+                <div class="tab-pane fade product-tab show active" id="pills-New-Products" role="tabpanel"
+                    aria-labelledby="pills-home-tab">
+                    <div class="container">
+                        <div class="row product-list">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/36.jpg" class="position-absolute img-fluid" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/38.jpg" class="position-absolute img-fluid" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/35.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex pagination-container justify-content-center mt-4"></div>
+                </div>
+                <div class="tab-pane product-tab fade" id="pills-Featured-Products" role="tabpanel"
+                    aria-labelledby="pills-profile-tab">
+                    <div class="container">
+                        <div class="row product-list">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/37.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/35.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/33.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex pagination-container justify-content-center mt-4"></div>
+                </div>
+                <div class="tab-pane product-tab fade" id="pills-On-Sale-Products" role="tabpanel"
+                    aria-labelledby="pills-contact-tab">
+                    <div class="container">
+                        <div class="row product-list">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/35.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/37.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/38.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/38.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/33.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex pagination-container pagination-sale justify-content-center mt-4"></div>
+                </div>
+                <div class="tab-pane fade product-tab" id="pills-Trending-Products" role="tabpanel"
+                    aria-labelledby="pills-contact-tab2">
+                    <div class="container">
+                        <div class="row product-list">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/33.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/37.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/38.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="product-stor-item">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/39.jpg" class="position-absolute" alt="">
+                                        <ul
+                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                            <li>S</li>
+                                            <li>M</li>
+                                            <li>L</li>
+                                            <li>XL</li>
+                                        </ul>
+                                        <div
+                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                            <a class="text-decoration-none text-light" href="#"><i
+                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                                        </div>
+                                        <ul class="social-icon list-unstyled position-absolute">
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-solid text-dark fa-eye"></i></a></li>
+                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex justify-content-between">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex pagination-container justify-content-center mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end Our Product-->
+    <!-- start This Week's Featured -->
+    <section class="weeks-featured pt-3 my-5">
+        <div class="container py-5">
+            <div class="section-title my-5 text-center">
+                <h5 style="color: var(--second-color);">Shop by Category</h5>
+                <h2 class="fs-1">This Week's Featured</h2>
+            </div>
+            <div class="owl-carousel py-5 carousel2 w-100 owl-theme">
+                <div class="item col-12 col-md-12">
+                    <div
+                        class="d-flex flex-column flex-lg-row text-start p-4 justify-content-between product-card w-100">
+                        <div class="img-prod w-100 mb-3 mb-lg-0">
+                            <img class="w-100 h-100" src="img/19.png" alt="Clothing" />
+                        </div>
+                        <div class="content-prod w-100 ps-lg-4">
+                            <div class="star mb-2">
+                                <i class="fa-solid text-warning fa-star"></i>
+                                <i class="fa-solid text-warning fa-star"></i>
+                                <i class="fa-solid text-warning fa-star"></i>
+                                <i class="fa-solid text-warning fa-star"></i>
+                            </div>
+                            <h5 class="pt-3">
+                                <a class="fs-5 text-decoration-none text-dark" href="#">Classy Flare For Moment
+                                    Dress</a>
+                            </h5>
+                            <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                            <a href="#" class="hvr-sweep-to-right text-decoration-none px-4 py-2 swep-a">
+                                Shop Now <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item col-12 col-md-12">
+                    <div
+                        class="d-flex flex-column flex-lg-row text-start p-4 justify-content-between product-card w-100">
+                        <div class="img-prod w-100 mb-3 mb-lg-0">
+                            <img class="w-100 h-100" src="img/17.png" alt="Clothing" />
+                        </div>
+                        <div class="content-prod w-100 ps-lg-4">
+                            <div class="star mb-2">
+                                <i class="fa-solid text-warning fa-star"></i>
+                                <i class="fa-solid text-warning fa-star"></i>
+                                <i class="fa-solid text-warning fa-star"></i>
+                                <i class="fa-solid text-warning fa-star"></i>
+                            </div>
+                            <h5 class="pt-3">
+                                <a class="fs-5 text-decoration-none text-dark" href="#">Classy Flare For Moment
+                                    Dress</a>
+                            </h5>
+                            <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                            <a href="#" class="hvr-sweep-to-right text-decoration-none px-4 py-2 swep-a">
+                                Shop Now <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item col-12 col-md-12">
+                    <div
+                        class="d-flex flex-column flex-lg-row text-start p-4 justify-content-between product-card w-100">
+                        <div class="img-prod w-100 mb-3 mb-lg-0">
+                            <img class="w-100 h-100" src="img/18.png" alt="Clothing" />
+                        </div>
+                        <div class="content-prod w-100 ps-lg-4">
+                            <div class="star mb-2">
+                                <i class="fa-solid text-warning fa-star"></i>
+                                <i class="fa-solid text-warning fa-star"></i>
+                                <i class="fa-solid text-warning fa-star"></i>
+                                <i class="fa-solid text-warning fa-star"></i>
+                            </div>
+                            <h5 class="pt-3">
+                                <a class="fs-5 text-decoration-none text-dark" href="#">Classy Flare For Moment
+                                    Dress</a>
+                            </h5>
+                            <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                            <a href="#" class="hvr-sweep-to-right text-decoration-none px-4 py-2 swep-a">
+                                Shop Now <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end This Week's Featured -->
+    <!-- start Trending Arrivals -->
+
+    <section class="Trending-Arrivals pt-3 my-5">
+        <div class="container py-5">
+            <div class="section-title my-5 text-center">
+                <div>
+                    <h5 style="color: var(--second-color);">More to Discover</h5>
+                    <h2 class="fs-1 pb-3">Trending Arrivals
+                    </h2>
+                </div>
+                <a href="#" class="hvr-sweep-to-right text-decoration-none px-4 py-2 swep-a">
+                    View More Items <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="discover-trending  w-100 ">
+                <div class="row ">
+                    <div class="col-12 col-md-12 col-lg-6">
+                        <div class="owl-carousel mb-4 carousel3 w-100 owl-theme">
+                            <div class=" col-md-12">
+                                <div class="product-stor-item p-0 border-0">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/21.jpg" class="position-absolute" alt="">
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex flex-column ">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-md-12">
+                                <div class="product-stor-item p-0 border-0">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/20.jpg" class="position-absolute" alt="">
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex flex-column ">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-md-12">
+                                <div class="product-stor-item p-0 border-0">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="img/20.jpg" class="position-absolute" alt="">
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex flex-column ">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                                <i class="fa-solid text-warning fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                                Moment Dress</a>
+                                        </h5>
+                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-6 ">
+                        <div class="bg-img position-relative d-block">
+                            <img src="img/22.jpg" class="mb-3 rounded-3  img-fluid" alt="">
+                            <div class="overlay-text-bg-img  position-absolute">
+                                <h5 class="pt-3">
+                                    <a class="fs-5 text-decoration-none text-light" href="#">Short Sleeve Tunic <br>
+                                        Tops Casual Swing</a>
+                                </h5>
+                                <a href="#" class="hvr-sweep-to-right mt-3 text-decoration-none px-4 py-2 swep-a">
+                                    Explore More <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end Trending Arrivals -->
+
+    <!--start Best Seller Products -->
+    <section class="Best-Seller">
+        <div class="container ">
+            <div class="section-title my-5 text-center">
+                <div>
+                    <h5 style="color: var(--second-color);">Top views in this week</h5>
+                    <h2 class="fs-1 pb-3">TBest Seller Products</h2>
+                </div>
+            </div>
+            <div class="row product-list">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-stor-item p-0 border-0">
+                        <div class="product-img overflow-hidden position-relative">
+                            <img src="img/30.jpg" class="position-absolute img-fluid" alt="">
+                            <ul class="social-icon list-unstyled position-absolute">
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-solid text-dark fa-eye"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-regular text-dark fa-heart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content pt-3">
+                            <div class="content d-flex justify-content-between">
+                                <span class="fs-6 fw-light">Casual Wear</span>
+                                <div class="star">
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                </div>
+                            </div>
+                            <h5 class="pt-3">
+                                <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                    Moment Dress</a>
+                            </h5>
+                            <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-stor-item p-0 border-0">
+                        <div class="product-img overflow-hidden position-relative">
+                            <img src="img/29.jpg" class="position-absolute img-fluid" alt="">
+                            <ul class="social-icon list-unstyled position-absolute">
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-solid text-dark fa-eye"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-regular text-dark fa-heart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content pt-3">
+                            <div class="content d-flex justify-content-between">
+                                <span class="fs-6 fw-light">Casual Wear</span>
+                                <div class="star">
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                </div>
+                            </div>
+                            <h5 class="pt-3">
+                                <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                    Moment Dress</a>
+                            </h5>
+                            <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-stor-item p-0 border-0">
+                        <div class="product-img overflow-hidden position-relative">
+                            <img src="img/31.jpg" class="position-absolute img-fluid" alt="">
+                            <ul class="social-icon list-unstyled position-absolute">
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-solid text-dark fa-eye"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-regular text-dark fa-heart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content pt-3">
+                            <div class="content d-flex justify-content-between">
+                                <span class="fs-6 fw-light">Casual Wear</span>
+                                <div class="star">
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                </div>
+                            </div>
+                            <h5 class="pt-3">
+                                <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                    Moment Dress</a>
+                            </h5>
+                            <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-stor-item p-0 border-0">
+                        <div class="product-img overflow-hidden position-relative">
+                            <img src="img/28.jpg" class="position-absolute img-fluid" alt="">
+                            <ul class="social-icon list-unstyled position-absolute">
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-solid text-dark fa-eye"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i
+                                            class="fa-regular text-dark fa-heart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content pt-3">
+                            <div class="content d-flex justify-content-between">
+                                <span class="fs-6 fw-light">Casual Wear</span>
+                                <div class="star">
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                    <i class="fa-solid text-warning fa-star"></i>
+                                </div>
+                            </div>
+                            <h5 class="pt-3">
+                                <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
+                                    Moment Dress</a>
+                            </h5>
+                            <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end Best Seller Products ===-->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- .......scripts...... -->
+
+    <!-- font awesome -->
+    <script src="js/all.min.js"></script>
+    <!-- bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- my js script -->
+    <script src="js/home.js"></script>
+    <!-- .......scripts...... -->
+
+</body>
+
+</html>
