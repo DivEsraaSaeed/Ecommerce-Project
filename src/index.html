@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seller</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+ 
+    <link
+      rel="stylesheet"
+      href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- JS -->
+    <script src="/node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body class="d-flex flex-column vh-100">
+    <header style="height: 15vh">
+      <div class="container    p-3 vh-10">
+        <div class="row align-items-center">
+          <div class="logo col-6">
+            <img class=" animate__animated  animate__tada animate__infinite	infinite animate__slower	3s" src="Components/img/logo.jpg" alt="">
+          </div>
+
+          <div class="info col-6 d-flex justify-content-end">
+            <button id="btn-message" class="button-message">
+              <div class="content-avatar">
+                <div class="status-user"></div>
+                <div class="avatar">
+                  <img
+                    class="user-img"
+                    src="Components/img/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg"
+                    alt="User"
+                  />
+                </div>
+              </div>
+              <div class="notice-content">
+                <div class="username">Abdelfatah Moustafa</div>
+                <div class="lable-message">Info User</div>
+                <div class="user-id">abdalfatahmoustafa@gmail.com</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section  style="height: 85vh">
+      <div class="container-fluid   h-100">
+        <div class="row  divBar  position-fixed  rounded-bottom-5  rounded-4">
+          <div
+          class="bar d-none py-2 col-sm-12  position-relative  rounded-5 p-3 vh-90"
+          style="left: -100%"
+        >
+          <span class="icon-bar-close">
+            <i class="fa-solid fa-xmark text-black"></i
+          ></span>
+
+          <div class="bar-ul">
+            <ul class="list-unstyled pt-4">
+              <li data-page="Overviewe/Overviewe.html" class=" rounded-3">
+                <span class=""><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Overview
+              </li>
+              <li data-page="products/products.html" class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Products
+              </li>
+              <!-- <li class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Customer
+              </li> -->
+              <!-- <li class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Orders
+              </li> -->
+              <!-- <li class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Shipment
+              </li> -->
+              <li data-page="addproduct/product.html" class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Add Product
+              </li>
+              <!-- <li class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Platform Partner
+              </li> -->
+              <!-- <li class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Feedback
+              </li> -->
+            </ul>
+          </div>
+
+          <div>
+            <details>
+              <summary>Help & Support</summary>
+              <p>Social</p>
+            </details>
+          </div>
+        </div>
+        </div>
+        <div class="row  h-100">
+       
+
+          <div class="dashboard w-90 col-sm-12   d-flex">
+            <div>
+              <span class="icon-bar-toggle pe-4">
+                <i class="fa-solid fa-sliders"></i>
+              </span>
+            </div>
+
+            <div class="container-fluid w-100 mt-3 h-100">
+              <div class="row">
+                <div class="content col-sm-12 rounded-5 mb-5">
+
+                  <h1>Hello Seller Name</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

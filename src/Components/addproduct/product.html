@@ -1,0 +1,89 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>addProduct</title>
+      <!-- CSS
+      <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+      <link
+        rel="stylesheet"
+        href="/@fortawesome/fontawesome-free/css/all.min.css"
+      />-->
+      <link rel="stylesheet" href="/src/Components/addproduct/styleproduct.css" /> 
+    </head>
+    <body>
+      <div class="container m-auto   p-5 mt-5">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1>Add Product</h1>
+          </div>
+          <div class="col-sm-11  ms-4 mt-5">
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="ProductName"
+                placeholder="Product Name"
+              />
+              <label for="ProductName">Product Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="number"
+                class="form-control"
+                id="ProductPrice"
+                placeholder="Price"
+              />
+              <label for="ProductPrice">Price</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="ProductCategory"
+                placeholder="Product Category"
+              />
+              <label for="ProductCategory">Product Category</label>
+            </div>
+  
+            <div class="form-floating mb-3 position-relative">
+              <input
+                type="file"
+                class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0"
+                id="ProductImage"
+              />
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Product Image"
+                id="fakeInput"
+                readonly
+              />
+              <label for="fakeInput">Product Image</label>
+            </div>
+  
+            <div class="form-floating mb-3">
+              <textarea
+                class="form-control"
+                placeholder="Leave a Dec here"
+                id="ProductDes"
+              ></textarea>
+              <label for="ProductDes">Product Des</label>
+            </div>
+  
+            <button id="add" class="btn btn-outline-info mb-3">
+              Add Product
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- JS -->
+      <!-- <script src="/jquery/dist/jquery.min.js" defer></script> -->
+      <!-- <script src="/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script> -->
+      <script src="/src/Components/addproduct/mainProduct.js"></script>
+    </body>
+  </html>
+  
