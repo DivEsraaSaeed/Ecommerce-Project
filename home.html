@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SnapBuy</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <!-- hover lib -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
     <!-- Owl Carousel CSS -->
@@ -17,8 +18,9 @@
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet"> 
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
     <!-- font awesome -->
     <link rel="stylesheet" href="css/all.min.css">
     <!-- bootstrap -->
@@ -40,92 +42,100 @@
             </div>
         </div>
         <!-- start nav -->
-        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" class="cover">
-            <nav id="navbar-example2" class="navbar navbar-expand-lg  bg-light   ">
-                <div class="container  d-flex justify-content-between ">
-                    <div class="d-flex justify-content-between w-100 align-items-center">
-                        <a class="navbar-brand text-black" href="#">E-comes</a>
+        <div data-bs-spy="scroll" data-bs-target="#snapbuy-nav" class="cover ">
+            <nav id="snapbuy-nav" class="navbar sticky-navbar navbar-expand-lg bg-light">
+                <div class="container">
+                    <!-- logo -->
+                    <a class="navbar-brand text-black  me-auto" href="#"><span class="logo-font d-flex justify-content-center align-items-center fs-5 "style=" color: var(--second-color); "><img class="w-25 opacity-75 pe-1 h-25 " src="img/favicon.ico" alt=""> SnapBuy</span></a>
+
+                    <!-- phone& tablts -->
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <!-- links $ icons -->
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+                        <!-- links-->
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categories
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item hvr-forward" href="#">Man Clothes</a></li>
+                                    <li><a class="dropdown-item hvr-forward" href="#">Woman clothes</a></li>
+                                    <li><a class="dropdown-item hvr-forward" href="#">Accessories</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#">About SnapBuy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#">Contact Us</a>
+                            </li>
+                        </ul>
+
+                        <!-- icons-->
                         <div class="d-flex">
-                            <i class="fa-solid d-flex d-lg-none p-3 fa-cart-shopping"></i>
-                            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <i class="fa-solid fa-bars"></i>
+                            <!-- search icon -->
+                            <input type="text" id="search-bar"
+                                class="form-control border-0 p-0 text-center  overflow-hidden"
+                                placeholder="Search here">
+                            <button id="search-icon" class="btn ">
+                                <i class="fas fa-search"></i>
                             </button>
+                            <!-- =========== -->
+                            <!-- <button class="btn" id="toggle-dark" ><i  class="fa-solid p-0 fa-circle-half-stroke"></i></button> -->
+                            <i class="fa-solid p-3 fa-cart-shopping"></i>
                         </div>
-                    </div>
-                    <div class="links ">
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul class="navbar-nav d-flex flex-column flex-lg-row gap-4 ">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a class="nav-link" aria-current="page" href="#">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Works</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Clients</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Team</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shop-cont d-lg-flex d-none ps-5 gx-3">
-                        <i class="fa-solid p-3 fa-magnifying-glass"></i>
-                        <i class="fa-regular p-3 fa-heart"></i>
-                        <i class="fa-solid  p-3 fa-cart-shopping"></i>
                     </div>
                 </div>
             </nav>
-            <!-- end nav -->
-            <!-- start Carousel -->
-            <div class="owl-carousel carousel1 owl-theme">
-                <div class="item ">
-                    <img src="img/bg-2.jpg" alt="Image 1" />
-                    <div class="overlay-content text-white ">
-                        <p>Winter Special Collection</p>
-                        <h1 class="display-4 mb-5 fw-bold">New Collection With <br>Modern Style</h1>
-                        <a href="#" class="hvr-sweep-to-right  text-decoration-none px-5 py-3 swep-a">Shop Now <i
-                                class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="img/bg-3.jpg" alt="Image 2" />
-                    <div class="overlay-content text-white text-decoration-none">
-                        <p>Winter Special Collection</p>
-                        <h1 class="display-4 mb-5 fw-bold">New Collection With <br>Modern Style</h1>
-                        <a href="#" class="hvr-sweep-to-right text-decoration-none px-5 py-3 swep-a">Shop Now <i
-                                class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="img/bg-4.jpg" alt="Image 3" />
-                    <div class="overlay-content text-white ">
-                        <p>Winter Special Collection</p>
-                        <h1 class="display-4 mb-5 fw-bold">New Collection With <br>Modern Style</h1>
-                        <a href="#" class="hvr-sweep-to-right text-decoration-none px-5 py-3 swep-a">Shop Now <i
-                                class="fa-solid fa-arrow-right"></i></a>
-                    </div>
+        </div>
+        <!-- end nav -->
+        <!-- start Carousel -->
+        <div class="owl-carousel carousel1 owl-theme">
+            <div class="item ">
+                <img src="img/bg-2.jpg" alt="Image 1" />
+                <div class="overlay-content text-white ">
+                    <p>Winter Special Collection</p>
+                    <h1 class="display-4 mb-5 fw-bold">New Collection With <br>Modern Style</h1>
+                    <a href="#" class="hvr-sweep-to-right  text-decoration-none px-5 py-3 swep-a">Shop Now <i
+                            class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
-            <!-- end Carousel -->
+            <div class="item">
+                <img src="img/bg-3.jpg" alt="Image 2" />
+                <div class="overlay-content text-white text-decoration-none">
+                    <p>Winter Special Collection</p>
+                    <h1 class="display-4 mb-5 fw-bold">New Collection With <br>Modern Style</h1>
+                    <a href="#" class="hvr-sweep-to-right text-decoration-none px-5 py-3 swep-a">Shop Now <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/bg-4.jpg" alt="Image 3" />
+                <div class="overlay-content text-white ">
+                    <p>Winter Special Collection</p>
+                    <h1 class="display-4 mb-5 fw-bold">New Collection With <br>Modern Style</h1>
+                    <a href="#" class="hvr-sweep-to-right text-decoration-none px-5 py-3 swep-a">Shop Now <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- end Carousel -->
     </section>
     <!-- end home -->
     <!-- start feature wrapper-->
-    <section class="feature-wrapper my-5 container w-100  ">
+    <section class="feature-wrapper my-5  container w-100  ">
         <div class="row ">
-            <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="feature-item p-4  d-flex align-items-center">
                     <div class="icon pe-3"> <i class="fa-solid fs-1 fa-truck" style=" color: var(--second-color);"></i>
                     </div>
@@ -135,7 +145,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-3">
+            <!-- <div class="col-sm-12 col-md-6 col-lg-3">
                 <div class="feature-item p-4  d-flex align-items-center">
                     <div class="icon pe-3"> <i class="fa-solid fs-1 fa-dollar-sign"
                             style=" color: var(--second-color);"></i> </div>
@@ -144,8 +154,8 @@
                         <p class="m-0 fw-light">Maney back guarantee</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3">
+            </div> -->
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="feature-item p-4  d-flex align-items-center">
                     <div class="icon pe-3"> <i class="fa-solid fs-1 fa-percent"
                             style=" color: var(--second-color);"></i>
@@ -157,7 +167,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-3">
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="feature-item p-4  d-flex align-items-center">
                     <div class="icon pe-3"> <i class="fa-solid fs-1 fa-headphones"
                             style=" color: var(--second-color);"></i>
@@ -209,7 +219,7 @@
     <section class="Our-Product my-5">
         <div class="container">
             <div class="section-title my-5 text-center">
-                <h5 style="color: var(--second-color);">Top views in this week</h5>
+                <h5>Top views in this week</h5>
                 <h2 class="fs-1">Our Product In Store</h2>
             </div>
 
@@ -925,7 +935,7 @@
     <section class="weeks-featured pt-3 my-5">
         <div class="container py-5">
             <div class="section-title my-5 text-center">
-                <h5 style="color: var(--second-color);">Shop by Category</h5>
+                <h5>Shop by Category</h5>
                 <h2 class="fs-1">This Week's Featured</h2>
             </div>
             <div class="owl-carousel py-5 carousel2 w-100 owl-theme">
@@ -1011,7 +1021,7 @@
         <div class="container py-5">
             <div class="section-title my-5 text-center">
                 <div>
-                    <h5 style="color: var(--second-color);">More to Discover</h5>
+                    <h5>More to Discover</h5>
                     <h2 class="fs-1 pb-3">Trending Arrivals
                     </h2>
                 </div>
@@ -1119,8 +1129,8 @@
         <div class="container ">
             <div class="section-title my-5 text-center">
                 <div>
-                    <h5 style="color: var(--second-color);">Top views in this week</h5>
-                    <h2 class="fs-1 pb-3">TBest Seller Products</h2>
+                    <h5>Top views in this week</h5>
+                    <h2 class="fs-1 pb-3">Best Seller Products</h2>
                 </div>
             </div>
             <div class="row product-list">
@@ -1252,6 +1262,113 @@
         </div>
     </section>
     <!--end Best Seller Products ===-->
+    <!--start review  section ===-->
+    <section class="customer-review overflow-hidden py-5 my-5">
+        <div class="container  px-5">
+            <div class="shape d-flex justify-content-center col-12 position-relative">
+                <img class="position-absolute col-9 " src="img/circle.png" alt="">
+                <div class="owl-carousel py-5 carousel4 w-100 owl-theme">
+                    <!-- Slide 1 -->
+                    <div class="item-review text-center text-black">
+                        <h2 style="color: var(--second-color);">customer review <i
+                                class="fa-regular ps-2 fa-comment"></i></h2>
+                        <div class="star py-4`">
+                            <i class="fa-solid text-warning fa-star"></i>
+                            <i class="fa-solid text-warning fa-star"></i>
+                            <i class="fa-solid text-warning fa-star"></i>
+                            <i class="fa-solid text-warning fa-star-half-stroke"></i>
+                        </div>
+                        <p class=" py-3 fs-5">" the product was so nice "</p>
+                        <h6 class="user-comment  shadow-sm p-2 px-3 rounded-5 m-auto" id="user-comment ">-ahmed
+                            abdelaziz</h6>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="item-review text-center text-black">
+                        <h2 style="color: var(--second-color);">customer review <i
+                                class="fa-regular ps-2 fa-comment"></i></h2>
+                        <div class="star py-4`">
+                            <i class="fa-solid text-warning fa-star"></i>
+                            <i class="fa-solid text-warning fa-star"></i>
+                            <i class="fa-solid text-warning fa-star"></i>
+                            <i class="fa-solid text-warning fa-star-half-stroke"></i>
+                        </div>
+                        <p class=" py-3 fs-5">" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi unde
+                            tenetur fugit harum ipsam reprehenderit laboriosam pariatur. "</p>
+                        <h6 class="user-comment  shadow-sm p-2 px-3 rounded-5 m-auto" id="user-comment ">-ahmed
+                            abdelaziz</h6>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="item-review text-center text-black">
+                        <h2 style="color: var(--second-color);">customer review <i
+                                class="fa-regular ps-2 fa-comment"></i></h2>
+                        <div class="star py-4`">
+                            <i class="fa-solid text-warning fa-star"></i>
+                            <i class="fa-solid text-warning fa-star"></i>
+                            <i class="fa-solid text-warning fa-star"></i>
+                            <i class="fa-solid text-warning fa-star-half-stroke"></i>
+                        </div>
+                        <p class=" py-3 fs-5">" the product was so nice "</p>
+                        <h6 class="user-comment  shadow-sm p-2 px-3 rounded-5 m-auto" id="user-comment ">-ahmed
+                            abdelaziz</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end review section ===-->
+    <!--start follow us ===-->
+    <section class="follow-us">
+        <div class="container-fluid">
+            <div class="section-title text-center">
+                <h3 style="color: var(--second-color);">Follow Us on Instagram <i class="fa-brands fa-instagram"></i>
+                </h3>
+            </div>
+            <div class="owl-carousel py-5 carousel5 w-100 owl-theme">
+                <div class="follow-img">
+                    <img src="img/16 (1).jpg" alt="">
+                    <div
+                        class="overlay-follow position-absolute w-100 h-100 top-0 end-0 d-flex justify-content-center align-items-center  hvr-bounce-to-bottom">
+                        <a href="https://www.instagram.com/" target="_blank"> <i
+                                class="fa-brands fs-2 text-light fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="follow-img">
+                    <img src="img/15 (1).jpg" alt="">
+                    <div
+                        class="overlay-follow position-absolute w-100 h-100 top-0 end-0 d-flex justify-content-center align-items-center  hvr-bounce-to-bottom">
+                        <a href="https://www.instagram.com/" target="_blank"> <i
+                                class="fa-brands fs-2 text-light fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="follow-img">
+                    <img src="img/14 (1).jpg" alt="">
+                    <div
+                        class="overlay-follow position-absolute w-100 h-100 top-0 end-0 d-flex justify-content-center align-items-center  hvr-bounce-to-bottom">
+                        <a href="https://www.instagram.com/" target="_blank"> <i
+                                class="fa-brands fs-2 text-light fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="follow-img">
+                    <img src="img/17.jpg" alt="">
+                    <div
+                        class="overlay-follow position-absolute w-100 h-100 top-0 end-0 d-flex justify-content-center align-items-center  hvr-bounce-to-bottom">
+                        <a href="https://www.instagram.com/" target="_blank"> <i
+                                class="fa-brands fs-2 text-light fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="follow-img">
+                    <img src="img/13.jpg" alt="">
+                    <div
+                        class="overlay-follow position-absolute w-100 h-100 top-0 end-0 d-flex justify-content-center align-items-center  hvr-bounce-to-bottom">
+                        <a href="https://www.instagram.com/" target="_blank"> <i
+                                class="fa-brands fs-2 text-light fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end follow us ===-->
+
 
 
 
