@@ -1,33 +1,54 @@
+/* color control & dark mood */
 :root {
     --main-color: #F8F9FA !important;
     --second-color: #BD844C !important;
     --third-color: #010F1C !important;
     --main-transition: all .3s !important;
-    --second-bg-background-color:#ffffffb9 !important;
-    --first-bg-background-color:#F7F7F7 !important;
-    
+    --second-bg-background-color: #ffffffb9 !important;
+    --first-bg-background-color: #F7F7F7 !important;
+    --main-bg-background-color: white !important;
 }
-.dark-mode {
+
+body {
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+
+}
+
+/* .dark-mode {
     --main-color: #1A1A1A !important;
     --second-color: #BD844C !important;
     --third-color: #F5F5F5 !important;
     --second-bg-background-color: #2A2A2A !important;
     --first-bg-background-color: #1F1F1F !important;
-  }
-  
-body {
-    font-family: "Jost", sans-serif;
-    font-weight: 500;
+   
+  } */
+
+/* scroll bar*/
+::-webkit-scrollbar {
+    width: 5px;
+    height: 12px;
 }
-/* sections titles */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--second-color);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--third-color);
+}
+
 
 /* nav start */
 #search-bar {
     width: 0;
     transition: all 0.3s;
     outline: none;
-  }
-  #snapbuy-nav {
+}
+
+#snapbuy-nav {
     display: none;
     position: fixed;
     top: 0;
@@ -36,21 +57,25 @@ body {
     z-index: 999;
     background-color: var(--first-bg-background-color);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  .navbar-toggler:focus{
-box-shadow: none !important;
-  }
-  .dropdown-menu{
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.dropdown-menu {
     border: none !important;
-   background-color: var(--main-color) !important;
-  }
-  .dropdown-item:hover , .nav-link:hover{
+    background-color: var(--main-color) !important;
+}
+
+.dropdown-item:hover, .nav-link:hover {
     color: var(--second-color) !important;
     background-color: transparent !important;
-  }
+}
+
 /* nav end */
 
-.logo-font,.section-title h2 ,.section-title h3{
+.logo-font, .section-title h2, .section-title h3 {
     font-family: "Shantell Sans";
     color: var(--second-color);
 }
@@ -214,7 +239,7 @@ box-shadow: none !important;
 
 /* start sec 5 */
 .weeks-featured {
-    background-color: var(--first-bg-background-color)!important;
+    background-color: var(--first-bg-background-color) !important;
 }
 
 .carousel2 {
@@ -261,27 +286,31 @@ box-shadow: none !important;
 .owl-nav button:hover {
     background-color: transparent !important;
 }
+
 /* customer-review */
-.customer-review{
+.customer-review {
     background-color: var(--first-bg-background-color);
 }
-.user-comment{
-   width: fit-content;
-   background-color: var(--main-color);
+
+.user-comment {
+    width: fit-content;
+    background-color: var(--main-color);
 }
 
 /* follow us  */
-*/
-  .follow-img img {
+*/ .follow-img img {
     object-fit: cover;
-  }
-  .follow-img .overlay-follow {
+}
+
+.follow-img .overlay-follow {
     opacity: 0;
     transition: var(--main-transition);
 }
-  .follow-img:hover .overlay-follow {
+
+.follow-img:hover .overlay-follow {
     opacity: 1;
-  }
-.hvr-bounce-to-bottom:before{
+}
+
+.hvr-bounce-to-bottom:before {
     background: #bd844c78;
 }

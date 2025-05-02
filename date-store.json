@@ -1,0 +1,109 @@
+{
+    "Store": {
+      "men": {
+        "CategoryImage": "img/34.jpg",
+        "ProductCategory": {
+          "menFashion": {
+            "Products": [
+              {
+                "ProductId": 1,
+                "ProductName": "Classic men's shirt",
+                "ProductPrice": "199",
+                "ProductCount": "50",
+                "ProductSize": "Small",
+                "ProductType": "men",
+                "ProductCategory": "menFashion",
+                "ProductStatus": "InStore",
+                "ProductImage": "/img/34.jpg",
+                "ProductDescription": "High-quality cotton shirt with an elegant design for formal occasions",
+                "ProductRate": 0
+              },
+              {
+                "ProductId": 2,
+                "ProductName": "Men's Slim Fit Jeans",
+                "ProductPrice": "450",
+                "ProductCount": "35",
+                "ProductSize": "32, 34, 36",
+                "ProductType": "men",
+                "ProductCategory": "menFashion",
+                "ProductStatus": "Trending",
+                "ProductImage": "/img/34.jpg",
+                "ProductDescription": "Comfortable slim-fit jeans with stretch fabric",
+                "ProductRate": 4.5
+              }
+            ]
+          }
+        }
+      },
+      "women": {
+        "CategoryImage": "img/34.jpg",
+        "ProductCategory": {
+          "womenFashion": {
+            "Products": [
+              {
+                "ProductId": 1,
+                "ProductName": "Product 1",
+                "ProductPrice": "23",
+                "ProductCount": "32",
+                "ProductSize": "Small",
+                "ProductType": "women",
+                "ProductCategory": "womenFashion",
+                "ProductStatus": "InStore",
+                "ProductImage": "/img/34.jpg",
+                "ProductDescription": "323",
+                "ProductRate": 0
+              },
+              {
+                "ProductId": 2,
+                "ProductName": "Women's Summer Dress",
+                "ProductPrice": "599",
+                "ProductCount": "18",
+                "ProductSize": "S, M, L",
+                "ProductType": "women",
+                "ProductCategory": "womenFashion",
+                "ProductStatus": "New Arrival",
+                "ProductImage": "/img/34.jpg",
+                "ProductDescription": "Lightweight floral dress perfect for summer",
+                "ProductRate": 4.7
+              }
+            ]
+          }
+        }
+      },
+      "accessories": {
+        "CategoryImage": "userImg.jpg",
+        "ProductCategory": {
+          "accessories": {
+            "Products": [
+              {
+                "ProductId": 1,
+                "ProductName": "Product 1",
+                "ProductPrice": "22",
+                "ProductCount": "32",
+                "ProductSize": "Small",
+                "ProductType": "accessories",
+                "ProductCategory": "accessories",
+                "ProductStatus": "InStore",
+                "ProductImage": "/img/34.jpg",
+                "ProductDescription": "232",
+                "ProductRate": 0
+              },
+              {
+                "ProductId": 2,
+                "ProductName": "Unisex Backpack",
+                "ProductPrice": "899",
+                "ProductCount": "12",
+                "ProductSize": "Large",
+                "ProductType": "accessories",
+                "ProductCategory": "accessories",
+                "ProductStatus": "Best Seller",
+                "ProductImage": "https://ex-coders.com/html/ecomas/assets/img/shop/shop-1.jpg",
+                "ProductDescription": "Durable waterproof backpack with laptop compartment",
+                "ProductRate": 4.8
+              }
+            ]
+          }
+        }
+      }
+    }
+  }

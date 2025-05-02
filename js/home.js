@@ -183,7 +183,7 @@ $(document).ready(function () {
 });
 //carousel5=============================
 $(document).ready(function () {
-  const owl4 = $(".carousel5").owlCarousel({
+  const owl5 = $(".carousel5").owlCarousel({
     loop: true,
     rtl: true,
     margin: 30,
@@ -210,7 +210,83 @@ $(document).ready(function () {
     },
   });
 });
+
 //dark mood==============
-document.getElementById("toggle-dark").addEventListener("click", function () {
-  document.body.classList.toggle("dark-mode");
-});
+
+// document.getElementById("toggle-dark").addEventListener("click", function () {
+//   document.body.classList.toggle("dark-mode");
+// });
+
+//test===========================================================================================
+// fetch('/date-store.json')
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data); 
+    // console.log(data.Store.women);
+//   })
+//   .catch(error => console.error('Error fetching data:', error));
+
+
+// Fetch data-store.json
+fetch('/date-store.json')
+.then(response => response.json())
+.then(data => {
+    const productsContainer = document.getElementById('products-container');
+    const categories = data.Store;
+
+    // Loop 3la koloh(men, women, accessories)
+    for (const category in categories) {
+        const products = categories[category].ProductCategory[category === 'men' ? 'menFashion' : category === 'women' ? 'womenFashion' : 'accessories'].Products;
+
+        // Loop 
+        products.forEach(product => {
+          
+            const sizes = product.ProductSize.includes(',') ? product.ProductSize.split(', ').map(size => `<li>${size}</li>`).join('') : `<li>${product.ProductSize}</li>`;
+
+            
+            const rating = product.ProductRate;
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += `<i class="fa-solid text-warning fa-star${i <= Math.floor(rating) ? '' : ' fa-regular fa-star'}"></i>`;
+            }
+
+            
+            const productHTML = `
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="product-stor-item">
+                        <div class="product-img overflow-hidden position-relative">
+                            <img src="${product.ProductImage}" class="position-absolute" alt="${product.ProductName}">
+                            <ul class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+                                ${sizes}
+                            </ul>
+                            <div class="cart-btn hvr-s Stuart Little (1999) hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
+                                <a class="text-decoration-none text-light" href="#"><i class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
+                            </div>
+                            <ul class="social-icon list-unstyled position-absolute">
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
+                                <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-regular text-dark fa-heart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product-content pt-3">
+                            <div class="content d-flex justify-content-between">
+                                <span class="fs-6 fw-light">${product.ProductCategory}</span>
+                                <div class="star">
+                                    ${stars}
+                                </div>
+                            </div>
+                            <h5 class="pt-3">
+                                <a class="fs-6 text-decoration-none text-dark" href="#">${product.ProductName}</a>
+                            </h5>
+                            <h6 class="fs-5">$${product.ProductPrice}</h6>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+           
+            productsContainer.innerHTML += productHTML;
+        });
+    }
+})
+.catch(error => console.error('Error fetching data:', error));
