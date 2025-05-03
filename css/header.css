@@ -14,6 +14,10 @@ body {
     font-weight: 500;
 
 }
+::selection{
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
 
 /* .dark-mode {
     --main-color: #1A1A1A !important;
@@ -313,4 +317,14 @@ body {
 
 .hvr-bounce-to-bottom:before {
     background: #bd844c78;
+}
+#like-count{
+    position: relative;
+    right: 15px;
+    font-size: 14px;
+    color: var(--main-color);
+    background-color: #BD844C;
+    height: fit-content;
+    padding: 0 7px !important;
+    border-radius: 50%;
 }

@@ -87,44 +87,6 @@ $(document).ready(function () {
 });
 //end Carousel ==============================
 
-// start pagination ==============================
-
-function setupPagination(tabElement, itemsPerPage = 4) {
-  const productList = tabElement.querySelector(".product-list");
-  const products = Array.from(
-    productList.querySelectorAll(".col-lg-3")
-  ).reverse();
-  const pagination = tabElement.querySelector(".pagination-container");
-  const totalPages = Math.ceil(products.length / itemsPerPage);
-  let currentPage = 1;
-
-  function showPage(page) {
-    products.forEach((product, index) => {
-      product.style.display =
-        index >= (page - 1) * itemsPerPage && index < page * itemsPerPage
-          ? "block"
-          : "none";
-    });
-    renderPagination(page);
-  }
-
-  function renderPagination(activePage) {
-    pagination.innerHTML = "";
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement("button");
-      btn.textContent = i;
-      btn.className = "btn btn-outline-dark mx-1";
-      if (i === activePage) btn.classList.add("active");
-      btn.onclick = () => showPage(i);
-      pagination.appendChild(btn);
-    }
-  }
-  showPage(currentPage);
-}
-document.querySelectorAll(".product-tab").forEach((tab) => {
-  setupPagination(tab);
-});
-// end pagination =================================
 //carousel2
 
 $(document).ready(function () {
@@ -212,81 +174,351 @@ $(document).ready(function () {
 });
 
 //dark mood==============
-
 // document.getElementById("toggle-dark").addEventListener("click", function () {
 //   document.body.classList.toggle("dark-mode");
 // });
 
-//test===========================================================================================
-// fetch('/date-store.json')
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log(data); 
-    // console.log(data.Store.women);
-//   })
-//   .catch(error => console.error('Error fetching data:', error));
+//=========================
 
+//important data from json file to local storage==================
 
-// Fetch data-store.json
-fetch('/date-store.json')
-.then(response => response.json())
-.then(data => {
-    const productsContainer = document.getElementById('products-container');
-    const categories = data.Store;
+// (async function SaveHomeDataToLocalStorage() {
+//   try {
+//     const response = await fetch("../home-store.json");
+//     const data = await response.json();
+//     localStorage.setItem("home-store", JSON.stringify(data));
 
-    // Loop 3la koloh(men, women, accessories)
-    for (const category in categories) {
-        const products = categories[category].ProductCategory[category === 'men' ? 'menFashion' : category === 'women' ? 'womenFashion' : 'accessories'].Products;
+//     console.log("Data saved to local storage:", data);
+//   } catch (error) {
+//     console.error("Error in fetching data from json file:", error);
+//   }
+// })();
 
-        // Loop 
-        products.forEach(product => {
-          
-            const sizes = product.ProductSize.includes(',') ? product.ProductSize.split(', ').map(size => `<li>${size}</li>`).join('') : `<li>${product.ProductSize}</li>`;
+(function loadHomeData() {
+  const data = JSON.parse(localStorage.getItem("home-store"));
+  const men = data.Store.men.ProductCategory.Products;
+  const women = data.Store.women.Products;
+  const accessories = data.Store.accessories.Products;
+   
 
-            
-            const rating = product.ProductRate;
-            let stars = '';
-            for (let i = 1; i <= 5; i++) {
-                stars += `<i class="fa-solid text-warning fa-star${i <= Math.floor(rating) ? '' : ' fa-regular fa-star'}"></i>`;
-            }
+  const newArrival = [];
+  const Trending = [];
+  const inStore = [];
+  const bestSeller = [];
+  console.log(bestSeller);
+  
+  
+  
 
-            
-            const productHTML = `
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="product-stor-item">
-                        <div class="product-img overflow-hidden position-relative">
-                            <img src="${product.ProductImage}" class="position-absolute" alt="${product.ProductName}">
-                            <ul class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
-                                ${sizes}
-                            </ul>
-                            <div class="cart-btn hvr-s Stuart Little (1999) hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
-                                <a class="text-decoration-none text-light" href="#"><i class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
-                            </div>
-                            <ul class="social-icon list-unstyled position-absolute">
-                                <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
-                                <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
-                                <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-regular text-dark fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product-content pt-3">
-                            <div class="content d-flex justify-content-between">
-                                <span class="fs-6 fw-light">${product.ProductCategory}</span>
-                                <div class="star">
-                                    ${stars}
-                                </div>
-                            </div>
-                            <h5 class="pt-3">
-                                <a class="fs-6 text-decoration-none text-dark" href="#">${product.ProductName}</a>
-                            </h5>
-                            <h6 class="fs-5">$${product.ProductPrice}</h6>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-           
-            productsContainer.innerHTML += productHTML;
-        });
+  men.forEach((product) => {
+    if (product.ProductStatus === "Trending") {
+      Trending.push(product);
+    } else if (product.ProductStatus === "New Arrival") {
+      newArrival.push(product);
+    } else if (product.ProductStatus === "InStore") {
+      inStore.push(product);
+    } else if (product.ProductStatus === "Best Seller") {
+      bestSeller.push(product);
     }
-})
-.catch(error => console.error('Error fetching data:', error));
+  });
+  women.forEach((product) => {
+    if (product.ProductStatus === "Trending") {
+      Trending.push(product);
+    } else if (product.ProductStatus === "New Arrival") {
+      newArrival.push(product);
+    } else if (product.ProductStatus === "InStore") {
+      inStore.push(product);
+    } else if (product.ProductStatus === "Best Seller") {
+      bestSeller.push(product);
+    } 
+  });
+  accessories.forEach((product) => {
+    if (product.ProductStatus === "Trending") {
+      Trending.push(product);
+    } else if (product.ProductStatus === "New Arrival") {
+      newArrival.push(product);
+    } else if (product.ProductStatus === "InStore") {
+      inStore.push(product);
+    } else if (product.ProductStatus === "Best Seller") {
+      bestSeller.push(product);
+    } 
+  });
+  const fourBestSeller = bestSeller.slice(0, 4);
+  console.log(fourBestSeller);
+  
+  const container = document.getElementById("all-new-products");
+  const container2 = document.getElementById("trending-products");
+  const container3 = document.getElementById("instore-products");
+  const container4 = document.getElementById("best-seller-products");
+  // new arrival products====================
+  newArrival.forEach((product) => {
+    const productHTML = `
+      <div class="col-lg-3 col-md-6">
+        <div class="product-stor-item shadow-sm">
+          <div class="product-img overflow-hidden position-relative">
+            <img src="${
+              product.ProductImage
+            }" class="position-absolute img-fluid" alt="${product.ProductName}">
+            <ul class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+               ${renderSizes(product.ProductSize)}
+            </ul>
+            <div class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-4 justify-content-evenly d-flex">
+              <a class="text-decoration-none text-light" href="#">
+                <i class="fa-solid text-light fa-cart-shopping"></i> Add To Cart
+              </a>
+            </div>
+            <ul class="social-icon list-unstyled position-absolute">
+              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
+              <li data-id="${
+                product.ProductCode
+              }" class="hvr-rectangle-out like-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+            </ul>
+          </div>
+          <div class="product-content pt-3">
+            <div class="content d-flex justify-content-between">
+              <span class="fs-6 fw-light">${product.SubCategory}</span>
+              
+              <div class="star">
+                 ${renderStars(product.ProductRate)}
+              </div>
+            </div>
+            <h5 class="pt-3">
+              <a class="fs-6 text-decoration-none text-dark" href="#">${
+                product.ProductName
+              }</a>
+            </h5>
+            <h6 class="fs-5">${
+              product.priceAfterDiscount
+            } <del class="fw-light fs-6">${product.ProductPrice}</del></h6>
+          </div>
+        </div>
+      </div>
+    `;
+    container.innerHTML += productHTML;
+  });
+  // trending products=============================
+  Trending.forEach((product) => {
+    const productHTML = `
+      <div class="col-lg-3 col-md-6">
+        <div class="product-stor-item shadow-sm">
+          <div class="product-img overflow-hidden position-relative">
+            <img src="${
+              product.ProductImage
+            }" class="position-absolute img-fluid" alt="${product.ProductName}">
+            <ul class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+              ${renderSizes(product.ProductSize)}
+            </ul>
+            <div class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-4 justify-content-evenly d-flex">
+              <a class="text-decoration-none text-light" href="#">
+                <i class="fa-solid text-light fa-cart-shopping"></i> Add To Cart
+              </a>
+            </div>
+            <ul class="social-icon list-unstyled position-absolute">
+              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
+              <li data-id="${
+                product.ProductId
+              }" class="hvr-rectangle-out like-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+            </ul>
+          </div>
+          <div class="product-content pt-3">
+            <div class="content d-flex justify-content-between">
+              <span class="fs-6 fw-light">${product.SubCategory}</span>
+              <div class="star">
+                 ${renderStars(product.ProductRate)}
+              </div>
+            </div>
+            <h5 class="pt-3">
+              <a class="fs-6 text-decoration-none text-dark" href="#">${
+                product.ProductName
+              }</a>
+            </h5>
+           <h6 class="fs-5">${
+              product.priceAfterDiscount
+            } <del class="fw-light fs-6">${product.ProductPrice}</del></h6>
+          </div>
+        </div>
+      </div>
+    `;
+    container2.innerHTML += productHTML;
+  });
+  // in store products=====================
+  inStore.forEach((product) => {
+    const productHTML = `
+      <div class="col-lg-3 col-md-6">
+        <div class="product-stor-item shadow-sm">
+          <div class="product-img overflow-hidden position-relative">
+            <img src="${
+              product.ProductImage
+            }" class="position-absolute img-fluid" alt="${product.ProductName}">
+            <ul class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+             ${renderSizes(product.ProductSize)}
+            </ul>
+            <div class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-4 justify-content-evenly d-flex">
+              <a class="text-decoration-none text-light" href="#">
+                <i class="fa-solid text-light fa-cart-shopping"></i> Add To Cart
+              </a>
+            </div>
+            <ul class="social-icon list-unstyled position-absolute">
+              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
+              <li data-id="${
+                product.ProductId
+              }" class="hvr-rectangle-out like-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+            </ul>
+          </div>
+          <div class="product-content pt-3">
+            <div class="content d-flex justify-content-between">
+              <span class="fs-6 fw-light">${product.SubCategory}</span>
+              <div class="star">
+                 ${renderStars(product.ProductRate)}
+              </div>
+            </div>
+            <h5 class="pt-3">
+              <a class="fs-6 text-decoration-none text-dark" href="#">${
+                product.ProductName
+              }</a>
+            </h5>
+            <h6 class="fs-5">${
+              product.priceAfterDiscount
+            } <del class="fw-light fs-6">${product.ProductPrice}</del></h6>
+          </div>
+        </div>
+      </div>
+    `;
+    container3.innerHTML += productHTML;
+  });
+
+  // best seller products=====================
+    
+  fourBestSeller.forEach((product) => {
+    const productHTML = `
+      <div class="col-lg-3 col-md-6">
+        <div class="product-stor-item shadow-sm">
+          <div class="product-img overflow-hidden position-relative">
+            <img src="${
+              product.ProductImage
+            }" class="position-absolute img-fluid" alt="${product.ProductName}">
+            <ul class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
+             ${renderSizes(product.ProductSize)}
+            </ul>
+            <div class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-4 justify-content-evenly d-flex">
+              <a class="text-decoration-none text-light" href="#">
+                <i class="fa-solid text-light fa-cart-shopping"></i> Add To Cart
+              </a>
+            </div>
+            <ul class="social-icon list-unstyled position-absolute">
+              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
+              <li data-id="${
+                product.ProductId
+              }" class="hvr-rectangle-out like-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+            </ul>
+          </div>
+          <div class="product-content pt-3">
+            <div class="content d-flex justify-content-between">
+              <span class="fs-6 fw-light">${product.SubCategory}</span>
+              <div class="star">
+                 ${renderStars(product.ProductRate)}
+              </div>
+            </div>
+            <h5 class="pt-3">
+              <a class="fs-6 text-decoration-none text-dark" href="#">${
+                product.ProductName
+              }</a>
+            </h5>
+            <h6 class="fs-5">${
+              product.priceAfterDiscount
+            } <del class="fw-light fs-6">${product.ProductPrice}</del></h6>
+          </div>
+        </div>
+      </div>
+    `;
+    container4.innerHTML += productHTML;
+  });
+
+
+
+
+
+})();
+
+// start pagination ==============================
+
+function setupPagination(tabElement, itemsPerPage = 4) {
+  const productList = tabElement.querySelector(".product-list");
+  const products = Array.from(
+    productList.querySelectorAll(".col-lg-3")
+  ).reverse();
+  const pagination = tabElement.querySelector(".pagination-container");
+  const totalPages = Math.ceil(products.length / itemsPerPage);
+  let currentPage = 1;
+
+  function showPage(page) {
+    products.forEach((product, index) => {
+      product.style.display =
+        index >= (page - 1) * itemsPerPage && index < page * itemsPerPage
+          ? "block"
+          : "none";
+    });
+    renderPagination(page);
+  }
+
+  function renderPagination(activePage) {
+    pagination.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      btn.className = "btn btn-outline-dark mx-1";
+      if (i === activePage) btn.classList.add("active");
+      btn.onclick = () => showPage(i);
+      pagination.appendChild(btn);
+    }
+  }
+  showPage(currentPage);
+}
+document.querySelectorAll(".product-tab").forEach((tab) => {
+  setupPagination(tab);
+});
+// end pagination =================================
+// function to render stars====================
+function renderStars(rate) {
+  let starsHTML = "";
+  for (let i = 1; i <= 5; i++) {
+    if (rate >= i) {
+      starsHTML += `<i class="fa-solid fa-star text-warning"></i>`;
+    } else if (rate >= i - 0.5) {
+      starsHTML += `<i class="fa-solid fa-star-half-stroke text-warning"></i>`;
+    } else {
+      starsHTML += `<i class="fa-regular fa-star text-warning"></i>`;
+    }
+  }
+  return `<div >${starsHTML}</div>`;
+}
+//end function to render stars====================
+//start size fuction========================
+function renderSizes(sizes) {
+  return sizes.map(size => `<li>${size}</li>`).join('');
+}
+//end size function========================
+//start like btn >>>>.................................
+
+$(document).ready(function () {
+  let likeCount = 0;
+  const likedProducts = new Set();
+  $(".like-btn").click(function () {
+    const productId = $(this).data("id");
+    if (!likedProducts.has(productId)) {
+      likeCount++;
+      likedProducts.add(productId);
+      $(this).html('<i class="fa-solid fa-heart"></i>');
+    } else {
+      likeCount--;
+      likedProducts.delete(productId);
+      $(this).html('<i class="fa-regular fa-heart"></i>');
+    }
+    $("#like-count").text(likeCount);
+  });
+});
+//end like btn >>>>.................................

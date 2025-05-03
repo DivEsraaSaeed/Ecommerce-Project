@@ -71,7 +71,7 @@
                                     Categories
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item hvr-forward" href="#">Man Clothes</a></li>
+                                    <li><a class="dropdown-item hvr-forward" href="#">Men Clothes</a></li>
                                     <li><a class="dropdown-item hvr-forward" href="#">Women clothes</a></li>
                                     <li><a class="dropdown-item hvr-forward" href="#">Accessories</a></li>
                                 </ul>
@@ -96,8 +96,11 @@
                             <!-- ===========dark mood icon -->
                             <!-- <button class="btn" id="toggle-dark"><i
                                     class="fa-solid p-0 fa-circle-half-stroke"></i></button> -->
-                                    <!-- ================ -->
-                            <i class="fa-solid p-3 fa-cart-shopping"></i>
+                                <!-- ===================== -->
+                            <!-- =========like btn======= -->
+                            <i class="fa-solid p-3  fa-cart-shopping"></i>
+                            <span class="  p-0 m-0 " id="like-count">0</span>
+                            <!-- ============================= -->
                         </div>
                     </div>
                 </div>
@@ -234,13 +237,13 @@
                     <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
                         <button class="nav-link p-2 text-secondary active w-100" id="pills-home-tab"
                             data-bs-toggle="pill" data-bs-target="#pills-New-Products" type="button" role="tab"
-                            aria-controls="pills-New-Products" aria-selected="true">New Products</button>
+                            aria-controls="pills-New-Products"  aria-selected="true">New Products</button>
                     </li>
-                    <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
+                    <!-- <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
                         <button class="nav-link p-2 text-secondary w-100" id="pills-profile-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-Featured-Products" type="button" role="tab"
                             aria-controls="pills-Featured-Products" aria-selected="false">Featured Products</button>
-                    </li>
+                    </li> -->
                     <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
                         <button class="nav-link p-2 text-secondary w-100" id="pills-contact-tab" data-bs-toggle="pill"
                             data-bs-target="#pills-On-Sale-Products" type="button" role="tab"
@@ -258,11 +261,12 @@
                 <div class="tab-pane fade product-tab show active" id="pills-New-Products" role="tabpanel"
                     aria-labelledby="pills-home-tab">
                     <div class="container">
-                        <div class="row product-list" id="products-container">
-                            <!-- <div class="col-lg-3 col-md-6">
+                        <div id="all-new-products"  class="row  product-list">
+
+                           <!-- <div class="col-lg-3 col-md-6">
                                 <div class="product-stor-item">
-                                    <div class="product-img overflow-hidden position-relative">
-                                        <img src="img/36.jpg" class="position-absolute img-fluid" alt="">
+                                    <div class="product-img overflow-hidden position-relative" >
+                                        <img src="img/36.jpg" class="position-absolute img-fluid" alt="" >
                                         <ul
                                             class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
                                             <li>S</li>
@@ -280,8 +284,10 @@
                                                         class="fa-solid text-dark fa-cart-shopping"></i></a></li>
                                             <li class="hvr-rectangle-out d-flex"><a href="#"><i
                                                         class="fa-solid text-dark fa-eye"></i></a></li>
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+
+                                            <li data-id="2" class="hvr-rectangle-out like-btn d-flex"><i
+                                                    class="fa-regular text-dark fa-heart"></i></li>
+
                                         </ul>
                                     </div>
                                     <div class="product-content pt-3">
@@ -301,8 +307,8 @@
                                         <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
+                            </div> -->
+                            <!-- <div class="col-lg-3 col-md-6">
                                 <div class="product-stor-item">
                                     <div class="product-img overflow-hidden position-relative">
                                         <img src="img/38.jpg" class="position-absolute img-fluid" alt="">
@@ -323,8 +329,9 @@
                                                         class="fa-solid text-dark fa-cart-shopping"></i></a></li>
                                             <li class="hvr-rectangle-out d-flex"><a href="#"><i
                                                         class="fa-solid text-dark fa-eye"></i></a></li>
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                            <li data-id="1" class="hvr-rectangle-out like-btn d-flex"><i
+                                                    class="fa-regular text-dark fa-heart"></i></li>
+
                                         </ul>
                                     </div>
                                     <div class="product-content pt-3">
@@ -366,8 +373,9 @@
                                                         class="fa-solid text-dark fa-cart-shopping"></i></a></li>
                                             <li class="hvr-rectangle-out d-flex"><a href="#"><i
                                                         class="fa-solid text-dark fa-eye"></i></a></li>
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-regular text-dark fa-heart"></i></a></li>
+                                            <li data-id="3" class="hvr-rectangle-out like-btn d-flex"><i
+                                                    class="fa-regular text-dark fa-heart"></i></li>
+
                                         </ul>
                                     </div>
                                     <div class="product-content pt-3">
@@ -387,152 +395,24 @@
                                         <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>  -->
                         </div>
                     </div>
                     <div class="d-flex pagination-container justify-content-center mt-4"></div>
                 </div>
-                <div class="tab-pane product-tab fade" id="pills-Featured-Products" role="tabpanel"
+                <!-- <div class="tab-pane product-tab fade" id="pills-Featured-Products" role="tabpanel"
                     aria-labelledby="pills-profile-tab">
                     <div class="container">
-                        <div class="row product-list" >
-                            <!-- <div class="col-lg-3 col-md-6">
-                                <div class="product-stor-item">
-                                    <div class="product-img overflow-hidden position-relative">
-                                        <img src="img/37.jpg" class="position-absolute" alt="">
-                                        <ul
-                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
-                                            <li>S</li>
-                                            <li>M</li>
-                                            <li>L</li>
-                                            <li>XL</li>
-                                        </ul>
-                                        <div
-                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
-                                            <a class="text-decoration-none text-light" href="#"><i
-                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon list-unstyled position-absolute">
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-solid text-dark fa-eye"></i></a></li>
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-regular text-dark fa-heart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content pt-3">
-                                        <div class="content d-flex justify-content-between">
-                                            <span class="fs-6 fw-light">Casual Wear</span>
-                                            <div class="star">
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5 class="pt-3">
-                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
-                                                Moment Dress</a>
-                                        </h5>
-                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="product-stor-item">
-                                    <div class="product-img overflow-hidden position-relative">
-                                        <img src="img/35.jpg" class="position-absolute" alt="">
-                                        <ul
-                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
-                                            <li>S</li>
-                                            <li>M</li>
-                                            <li>L</li>
-                                            <li>XL</li>
-                                        </ul>
-                                        <div
-                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
-                                            <a class="text-decoration-none text-light" href="#"><i
-                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon list-unstyled position-absolute">
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-solid text-dark fa-eye"></i></a></li>
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-regular text-dark fa-heart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content pt-3">
-                                        <div class="content d-flex justify-content-between">
-                                            <span class="fs-6 fw-light">Casual Wear</span>
-                                            <div class="star">
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5 class="pt-3">
-                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
-                                                Moment Dress</a>
-                                        </h5>
-                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="product-stor-item">
-                                    <div class="product-img overflow-hidden position-relative">
-                                        <img src="img/33.jpg" class="position-absolute" alt="">
-                                        <ul
-                                            class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
-                                            <li>S</li>
-                                            <li>M</li>
-                                            <li>L</li>
-                                            <li>XL</li>
-                                        </ul>
-                                        <div
-                                            class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-5 justify-content-evenly d-flex">
-                                            <a class="text-decoration-none text-light" href="#"><i
-                                                    class="fa-solid text-light fa-cart-shopping"></i> Add To Cart</a>
-                                        </div>
-                                        <ul class="social-icon list-unstyled position-absolute">
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-solid text-dark fa-cart-shopping"></i></a></li>
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-solid text-dark fa-eye"></i></a></li>
-                                            <li class="hvr-rectangle-out d-flex"><a href="#"><i
-                                                        class="fa-regular text-dark fa-heart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-content pt-3">
-                                        <div class="content d-flex justify-content-between">
-                                            <span class="fs-6 fw-light">Casual Wear</span>
-                                            <div class="star">
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5 class="pt-3">
-                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
-                                                Moment Dress</a>
-                                        </h5>
-                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
-                                    </div>
-                                </div>
-                            </div> -->
+                        <div  class="row product-list">
+                         
                         </div>
                     </div>
                     <div class="d-flex pagination-container justify-content-center mt-4"></div>
-                </div>
+                </div> -->
                 <div class="tab-pane product-tab fade" id="pills-On-Sale-Products" role="tabpanel"
                     aria-labelledby="pills-contact-tab">
                     <div class="container">
-                        <div class="row product-list" id="products-container">
+                        <div id="instore-products" class="row product-list">
                             <!-- <div class="col-lg-3 col-md-6">
                                 <div class="product-stor-item">
                                     <div class="product-img overflow-hidden position-relative">
@@ -755,7 +635,7 @@
                 <div class="tab-pane fade product-tab" id="pills-Trending-Products" role="tabpanel"
                     aria-labelledby="pills-contact-tab2">
                     <div class="container">
-                        <div class="row product-list" id="products-container">
+                        <div id="trending-products" class="row product-list">
                             <!-- <div class="col-lg-3 col-md-6">
                                 <div class="product-stor-item">
                                     <div class="product-img overflow-hidden position-relative">
@@ -1138,8 +1018,8 @@
                     <h2 class="fs-1 pb-3">Best Seller Products</h2>
                 </div>
             </div>
-            <div class="row product-list">
-                <div class="col-lg-3 col-md-6">
+            <div id="best-seller-products" class="row product-list ">
+                 <!-- <div class="col-lg-3 col-md-6">
                     <div class="product-stor-item p-0 border-0">
                         <div class="product-img overflow-hidden position-relative">
                             <img src="img/30.jpg" class="position-absolute img-fluid" alt="">
@@ -1169,8 +1049,8 @@
                             <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
+                </div> -->
+                <!-- <div class="col-lg-3 col-md-6">
                     <div class="product-stor-item p-0 border-0">
                         <div class="product-img overflow-hidden position-relative">
                             <img src="img/29.jpg" class="position-absolute img-fluid" alt="">
@@ -1262,7 +1142,7 @@
                             <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
                         </div>
                     </div>
-                </div>
+                </div>  -->
             </div>
         </div>
     </section>
@@ -1374,7 +1254,7 @@
     </section>
     <!--end follow us ===-->
 
-
+    <div class="row" ></div>
 
 
 
