@@ -78,23 +78,63 @@ shippingPrice.innerHTML += shipping;
 total.innerHTML += sum + shipping;
 
 //start######################address form ######################################
-let form = document.querySelector('form');
+// let form = document.querySelector('form');
+// form.addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     let customerName = document.getElementById("firstName").value + " " + document.getElementById("lastName").value
+//     let customerNumbers = document.getElementById("phone1").value + " / " + document.getElementById("phone2").value
+//     let address = document.getElementById("address").value
+//     let customerAddress = {
+//         customerName: customerName,
+//         customerNumbers: customerNumbers,
+//         address: address
+//     }
+//     if (form.checkValidity()) {
+//         console.log(customerName)
+//         localStorage.setItem("customerAddress", JSON.stringify(customerAddress))
+//     }
+
+// })
+const form = document.querySelector('#checkoutForm');
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let customerName = document.getElementById("firstName").value + " " + document.getElementById("lastName").value
-    let customerNumbers = document.getElementById("phone1").value + " / " + document.getElementById("phone2").value
-    let address = document.getElementById("address").value
-    let customerAddress = {
-        customerName: customerName,
-        customerNumbers: customerNumbers,
-        address: address
+
+    if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return;
     }
-    if (form.checkValidity()) {
-        console.log(customerName)
-        localStorage.setItem("customerAddress", JSON.stringify(customerAddress))
-    }
-    
-})
+
+    // Collect values
+    const customerName = `${document.getElementById("firstName").value} ${document.getElementById("lastName").value}`;
+    const customerNumbers = `${document.getElementById("phone1").value} / ${document.getElementById("phone2").value}`;
+    const address = document.getElementById("address").value;
+    const city = document.getElementById("city").value;
+    const state = document.getElementById("state").value;
+    const zip = document.getElementById("zip").value;
+    const country = document.getElementById("country").value;
+
+    const customerAddress = {
+        customerName,
+        customerNumbers,
+        streetAddress: address,
+        city,
+        state,
+        zip,
+        country
+    };
+
+    // Save to localStorage
+    localStorage.setItem("customerAddress", JSON.stringify(customerAddress));
+
+    // Optional: Show confirmation
+    alert("Shipping address saved successfully!");
+
+    // Reset form or move to next step
+    // form.reset();
+    // form.classList.remove('was-validated');
+});
+
 //end######################address form ######################################
 
 
@@ -105,6 +145,10 @@ document.getElementById('confirm').addEventListener('click', () => {
     //start#############################check if address form valid #####################################
     if (!form.checkValidity()) {
         form.classList.add('was-validated');
+        return;
+    }
+    if (!localStorage.getItem("customerAddress")) {
+        alert("save your address")
         return;
     }
     //end#############################check if address form valid #####################################
