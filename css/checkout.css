@@ -2,3 +2,15 @@
   .shipping_form textarea {
       background-color: #f7f7f7;
   }
+
+  .star-rating .bi-star,
+  .star-rating .bi-star-fill {
+      cursor: pointer;
+      transition: color 0.2s;
+      color: lightgray;
+  }
+
+  .star-rating .hovered,
+  .star-rating .selected {
+      color: gold;
+  }

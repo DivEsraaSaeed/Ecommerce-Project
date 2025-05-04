@@ -155,18 +155,17 @@ document.getElementById('confirm').addEventListener('click', () => {
         productName: item.productName,
         quantity: item.quantity,
         price: item.price,
-        color: item.color,
         sellerName: item.sellerName
     }));
 
     localStorage.setItem('confirmed orders', JSON.stringify({ order, customer, paymentData }));
     //end ##################saving customer order and his name in localstorage in key "confirmed orders"#############
 
-    //start##############################rate and review  in modal ##############################
+    //start##############################open rate and review  in modal ##############################
     alert('your order is ready')
     const reviewModal = new bootstrap.Modal(document.getElementById('reviewModal'));
     reviewModal.show();
-    //end##############################rate and review  in modal ##############################
+    //end##############################open rate and review  in modal ##############################
 
 })
 //end###############################confirm button ########################################
@@ -188,4 +187,55 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
     const reviewModal = bootstrap.Modal.getInstance(document.getElementById('reviewModal'));
     reviewModal.hide();
 })
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const stars = document.querySelectorAll('#starRating i');
+        const ratingInput = document.getElementById('rating');
+
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', () => {
+                resetStars();
+                const value = parseInt(star.getAttribute('data-value'));
+                highlightStars(value);
+            });
+
+            star.addEventListener('mouseleave', () => {
+                resetStars();
+                if (ratingInput.value) {
+                    highlightStars(parseInt(ratingInput.value), true);
+                }
+            });
+
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                ratingInput.value = value;
+                highlightStars(value, true);
+            });
+        });
+
+        function highlightStars(count, select = false) {
+            for (let i = 0; i < count; i++) {
+                stars[i].classList.add(select ? 'selected' : 'hovered');
+            }
+        }
+
+        function resetStars() {
+            stars.forEach(star => {
+                star.classList.remove('hovered', 'selected');
+            });
+        }
+
+        // Bootstrap validation
+        document.getElementById('reviewForm').addEventListener('submit', function (e) {
+            if (!this.checkValidity() || !ratingInput.value) {
+                e.preventDefault();
+                e.stopPropagation();
+                ratingInput.setCustomValidity(ratingInput.value ? '' : 'Please select a rating.');
+            } else {
+                ratingInput.setCustomValidity('');
+            }
+            this.classList.add('was-validated');
+        });
+    });
+   
 //end################### customer review logic###################
