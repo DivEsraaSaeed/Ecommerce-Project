@@ -23,31 +23,27 @@
 //             productName: "t-shirt",
 //             price: "400",
 //             quantity: "2",
-//             color:'brown',
 //              sellerName:'seller1'
 //         },
 //         {
 //             productName: "bag",
 //             price: "200",
 //             quantity: "4",
-//             color:'brown',
 //              sellerName:'seller1'
 //         },
 //         {
 //             productName: "shoes",
 //             price: "300",
 //             quantity: "1",
-//             color:'brown',
 //              sellerName:'seller1'
 //         }
 //         ,
-//         // {
-//         //     productName: "pants",
-//         //     price: "300",
-//         //     quantity: "3",
-//         //     color:'brown',
-//         //      sellerName:'seller1'
-//         // }
+//         {
+//             productName: "pants",
+//             price: "300",
+//             quantity: "3",
+//              sellerName:'seller1'
+//         }
 //     ]))
 //##########################get items from local storage #########################################
 //get order confirmed in  cart from  locastorage key 'orders' values productName , quantity , price
