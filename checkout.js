@@ -77,19 +77,22 @@ subtotal.innerHTML += sum;
 shippingPrice.innerHTML += shipping;
 total.innerHTML += sum + shipping;
 
-//start######################address form ######################################
 
 const form = document.querySelector('#checkoutForm');
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
 
+
+
+//start###############################confirm button ########################################
+document.getElementById('confirm').addEventListener('click', () => {
+    
+    //start######################address validation ######################################
+    
     if (!form.checkValidity()) {
         form.classList.add('was-validated');
         return;
     }
-
-    // Collect values
+    
     const customerName = `${document.getElementById("firstName").value} ${document.getElementById("lastName").value}`;
     const customerNumbers = `${document.getElementById("phone1").value} / ${document.getElementById("phone2").value}`;
     const address = document.getElementById("address").value;
@@ -97,7 +100,7 @@ form.addEventListener("submit", (e) => {
     const state = document.getElementById("state").value;
     const zip = document.getElementById("zip").value;
     const country = document.getElementById("country").value;
-
+    
     const customerAddress = {
         customerName,
         customerNumbers,
@@ -107,32 +110,10 @@ form.addEventListener("submit", (e) => {
         zip,
         country
     };
-
-    // Save to localStorage
+    
     localStorage.setItem("customerAddress", JSON.stringify(customerAddress));
-
-
-    alert("Shipping address saved successfully!");
-
-});
-
-//end######################address form ######################################
-
-
-
-//start###############################confirm button ########################################
-document.getElementById('confirm').addEventListener('click', () => {
-
-    //start#############################check if address form valid #####################################
-    if (!form.checkValidity()) {
-        form.classList.add('was-validated');
-        return;
-    }
-    if (!localStorage.getItem("customerAddress")) {
-        alert("save your address")
-        return;
-    }
-    //end#############################check if address form valid #####################################
+    
+    //end######################address validation ######################################
 
     // start##############check if user choose payment method or not and write the method############
     let paymentMethod = document.querySelector('input[name="payment_method"]:checked');
