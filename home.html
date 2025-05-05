@@ -32,7 +32,7 @@
 <body>
     <!-- start & nav home -->
     <section class="header w-100  overflow-x-hidden ">
-        <div class="login-header d-none  bg-dark d-md-flex align-items-center text-light ">
+        <!-- <div class="login-header d-none  bg-dark d-md-flex align-items-center text-light ">
             <div class="container d-flex justify-content-between align-items-center">
                 <div>Free shipping on domestic orders over $150</div>
                 <div class="login-btn">
@@ -40,7 +40,7 @@
                     <button id="openLogin" class="btn-head ">Login / Register</button>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- start nav -->
         <div data-bs-spy="scroll" data-bs-target="#snapbuy-nav" class="cover ">
             <nav id="snapbuy-nav" class="navbar sticky-navbar navbar-expand-lg bg-light">
@@ -55,11 +55,17 @@
                     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                         aria-label="Toggle navigation">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid bar-h text-dark fa-bars"></i>
+
                     </button>
+                    <!-- ===============user btn========== -->
+                    <a href="#" id="login-user-sm"
+                        class="d-lg-none text-dark text-decoration-none d-flex align-items-center">
+                        <i class="fa-regular text-decoration-none p-2 fa-user"></i>Sign in
+                    </a>
 
                     <!-- links $ icons -->
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+                    <div class="collapse navbar-collapse w-100 justify-content-between" id="navbarNavDropdown">
                         <!-- links-->
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
@@ -93,18 +99,22 @@
                             <button id="search-icon" class="btn ">
                                 <i class="fas fa-search"></i>
                             </button>
-                            <!-- ===========dark mood icon -->
-                            <!-- <button class="btn" id="toggle-dark"><i
-                                    class="fa-solid p-0 fa-circle-half-stroke"></i></button> -->
-                                <!-- ===================== -->
-                            <!-- =========like btn======= -->
-                            <i class="fa-solid p-3  fa-cart-shopping"></i>
-                            <span class="  p-0 m-0 " id="like-count">0</span>
-                            <!-- ============================= -->
+                            <!-- =========shopping btn======= -->
+                            <a href="#" class="text-dark text-decoration-none d-flex "><i class="fa-solid text-dark text-decoration-none p-3 shop-h fa-cart-shopping"></i>
+                                <span class="  p-0 m-0 " id="shop-count">0</span></a>
+
+                            <!-- ==============user btn=============== -->
+                            <a href="#" id="login-user-lg"
+                                class=" text-dark text-decoration-none d-flex align-items-center">
+                                <i class="fa-regular text-decoration-none p-2 fa-user"></i>Sign in
+
+                            </a>
                         </div>
                     </div>
                 </div>
+                <div id="search-results" class="container position-relative top-0 end-0"></div>
             </nav>
+            
         </div>
         <!-- end nav -->
         <!-- start Carousel -->
@@ -198,7 +208,7 @@
                         <img src="img/14.jpg" class="mb-3 img-fluid" alt="">
                         <div class="overlay-text">
                             <h3>Accessories</h3>
-                            <p class="text-secondary">2025 Collection</p>
+                            <p class="text-secondary">New Collection</p>
                         </div>
                     </a>
                 </div>
@@ -207,7 +217,7 @@
                         <img src="img/15.jpg" class="mb-3 img-fluid" alt="">
                         <div class="overlay-text">
                             <h3>Man</h3>
-                            <p class="text-secondary">2025 Collection</p>
+                            <p class="text-secondary">New Collection</p>
                         </div>
                     </a>
 
@@ -215,7 +225,7 @@
                         <img src="img/16.jpg" class="img-fluid" alt="">
                         <div class="overlay-text">
                             <h3>Woman</h3>
-                            <p class="text-secondary">2025 Collection</p>
+                            <p class="text-secondary">New Collection</p>
                         </div>
                     </a>
                 </div>
@@ -228,7 +238,7 @@
         <div class="container">
             <div class="section-title my-5 text-center">
                 <h5>Top views in this week</h5>
-                <h2 class="fs-1">Our Product In Store</h2>
+                <h2 class="fs-1">Discover Our Products </h2>
             </div>
 
             <div class="tab-List">
@@ -237,7 +247,7 @@
                     <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
                         <button class="nav-link p-2 text-secondary active w-100" id="pills-home-tab"
                             data-bs-toggle="pill" data-bs-target="#pills-New-Products" type="button" role="tab"
-                            aria-controls="pills-New-Products"  aria-selected="true">New Products</button>
+                            aria-controls="pills-New-Products" aria-selected="true">New Products</button>
                     </li>
                     <!-- <li class="nav-item hvr-bob flex-shrink-0 col-6 col-md-auto" role="presentation">
                         <button class="nav-link p-2 text-secondary w-100" id="pills-profile-tab" data-bs-toggle="pill"
@@ -261,9 +271,9 @@
                 <div class="tab-pane fade product-tab show active" id="pills-New-Products" role="tabpanel"
                     aria-labelledby="pills-home-tab">
                     <div class="container">
-                        <div id="all-new-products"  class="row  product-list">
+                        <div id="all-new-products" class="row  product-list">
 
-                           <!-- <div class="col-lg-3 col-md-6">
+                            <!-- <div class="col-lg-3 col-md-6">
                                 <div class="product-stor-item">
                                     <div class="product-img overflow-hidden position-relative" >
                                         <img src="img/36.jpg" class="position-absolute img-fluid" alt="" >
@@ -816,15 +826,19 @@
         </div>
     </section>
     <!-- end Our Product-->
-    <!-- start This Week's Featured -->
+    <!-- start This Discover Accessories -->
     <section class="weeks-featured pt-3 my-5">
         <div class="container py-5">
             <div class="section-title my-5 text-center">
                 <h5>Shop by Category</h5>
-                <h2 class="fs-1">This Week's Featured</h2>
+                <h2 class="fs-1">Discover Accessories</h2>
+                <a href="#" class="hvr-sweep-to-right mt-3  text-decoration-none px-4 py-2 swep-a">
+                    View More Items <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
-            <div class="owl-carousel py-5 carousel2 w-100 owl-theme">
-                <div class="item col-12 col-md-12">
+
+            <div id="discover-Accessories" class="owl-carousel py-5 carousel2 w-100 owl-theme">
+                <!-- <div class="item col-12 col-md-12">
                     <div
                         class="d-flex flex-column flex-lg-row text-start p-4 justify-content-between product-card w-100">
                         <div class="img-prod w-100 mb-3 mb-lg-0">
@@ -847,59 +861,11 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="item col-12 col-md-12">
-                    <div
-                        class="d-flex flex-column flex-lg-row text-start p-4 justify-content-between product-card w-100">
-                        <div class="img-prod w-100 mb-3 mb-lg-0">
-                            <img class="w-100 h-100" src="img/17.png" alt="Clothing" />
-                        </div>
-                        <div class="content-prod w-100 ps-lg-4">
-                            <div class="star mb-2">
-                                <i class="fa-solid text-warning fa-star"></i>
-                                <i class="fa-solid text-warning fa-star"></i>
-                                <i class="fa-solid text-warning fa-star"></i>
-                                <i class="fa-solid text-warning fa-star"></i>
-                            </div>
-                            <h5 class="pt-3">
-                                <a class="fs-5 text-decoration-none text-dark" href="#">Classy Flare For Moment
-                                    Dress</a>
-                            </h5>
-                            <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
-                            <a href="#" class="hvr-sweep-to-right text-decoration-none px-4 py-2 swep-a">
-                                Shop Now <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item col-12 col-md-12">
-                    <div
-                        class="d-flex flex-column flex-lg-row text-start p-4 justify-content-between product-card w-100">
-                        <div class="img-prod w-100 mb-3 mb-lg-0">
-                            <img class="w-100 h-100" src="img/18.png" alt="Clothing" />
-                        </div>
-                        <div class="content-prod w-100 ps-lg-4">
-                            <div class="star mb-2">
-                                <i class="fa-solid text-warning fa-star"></i>
-                                <i class="fa-solid text-warning fa-star"></i>
-                                <i class="fa-solid text-warning fa-star"></i>
-                                <i class="fa-solid text-warning fa-star"></i>
-                            </div>
-                            <h5 class="pt-3">
-                                <a class="fs-5 text-decoration-none text-dark" href="#">Classy Flare For Moment
-                                    Dress</a>
-                            </h5>
-                            <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
-                            <a href="#" class="hvr-sweep-to-right text-decoration-none px-4 py-2 swep-a">
-                                Shop Now <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
-    <!-- end This Week's Featured -->
+    <!-- end This Discover Accessories -->
     <!-- start Trending Arrivals -->
 
     <section class="Trending-Arrivals pt-3 my-5">
@@ -907,7 +873,7 @@
             <div class="section-title my-5 text-center">
                 <div>
                     <h5>More to Discover</h5>
-                    <h2 class="fs-1 pb-3">Trending Arrivals
+                    <h2 class="fs-1 pb-3">Trending Women Products
                     </h2>
                 </div>
                 <a href="#" class="hvr-sweep-to-right text-decoration-none px-4 py-2 swep-a">
@@ -917,8 +883,8 @@
             <div class="discover-trending  w-100 ">
                 <div class="row ">
                     <div class="col-12 col-md-12 col-lg-6">
-                        <div class="owl-carousel mb-4 carousel3 w-100 owl-theme">
-                            <div class=" col-md-12">
+                        <div id="trending-women" class="owl-carousel mb-4 carousel3 w-100 owl-theme">
+                            <!-- <div class=" col-md-12">
                                 <div class="product-stor-item p-0 border-0">
                                     <div class="product-img overflow-hidden position-relative">
                                         <img src="img/21.jpg" class="position-absolute" alt="">
@@ -940,53 +906,8 @@
                                         <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
                                     </div>
                                 </div>
-                            </div>
-                            <div class=" col-md-12">
-                                <div class="product-stor-item p-0 border-0">
-                                    <div class="product-img overflow-hidden position-relative">
-                                        <img src="img/20.jpg" class="position-absolute" alt="">
-                                    </div>
-                                    <div class="product-content pt-3">
-                                        <div class="content d-flex flex-column ">
-                                            <span class="fs-6 fw-light">Casual Wear</span>
-                                            <div class="star">
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5 class="pt-3">
-                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
-                                                Moment Dress</a>
-                                        </h5>
-                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" col-md-12">
-                                <div class="product-stor-item p-0 border-0">
-                                    <div class="product-img overflow-hidden position-relative">
-                                        <img src="img/20.jpg" class="position-absolute" alt="">
-                                    </div>
-                                    <div class="product-content pt-3">
-                                        <div class="content d-flex flex-column ">
-                                            <span class="fs-6 fw-light">Casual Wear</span>
-                                            <div class="star">
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                                <i class="fa-solid text-warning fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <h5 class="pt-3">
-                                            <a class="fs-6 text-decoration-none text-dark" href="#">Classy Flare For
-                                                Moment Dress</a>
-                                        </h5>
-                                        <h6 class="fs-5">$75.00 <del class="fw-light fs-6">$90.00</del></h6>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> -->
+
                         </div>
                     </div>
                     <div class="col-12 col-md-12 col-lg-6 ">
@@ -1019,7 +940,7 @@
                 </div>
             </div>
             <div id="best-seller-products" class="row product-list ">
-                 <!-- <div class="col-lg-3 col-md-6">
+                <!-- <div class="col-lg-3 col-md-6">
                     <div class="product-stor-item p-0 border-0">
                         <div class="product-img overflow-hidden position-relative">
                             <img src="img/30.jpg" class="position-absolute img-fluid" alt="">
@@ -1254,7 +1175,7 @@
     </section>
     <!--end follow us ===-->
 
-    <div class="row" ></div>
+    <div class="row"></div>
 
 
 

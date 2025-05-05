@@ -4,7 +4,7 @@ $(document).ready(function () {
   $("#search-icon").click(function (e) {
     e.stopPropagation();
     if (!isOpen) {
-      $("#search-bar").animate({ width: "270px" }, 300).focus();
+      $("#search-bar").animate({ width: "173px" }, 300).focus();
       isOpen = true;
     } else {
       $("#search-bar").animate({ width: "0" }, 300);
@@ -17,9 +17,16 @@ $(document).ready(function () {
       isOpen = false;
     }
   });
+ 
 
-  //start search
 });
+ //end search bar
+
+
+
+//start search
+
+
 // $(document).ready(function () {
 //   $("#search-bar").on("input", function () {
 //     let keyword = $(this).val().toLowerCase();
@@ -180,35 +187,37 @@ $(document).ready(function () {
 
 //=========================
 
-//important data from json file to local storage==================
+//important data from json file to local storage================================================
 
-// (async function SaveHomeDataToLocalStorage() {
-//   try {
-//     const response = await fetch("../home-store.json");
-//     const data = await response.json();
-//     localStorage.setItem("home-store", JSON.stringify(data));
+(async function SaveHomeDataToLocalStorage() {
+  try {
+    const response = await fetch("../home-store.json");
+    const data = await response.json();
+    localStorage.setItem("home-store", JSON.stringify(data));
 
-//     console.log("Data saved to local storage:", data);
-//   } catch (error) {
-//     console.error("Error in fetching data from json file:", error);
-//   }
-// })();
+    console.log("Data saved to local storage:", data);
+  } catch (error) {
+    console.error("Error in fetching data from json file:", error);
+  }
+})();
+
+//end important data from json file to local storage==================
+
+// start load data from local storage===================
 
 (function loadHomeData() {
   const data = JSON.parse(localStorage.getItem("home-store"));
   const men = data.Store.men.ProductCategory.Products;
   const women = data.Store.women.Products;
   const accessories = data.Store.accessories.Products;
-   
 
   const newArrival = [];
   const Trending = [];
   const inStore = [];
   const bestSeller = [];
   console.log(bestSeller);
-  
-  
-  
+
+  //start filter data===================
 
   men.forEach((product) => {
     if (product.ProductStatus === "Trending") {
@@ -230,7 +239,7 @@ $(document).ready(function () {
       inStore.push(product);
     } else if (product.ProductStatus === "Best Seller") {
       bestSeller.push(product);
-    } 
+    }
   });
   accessories.forEach((product) => {
     if (product.ProductStatus === "Trending") {
@@ -241,11 +250,11 @@ $(document).ready(function () {
       inStore.push(product);
     } else if (product.ProductStatus === "Best Seller") {
       bestSeller.push(product);
-    } 
+    }
   });
   const fourBestSeller = bestSeller.slice(0, 4);
   console.log(fourBestSeller);
-  
+
   const container = document.getElementById("all-new-products");
   const container2 = document.getElementById("trending-products");
   const container3 = document.getElementById("instore-products");
@@ -268,11 +277,11 @@ $(document).ready(function () {
               </a>
             </div>
             <ul class="social-icon list-unstyled position-absolute">
-              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+              
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
               <li data-id="${
                 product.ProductCode
-              }" class="hvr-rectangle-out like-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-solid text-dark fa-cart-shopping"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -314,12 +323,12 @@ $(document).ready(function () {
                 <i class="fa-solid text-light fa-cart-shopping"></i> Add To Cart
               </a>
             </div>
-            <ul class="social-icon list-unstyled position-absolute">
-              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+           <ul class="social-icon list-unstyled position-absolute">
+              
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
               <li data-id="${
-                product.ProductId
-              }" class="hvr-rectangle-out like-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+                product.ProductCode
+              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-solid text-dark fa-cart-shopping"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -335,8 +344,8 @@ $(document).ready(function () {
               }</a>
             </h5>
            <h6 class="fs-5">${
-              product.priceAfterDiscount
-            } <del class="fw-light fs-6">${product.ProductPrice}</del></h6>
+             product.priceAfterDiscount
+           } <del class="fw-light fs-6">${product.ProductPrice}</del></h6>
           </div>
         </div>
       </div>
@@ -361,11 +370,11 @@ $(document).ready(function () {
               </a>
             </div>
             <ul class="social-icon list-unstyled position-absolute">
-              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+              
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
               <li data-id="${
-                product.ProductId
-              }" class="hvr-rectangle-out like-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+                product.ProductCode
+              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-solid text-dark fa-cart-shopping"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -391,10 +400,10 @@ $(document).ready(function () {
   });
 
   // best seller products=====================
-    
+
   fourBestSeller.forEach((product) => {
     const productHTML = `
-      <div class="col-lg-3 col-md-6">
+      <div class="col-lg-3 mb-2 col-md-6">
         <div class="product-stor-item shadow-sm">
           <div class="product-img overflow-hidden position-relative">
             <img src="${
@@ -408,12 +417,12 @@ $(document).ready(function () {
                 <i class="fa-solid text-light fa-cart-shopping"></i> Add To Cart
               </a>
             </div>
-            <ul class="social-icon list-unstyled position-absolute">
-              <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-cart-shopping"></i></a></li>
+             <ul class="social-icon list-unstyled position-absolute">
+              
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
               <li data-id="${
-                product.ProductId
-              }" class="hvr-rectangle-out like-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+                product.ProductCode
+              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-solid text-dark fa-cart-shopping"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -437,11 +446,78 @@ $(document).ready(function () {
     `;
     container4.innerHTML += productHTML;
   });
+  // accessories products=====================
+  const container5 = document.getElementById("discover-Accessories");
 
+  accessories.forEach((product) => {
+    const productHTML = `<div class="item  col-12 col-md-12">
+                      <div
+                          class="d-flex flex-column flex-lg-row text-start p-4 justify-content-between product-card w-100">
+                          <div class="img-prod w-100 mb-3 mb-lg-0">
+                              <img class="w-100 h-100" src="${
+                                product.ProductImage
+                              }" alt="${product.ProductName}" />
+                          </div>
+                          <div class="content-prod w-100 ps-lg-4">
+                              <div class="star mb-2">
+                                   ${renderStars(product.ProductRate)}
+                              </div>
+                              <h5 class="pt-3">
+                                  <a class="fs-5 text-decoration-none text-dark" href="#">${
+                                    product.ProductName
+                                  }</a>
+                              </h5>
+                              <h6 class="fs-5">${
+                                product.priceAfterDiscount
+                              } <del class="fw-light fs-6">${
+      product.ProductPrice
+    }</del></h6>
+                              <a href="#" class="hvr-sweep-to-right text-decoration-none px-4 py-2 swep-a">
+                                  Shop Now <i class="fa-solid fa-arrow-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                  </div>`;
+    container5.innerHTML += productHTML;
+  });
+  //end accessories products=====================
+  //start trending women products=====================
+  const container6 = document.getElementById("trending-women");
+  women.forEach((product) => {
+    const productHTML = ` <div class="   col-md-12">
+                                <div class="product-stor-item p-0 border-0">
+                                    <div class="product-img overflow-hidden position-relative">
+                                        <img src="${
+                                          product.ProductImage
+                                        }" class="position-absolute" alt="${
+      product.ProductName
+    }">
+                                    </div>
+                                    <div class="product-content pt-3">
+                                        <div class="content d-flex flex-column ">
+                                            <span class="fs-6 fw-light">Casual Wear</span>
+                                            <div class="star">
+                                                 ${renderStars(
+                                                   product.ProductRate
+                                                 )}
+                                            </div>
+                                        </div>
+                                        <h5 class="pt-3">
+                                            <a class="fs-6 text-decoration-none text-dark" href="#">${
+                                              product.ProductName
+                                            }</a>
+                                        </h5>
+                                        <h6 class="fs-5">${
+                                          product.priceAfterDiscount
+                                        } <del class="fw-light fs-6">${
+      product.ProductPrice
+    }</del></h6>
+                                    </div>
+                                </div>
+                            </div>`;
 
-
-
-
+    container6.innerHTML += productHTML;
+  });
 })();
 
 // start pagination ==============================
@@ -499,26 +575,43 @@ function renderStars(rate) {
 //end function to render stars====================
 //start size fuction========================
 function renderSizes(sizes) {
-  return sizes.map(size => `<li>${size}</li>`).join('');
+  return sizes.map((size) => `<li>${size}</li>`).join("");
 }
 //end size function========================
-//start like btn >>>>.................................
+//start shopping btn >>>>.................................
 
 $(document).ready(function () {
   let likeCount = 0;
-  const likedProducts = new Set();
-  $(".like-btn").click(function () {
+  let likedProducts = new Set();
+  const storedProducts = localStorage.getItem("likedProducts");
+  if (storedProducts) {
+    likedProducts = new Set(JSON.parse(storedProducts));
+    likeCount = likedProducts.size;
+    $("#shop-count").text(likeCount);
+  
+    likedProducts.forEach((id) => {
+      $(`.shop-btn[data-id='${id}']`).html(
+        '<i class=" text-danger fa-solid fa-cart-shopping"></i>'
+      );
+    });
+  }
+
+  $(".shop-btn").click(function () {
     const productId = $(this).data("id");
+
     if (!likedProducts.has(productId)) {
       likeCount++;
       likedProducts.add(productId);
-      $(this).html('<i class="fa-solid fa-heart"></i>');
+      $(this).html('<i class=" text-danger fa-solid fa-cart-shopping"></i>');
     } else {
       likeCount--;
       likedProducts.delete(productId);
-      $(this).html('<i class="fa-regular fa-heart"></i>');
+      $(this).html('<i class="fa-solid fa-cart-shopping"></i>');
     }
-    $("#like-count").text(likeCount);
+
+    $("#shop-count").text(likeCount);
+    localStorage.setItem("likedProducts", JSON.stringify([...likedProducts]));
   });
 });
+
 //end like btn >>>>.................................

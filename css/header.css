@@ -14,7 +14,8 @@ body {
     font-weight: 500;
 
 }
-::selection{
+
+::selection {
     background-color: var(--second-color);
     color: var(--main-color);
 }
@@ -33,13 +34,16 @@ body {
     width: 5px;
     height: 12px;
 }
+
 ::-webkit-scrollbar-track {
     background-color: #f1f1f1;
 
 }
+
 ::-webkit-scrollbar-thumb {
     background-color: var(--second-color);
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--third-color);
 }
@@ -231,7 +235,7 @@ body {
 
 }
 
-.product-content a:hover, .content-prod h5:hover a, .overlay-text-bg-img h5:hover a {
+.product-content a:hover, .content-prod h5:hover a, .overlay-text-bg-img h5:hover a, #login-user-lg:hover, #login-user-sm:hover ,.shop-h:hover ,#search-icon:hover ,.bar-h:hover {
     color: var(--second-color) !important;
 }
 
@@ -318,7 +322,8 @@ body {
 .hvr-bounce-to-bottom:before {
     background: #bd844c78;
 }
-#like-count{
+
+#shop-count {
     position: relative;
     right: 15px;
     font-size: 14px;
