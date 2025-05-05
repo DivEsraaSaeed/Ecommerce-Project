@@ -4,7 +4,7 @@ $(document).ready(function () {
   $("#search-icon").click(function (e) {
     e.stopPropagation();
     if (!isOpen) {
-      $("#search-bar").animate({ width: "173px" }, 300).focus();
+      $("#search-bar").animate({ width: "300px" }, 300).focus();
       isOpen = true;
     } else {
       $("#search-bar").animate({ width: "0" }, 300);
@@ -17,14 +17,98 @@ $(document).ready(function () {
       isOpen = false;
     }
   });
- 
-
 });
- //end search bar
+//end search bar
+
+//start search results
+
+$(document).ready(function () {
+  let matchedProducts = [];
+  let visibleCount = 0;
+  const batchSize = 10;
+
+  function renderBatch() {
+    const searchResultsContainer = $("#search-results");
+
+    const nextBatch = matchedProducts.slice(visibleCount, visibleCount + batchSize);
+
+    nextBatch.forEach(product => {
+      const resultItem = `
+        <div class="d-flex align-items-center gap-3 border-bottom py-2">
+          <img src="${product.img}" alt="Product Image" style="width: 60px; height: 60px; object-fit: cover;">
+          <a href="${product.link}" class="text-white text-decoration-none fw-bold">${product.name}</a>
+        </div>
+      `;
+      searchResultsContainer.append(resultItem);
+    });
+
+    visibleCount += batchSize;
+  }
+
+  $("#search-bar").on("input", function () {
+    const keyword = $(this).val().toLowerCase();
+    const searchResultsContainer = $("#search-results");
+    searchResultsContainer.empty().show();
+    matchedProducts = [];
+    visibleCount = 0;
+
+    if (keyword.trim() === "") {
+      searchResultsContainer.hide();
+      return;
+    }
+
+    const allProducts = $(".product-stor-item, .product-card ");
+
+    allProducts.each(function () {
+      const productName = $(this).find("h5 a").text().toLowerCase();
+      const productImg = $(this).find("img").attr("src");
+      const productLink = $(this).find("h5 a").attr("href") || "#";
+
+      if (productName.includes(keyword)) {
+        matchedProducts.push({
+          name: productName,
+          img: productImg,
+          link: productLink,
+        });
+      }
+    });
+
+    if (matchedProducts.length === 0) {
+      searchResultsContainer.html("<p class='text-white text-center'>No products found</p>");
+    } else {
+      renderBatch();
+    }
+  });
+
+  // scroll event on #search-results
+  $("#search-results").on("scroll", function () {
+    const container = $(this);
+    if (container.scrollTop() + container.innerHeight() >= container[0].scrollHeight - 50) {
+      renderBatch();
+    }
+  });
+
+  // Esc key
+  $(document).on("keydown", function (e) {
+    if (e.key === "Escape") {
+      $("#search-bar").val("");
+      $("#search-results").empty().hide();
+    }
+  });
+
+  // click outside
+  $(document).on("click", function (e) {
+    if (
+      !$(e.target).closest("#search-bar").length &&
+      !$(e.target).closest("#search-results").length
+    ) {
+      $("#search-results").empty().hide();
+    }
+  });
+});
 
 
-
-//start search
+//edn search results
 
 
 // $(document).ready(function () {
@@ -293,7 +377,7 @@ $(document).ready(function () {
               </div>
             </div>
             <h5 class="pt-3">
-              <a class="fs-6 text-decoration-none text-dark" href="#">${
+              <a class="fs-6 text-decoration-none text-dark" href="">${
                 product.ProductName
               }</a>
             </h5>
@@ -512,6 +596,9 @@ $(document).ready(function () {
                                         } <del class="fw-light fs-6">${
       product.ProductPrice
     }</del></h6>
+    <a href="#" class="hvr-sweep-to-right text-decoration-none px-4 py-2 swep-a">
+                                  Shop Now <i class="fa-solid fa-arrow-right"></i>
+                              </a>
                                     </div>
                                 </div>
                             </div>`;
@@ -588,7 +675,7 @@ $(document).ready(function () {
     likedProducts = new Set(JSON.parse(storedProducts));
     likeCount = likedProducts.size;
     $("#shop-count").text(likeCount);
-  
+
     likedProducts.forEach((id) => {
       $(`.shop-btn[data-id='${id}']`).html(
         '<i class=" text-danger fa-solid fa-cart-shopping"></i>'

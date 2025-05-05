@@ -55,7 +55,23 @@ body {
     transition: all 0.3s;
     outline: none;
 }
+#search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.855) !important; 
+    backdrop-filter: blur(20px) ;
+    z-index: 9999;
+    display: none;
+    overflow-y: auto;
+    max-height: 60vh;
+}
 
+.form-control:focus{
+    box-shadow: none;
+    border: 1px solid var(--second-color) !important;
+}
 #snapbuy-nav {
     display: none;
     position: fixed;
