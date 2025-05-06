@@ -1004,6 +1004,7 @@ document.getElementById('confirm').addEventListener('click', () => {
     const state = document.getElementById("state").value;
     const zip = document.getElementById("zip").value;
     const country = document.getElementById("country").value;
+    const notes = document.getElementById("notes").value;
 
     const customerAddress = {
         customerName,
@@ -1012,10 +1013,10 @@ document.getElementById('confirm').addEventListener('click', () => {
         city,
         state,
         zip,
-        country
+        country,
+        notes
     };
 
-    localStorage.setItem("customerAddress", JSON.stringify(customerAddress));
 
     //end######################address validation ######################################
 
@@ -1067,7 +1068,7 @@ document.getElementById('confirm').addEventListener('click', () => {
     }));
 
     let confirmedOrders = JSON.parse(localStorage.getItem('confirmed_orders')) || [];
-    confirmedOrders.push({ order, customer, paymentData });
+    confirmedOrders.push({ order, customer, paymentData, customerAddress });
     localStorage.setItem('confirmed_orders', JSON.stringify(confirmedOrders));
     //end ##################saving customer order and his name in localstorage in key "confirmed orders"#############
 
@@ -1087,8 +1088,7 @@ document.getElementById('confirm').addEventListener('click', () => {
             let orderedSellerName = orderedProduct.sellerName
             let orderedQuantity = parseInt(orderedProduct.quantity);
 
-            if (allProducts[i].ProductName === orderedProduct.productName && allProducts[i].sellerName === orderedSellerName)
- {
+            if (allProducts[i].ProductName === orderedProduct.productName && allProducts[i].sellerName === orderedSellerName) {
                 if (!allProducts[i].ProductCount) {
                     allProducts[i].ProductCount = 0;
                 }
