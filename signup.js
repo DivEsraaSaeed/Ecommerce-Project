@@ -27,9 +27,10 @@ function showToast(message, type = 'info') {
 
 
 // Bootstrap validation
+const form = document.getElementById('signupForm');
 (() => {
     'use strict'
-    const form = document.getElementById('signupForm')
+ 
 
     form.addEventListener('submit', event => {
         const password = document.getElementById('password').value
@@ -53,7 +54,6 @@ function showToast(message, type = 'info') {
         form.classList.add('was-validated')
     }, false)
 })()
-const form = document.getElementById('signupForm');
 
 form.addEventListener('submit', (e) => {
 
@@ -72,7 +72,8 @@ form.addEventListener('submit', (e) => {
     const emailExists = users.some(user => user.email.toLowerCase() === email);
 
     if (emailExists) {
-        alert('This email has already been registered. Redirecting to login...');
+        showToast('This email has already been registered', 'info')
+        // alert('This email has already been registered. Redirecting to login...');
         window.location.href = "login.html";
         return;
     }
@@ -97,7 +98,7 @@ form.addEventListener('submit', (e) => {
     }
 
     localStorage.setItem('users', JSON.stringify(users));
-        showToast('Account created successfully! Redirecting to login...', 'success')
+        showToast('Account created successfully!', 'success')
         setTimeout(() => {
             window.location.href = "login.html"
         }, 4000)

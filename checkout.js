@@ -1,4 +1,3 @@
-
 function showToast(message, type = 'info') {
     const toastContainer = document.getElementById('toastContainer');
     const toastEl = document.createElement('div');
@@ -20,13 +19,10 @@ function showToast(message, type = 'info') {
     const toast = new bootstrap.Toast(toastEl);
     toast.show();
 
-    // Remove toast after it hides
     toastEl.addEventListener('hidden.bs.toast', () => {
         toastEl.remove();
     });
 }
-
-
 
 (() => {
     'use strict'
@@ -45,63 +41,104 @@ function showToast(message, type = 'info') {
     })
 })()
 //end########################bootstrap form validation ########################
+// let orders = localStorage.setItem("orders",JSON.stringify( [
+//     {
+//         "sellerName": "xyz",
+//         "sellerEmail": "xyz@gmail.com",
+//         "ProductId": 1,
+//         "ProductCode": "A001",
+//         "ProductName": "Blue Women's Handbag",
+//         "ProductColors": "Blue",
+//         "ProductPrice": "400",
+//         "ValueDiscount": "0",
+//         "priceAfterDiscount": 400,
+//         "quantity": 5,
+//         "ProductSize": "S",
+//         "ProductCategory": "accessories",
+//         "SubCategory": "accessories",
+//         "ProductStatus": "InStore",
+//         "ProductImage": "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/1.webp",
+//         "ProductDescription": "The Blue Women's Handbag is a stylish and spacious accessory for everyday use. With a vibrant blue color and multiple compartments, it combines fashion and functionality.",
+//         "ProductRate": 0,
+//         "ProductReviews": 0
+//     },
+//     {
+//         "sellerName": "xyz",
+//         "sellerEmail": "xyz@gmail.com",
+//         "ProductId": 10,
+//         "ProductCode": "W010",
+//         "ProductName": "Red Shoes",
+//         "ProductColors": "Red",
+//         "ProductPrice": "599",
+//         "ValueDiscount": "0",
+//         "priceAfterDiscount": 599,
+//         "quantity": 3,
+//         "ProductSize": [
+//             "S",
+//             "M",
+//             "L",
+//             "XL"
+//         ],
+//         "ProductCategory": "women",
+//         "SubCategory": "womenFashion",
+//         "ProductStatus": "New Arrival",
+//         "ProductImage": "https://cdn.dummyjson.com/product-images/womens-shoes/red-shoes/1.webp",
+//         "ProductDescription": "The Red Shoes make a bold statement with their vibrant red color. Whether for a party or a casual outing, these shoes add a pop of color and style to your wardrobe.",
+//         "ProductRate": 4.7,
+//         "ProductReviews": 0
+//     },
+//     {
+//         "sellerName": "Abdelfatah",
+//         "sellerEmail": "Abdelfatah@gmail.com",
+//         "ProductId": 2,
+//         "ProductCode": "P002",
+//         "ProductName": "Gigabyte Aorus Men Tshirt",
+//         "ProductColors": "Black",
+//         "ProductPrice": "450",
+//         "ValueDiscount": "0",
+//         "priceAfterDiscount": 450,
+//         "quantity": 4,
+//         "ProductSize": [
+//             "S",
+//             "M",
+//             "L",
+//             "XL"
+//         ],
+//         "ProductCategory": "men",
+//         "SubCategory": "menFashion",
+//         "ProductStatus": "Trending",
+//         "ProductImage": "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/1.webp",
+//         "ProductDescription": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+//         "ProductRate": 4.5,
+//         "ProductReviews": 0
+//     },
+//     {
+//         "sellerName": "Abdelfatah",
+//         "sellerEmail": "Abdelfatah@gmail.com",
+//         "ProductId": 1,
+//         "ProductCode": "P001",
+//         "ProductName": "Classic men's shirt",
+//         "ProductColors": "Blue, Black",
+//         "ProductPrice": "199",
+//         "ValueDiscount": "0",
+//         "priceAfterDiscount": 199,
+//         "quantity": 6,
+//         "ProductSize": [
+//             "S",
+//             "M",
+//             "L",
+//             "XL"
+//         ],
+//         "ProductCategory": "men",
+//         "SubCategory": "menFashion",
+//         "ProductStatus": "InStore",
+//         "ProductImage": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/1.webp",
+//         "ProductDescription": "The Blue & Black Check Shirt is a stylish and comfortable men's shirt featuring a classic check pattern. Made from high-quality fabric, it's suitable for both casual and semi-formal occasions.",
+//         "ProductRate": 0,
+//         "ProductReviews": 0
+//     },
+// ]))
 
-// localStorage.removeItem("orders")
-
-//    let orders = localStorage.setItem("orders", JSON.stringify([
-//         {
-//            sellerName: "xyz",
-//            sellerEmail: "xyz@gmail.com",
-//            ProductId: 1,
-//            ProductCode: "W001",
-//            ProductName: "Black Women's Gown",
-//             ProductColors: "Black",
-//             ProductPrice: "129.99",
-//             ValueDiscount: "0",
-//            priceAfterDiscount: 129.99,
-//             quantity: "2",
-
-//         },
-//         {
-//             sellerName: "xyz",
-//              sellerEmail: "xyz@gmail.com",
-//               ProductId: 1,
-//               ProductCode: "A001",
-//                ProductName: "Blue Women's Handbag",
-//                ProductColors: "Blue",
-//                ProductPrice: "400",
-//                ValueDiscount: "0",
-//               priceAfterDiscount: 400,
-//             quantity: "5",
-//         },
-//         {
-//             sellerName: "xyz",
-//             sellerEmail: "xyz@gmail.com",
-//              ProductId: 2,
-//              ProductCode: "A002",
-//              ProductName: "Heshe Women's Leather Bag",
-//              ProductColors: "Brown",
-//              ProductPrice: "899",
-//              ValueDiscount: "0",
-//              priceAfterDiscount: 899,
-//             quantity: "3",
-//         },
-//         {
-//             sellerName: "Abdelfatah",
-//               sellerEmail: "Abdelfatah@gmail.com",
-//                 ProductId: 1,
-//                   ProductCode: "P001",
-//                   ProductName: "Classic men's shirt",
-//                    ProductColors: "Blue, Black",
-//                     ProductPrice: "199",
-//                      ValueDiscount: "0",
-//                       priceAfterDiscount: 199,
-//             quantity: "5",
-//         },
-//     ]))
-
-
-//##########################get items from local storage #########################################
 //get order confirmed in  cart from  locastorage key 'orders' values productName , quantity , price
 
 let orders = JSON.parse(localStorage.getItem("orders"));
@@ -203,8 +240,7 @@ document.getElementById('confirm').addEventListener('click', () => {
     }
 
     // end##############check if user choose payment method or not and write the method############
-
-
+ 
     //start ##################saving customer order and his name in localstorage in key "confirmed orders"#############
     let customer = JSON.parse(localStorage.getItem("currentUser")).username;
 
@@ -212,7 +248,11 @@ document.getElementById('confirm').addEventListener('click', () => {
         ProductName: item.ProductName,
         quantity: item.quantity,
         ProductPrice: item.ProductPrice,
-        sellerName: item.sellerName
+        sellerName: item.sellerName,
+        sellerEmail: item.sellerEmail,
+        ProductCode: item.ProductCode,
+        ProductId: item.ProductId,
+        ProductCategory: item.ProductCategory
     }));
     let orderDate = new Date().toUTCString()
     let confirmedOrders = JSON.parse(localStorage.getItem('confirmed_orders')) || [];
