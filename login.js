@@ -1,3 +1,30 @@
+function showToast(message, type = 'info') {
+    const toastContainer = document.getElementById('toastContainer');
+    const toastEl = document.createElement('div');
+    toastEl.className = `toast align-items-center text-white bg-${type} border-0`;
+    toastEl.setAttribute('role', 'alert');
+    toastEl.setAttribute('aria-live', 'assertive');
+    toastEl.setAttribute('aria-atomic', 'true');
+
+    toastEl.innerHTML = `
+        <div class="d-flex">
+            <div class="toast-body">
+                ${message}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    `;
+
+    toastContainer.appendChild(toastEl);
+    const toast = new bootstrap.Toast(toastEl);
+    toast.show();
+
+    // Remove toast after it hides
+    toastEl.addEventListener('hidden.bs.toast', () => {
+        toastEl.remove();
+    });
+}
+
 
 // Bootstrap validation
 (() => {
@@ -39,20 +66,29 @@ form.addEventListener('submit', (e) => {
             isSeller: matchedUser.isSeller,
             isAdmin: matchedUser.isAdmin
         };
-        alert('successed')
+
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         if (currentUser.isSeller) {
-            window.location.href = '../Ecommerce-Project/sellerProfile.html'
+            showToast('Login success! Redirecting seller profile ', 'success')
+            setTimeout(() => {
+                window.location.href = '/sellerProfile.html'
+            }, 2000)
 
         } else if (currentUser.isAdmin) {
-            window.location.href = '../Ecommerce-Project/Admin.html'
+                  showToast('Login success! Redirecting to dashboard', 'success')
+        setTimeout(() => {
+            window.location.href = '/Admin.html'
+        }, 2000)
 
         } else {
-            window.location.href = '../Ecommerce-Project/home.html'
-
+            showToast('Login success! Redirecting to home page ', 'success')
+            setTimeout(() => {
+                window.location.href = '/home.html'
+            }, 2000)
+            
         }
     } else {
-        alert('invalid pass or email')
+        showToast('invalid password or email', 'danger')
     }
 })
 
