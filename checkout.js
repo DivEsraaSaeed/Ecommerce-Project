@@ -1,12 +1,10 @@
 function showToast(message, type = 'info') {
     const toastContainer = document.getElementById('toastContainer');
-    const toastEl = document.createElement('div');
-    toastEl.className = `toast align-items-center text-white bg-${type} border-0`;
-    toastEl.setAttribute('role', 'alert');
-    toastEl.setAttribute('aria-live', 'assertive');
-    toastEl.setAttribute('aria-atomic', 'true');
+    const toastElement = document.getElementById('toast');
+    toastElement.className = 'toast align-items-center text-white border-0 mb-2 p-2';
+    toastElement.classList.add(`bg-${type}`);
 
-    toastEl.innerHTML = `
+    toastElement.innerHTML = `
         <div class="d-flex">
             <div class="toast-body">
                 ${message}
@@ -15,15 +13,11 @@ function showToast(message, type = 'info') {
         </div>
     `;
 
-    toastContainer.appendChild(toastEl);
-    const toast = new bootstrap.Toast(toastEl);
+    const toast = new bootstrap.Toast(toastElement);
     toast.show();
-
-    toastEl.addEventListener('hidden.bs.toast', () => {
-        toastEl.remove();
-    });
 }
 
+//start######################bootstrap form validation#############################
 (() => {
     'use strict'
 
@@ -139,7 +133,7 @@ function showToast(message, type = 'info') {
 //     },
 // ]))
 
-//get order confirmed in  cart from  locastorage key 'orders' values productName , quantity , price
+//get order confirmed in  cart from  locastorage key 'orders' 
 
 let orders = JSON.parse(localStorage.getItem("orders"));
 
@@ -173,7 +167,7 @@ const form = document.querySelector('#checkoutForm');
 
 
 //start###############################confirm button ########################################
-document.getElementById('confirm').addEventListener('click', () => {
+document.getElementById('confirm').addEventListener('click', (e) => {
 
     //start######################address validation ######################################
 
@@ -209,7 +203,7 @@ document.getElementById('confirm').addEventListener('click', () => {
     let paymentMethod = document.querySelector('input[name="payment_method"]:checked');
 
     if (!paymentMethod) {
-        alert("Please choose a payment method.");
+        showToast('Please choose a payment method.', 'danger')
         return;
     }
 
@@ -224,7 +218,7 @@ document.getElementById('confirm').addEventListener('click', () => {
 
 
         if (!cardName || !cardNumber || !cardExpiry || !cardCVC) {
-            alert("Please fill in all credit card details.");
+            showToast('Please fill in all credit card details.', 'danger')
             return;
         }
 
@@ -240,7 +234,7 @@ document.getElementById('confirm').addEventListener('click', () => {
     }
 
     // end##############check if user choose payment method or not and write the method############
- 
+
     //start ##################saving customer order and his name in localstorage in key "confirmed orders"#############
     let customer = JSON.parse(localStorage.getItem("currentUser")).username;
 
@@ -260,6 +254,9 @@ document.getElementById('confirm').addEventListener('click', () => {
     localStorage.setItem('confirmed_orders', JSON.stringify(confirmedOrders));
     //end ##################saving customer order and his name in localstorage in key "confirmed orders"#############
 
+
+    //start################decrese quantity logic###################
+
     const currentOrders = JSON.parse(localStorage.getItem("orders")) || [];
     const store = JSON.parse(localStorage.getItem('Store'));
 
@@ -273,7 +270,8 @@ document.getElementById('confirm').addEventListener('click', () => {
     currentOrders.forEach(orderedItem => {
         const product = allProducts.find(p =>
             p.ProductName === orderedItem.ProductName &&
-            p.sellerName === orderedItem.sellerName
+            p.sellerName === orderedItem.sellerName &&
+            p.ProductCode === orderedItem.ProductCode
         );
 
         if (product) {
@@ -289,14 +287,17 @@ document.getElementById('confirm').addEventListener('click', () => {
 
 
     //start##############################open rate and review  in modal ##############################
+
     showToast('your order is ready', 'success')
     setTimeout(() => {
-        const reviewModal = new bootstrap.Modal(document.getElementById('reviewModal'));
-        reviewModal.show();
-    }, 1000)
-    //end##############################open rate and review  in modal ##############################
+        console.log(e.target);
+        e.target.setAttribute("data-bs-target", "#reviewModal");
+        e.target.setAttribute("data-bs-toggle", "modal");
+        e.target.click();
+    }, 1000);
 
-})
+
+}, { once: true })
 //end###############################confirm button ########################################
 
 //start################### customer review logic###################
@@ -312,9 +313,9 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
     localStorage.setItem('customerReview', JSON.stringify(reviewData));
 
     showToast('Thank you for your review!', 'success')
-    // setTimeout(() => {
-    //     // window.location.href='home.html'
-    // }, 1000)
+    setTimeout(() => {
+        window.location.href = 'home.html'
+    }, 2000)
 
     const reviewModal = bootstrap.Modal.getInstance(document.getElementById('reviewModal'));
     reviewModal.hide();
@@ -326,13 +327,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     stars.forEach(star => {
         star.addEventListener('mouseenter', () => {
-            resetStars();
+            stars.forEach(star => {
+                star.classList.remove('hovered', 'selected');
+            });
             const value = parseInt(star.getAttribute('data-value'));
             highlightStars(value);
         });
 
         star.addEventListener('mouseleave', () => {
-            resetStars();
+            stars.forEach(star => {
+                star.classList.remove('hovered', 'selected');
+            });
             if (ratingInput.value) {
                 highlightStars(parseInt(ratingInput.value), true);
             }
@@ -351,12 +356,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function resetStars() {
-        stars.forEach(star => {
-            star.classList.remove('hovered', 'selected');
-        });
-    }
-
     // Bootstrap validation
     document.getElementById('reviewForm').addEventListener('submit', function (e) {
         if (!this.checkValidity() || !ratingInput.value) {
@@ -373,7 +372,5 @@ document.addEventListener('DOMContentLoaded', function () {
 //end################### customer review logic###################
 
 
-//start################decrese quantity logic###################
 
-//end################decrese quantity logic###################
 
