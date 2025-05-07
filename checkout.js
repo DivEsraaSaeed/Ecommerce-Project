@@ -246,11 +246,12 @@ document.getElementById('confirm').addEventListener('click', (e) => {
         sellerEmail: item.sellerEmail,
         ProductCode: item.ProductCode,
         ProductId: item.ProductId,
-        ProductCategory: item.ProductCategory
+        ProductCategory: item.ProductCategory,
     }));
     let orderDate = new Date().toUTCString()
+    let orderID=Date.now()
     let confirmedOrders = JSON.parse(localStorage.getItem('confirmed_orders')) || [];
-    confirmedOrders.push({ orderDate, order, customer, paymentData, customerAddress });
+    confirmedOrders.push({ orderDate, order, customer, paymentData, customerAddress,orderID });
     localStorage.setItem('confirmed_orders', JSON.stringify(confirmedOrders));
     //end ##################saving customer order and his name in localstorage in key "confirmed orders"#############
 
@@ -321,7 +322,7 @@ document.getElementById('reviewForm').addEventListener('submit', function (e) {
     reviewModal.hide();
 })
 
-document.addEventListener('DOMContentLoaded', function () {
+
     const stars = document.querySelectorAll('#starRating i');
     const ratingInput = document.getElementById('rating');
 
@@ -367,7 +368,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         this.classList.add('was-validated');
     });
-});
 
 //end################### customer review logic###################
 
