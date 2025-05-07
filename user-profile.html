@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SnapBuy- Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapBuy</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- hover lib -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <!-- animate lib -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        :root {
+            --main-color: #F8F9FA !important;
+            --second-color: #BD844C !important;
+            --third-color: #010F1C !important;
+            --main-transition: all .3s !important;
+            --second-bg-background-color: #ffffffb9 !important;
+            --first-bg-background-color: #F7F7F7 !important;
+            --main-bg-background-color: white !important;
+            --transport-background-color: transparent !important;
+        }
+
+        body {
+            font-family: "Jost", sans-serif;
+            font-weight: 500;
+        }
+
+        .profile-container {
+
+            background-color: var(--main-color);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #BD844C, #bd844cc2);
+        }
+
+        .detail-card ,.detail-order{
+            background-color: var(--main-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container profile-container overflow-hidden  mb-5">
+        <a href="index.html" class="btn  btn-outline-dark mt-3 mb-3">
+            <i class="fas fa-arrow-left me-2"></i> Back to Home
+        </a>
+        <div class="profile-header p-4 text-white position-relative">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="profile-info">
+                        <h1 id="username-display">ahmed abdelaziz</h1>
+                        <p id="email-display-main"><i class="fas fa-envelope"></i> ahmed@gmail.com.com</p>
+                        <button id="edit-profile-btn" class="btn btn-light">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row p-3">
+            <div class="col-md-6">
+                <div class="detail-card p-3 rounded-3 ">
+                    <h3><i class="fas fa-user me-2"></i> Personal information</h3>
+                    <div id="personal-info-view">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <p id="fullname-display" class="form-control-plaintext text-secondary">Ahmed abdelaziz</p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <p id="email-display-2" class="form-control-plaintext text-secondary">ahmed@ahmed.com</p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <p id="email-display-3" class="form-control-plaintext text-secondary">kafr-elzayat,gharbia
+                            </p>
+                        </div>
+                    </div>
+                    <form id="personal-info-form" class="d-none">
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="fullname" value="Ahmed abdelaziz" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" value="ahmed@ahmed.com" required>
+                            <div class="invalid-feedback">please enter a valid email</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" value="kafr-elzayat,gharbia" required>
+                            <div class="invalid-feedback">please enter a address</div>
+                        </div>
+                        <button type="button" id="save-personal-info" class="btn btn-success">
+                            <i class="fas fa-save"></i> save changes
+                        </button>
+                        <button type="button" id="cancel-personal-info" class="btn btn-danger">
+                            <i class="fas fa-times"></i> cancel
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-card p-3 rounded-3">
+                    <h3><i class="fas fa-lock me-2"></i> change password</h3>
+                    <form id="change-password-form">
+                        <div class="mb-3">
+                            <label for="current-password" class="form-label">Current Password</label>
+                            <input type="password" class="form-control fw-bold" id="current-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-password" class="form-label">new password</label>
+                            <input type="password" class="form-control fw-bold" id="new-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm-password" class="form-label">confirm new password</label>
+                            <input type="password" class="form-control fw-bold" id="confirm-password" required>
+                            <div class="invalid-feedback">Password does not match</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-key"></i> change password
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12">
+               <div class="detail-order p-3 rounded-3">
+                <h3><i class="fa-solid fa-clock-rotate-left "></i> order history</h3>
+               </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    </div>
+
+    <!-- ============================= -->
+    <!-- font awesome -->
+    <script src="js/all.min.js"></script>
+    <!-- bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+            $("#edit-profile-btn").click(function () {
+                $("#personal-info-form").removeClass("d-none");
+                $("#personal-info-view").addClass("d-none");
+            });
+
+            $("#cancel-personal-info").click(function () {
+                $("#personal-info-form").addClass("d-none");
+                $("#personal-info-view").removeClass("d-none");
+            });
+
+            $("#save-personal-info").click(function () {
+                const email = $("#email").val();
+                const fullname = $("#fullname").val().trim();
+                const address = $("#address").val().trim();
+                let isValid = true;
+
+                if (!emailRegex.test(email)) {
+                    $("#email").addClass("is-invalid");
+                    isValid = false;
+                } else {
+                    $("#email").removeClass("is-invalid");
+                }
+
+                if (fullname === "") {
+                    $("#fullname").addClass("is-invalid");
+                    isValid = false;
+                } else {
+                    $("#fullname").removeClass("is-invalid");
+                }
+
+                if (address === "") {
+                    $("#address").addClass("is-invalid");
+                    isValid = false;
+                } else {
+                    $("#address").removeClass("is-invalid");
+                }
+
+                if (isValid) {
+                    $("#username-display").text(fullname);
+                    $("#email-display-main").html(`<i class="fas fa-envelope"></i> ${email}`);
+                    $("#fullname-display").text(fullname);
+                    $("#email-display-2").text(email);
+                    $("#email-display-3").text(address);
+
+                    $("#personal-info-form").addClass("d-none");
+                    $("#personal-info-view").removeClass("d-none");
+
+                    alert(" Your info has been updated!");
+                }
+            });
+
+            $("#change-password-form").submit(function (e) {
+                e.preventDefault();
+
+                const newPassword = $("#new-password").val();
+                const confirmPassword = $("#confirm-password").val();
+                let valid = true;
+
+                if (!passwordRegex.test(newPassword)) {
+                    $("#new-password").addClass("is-invalid");
+                    alert(" Password must contain at least 8 characters, an uppercase letter, and a number.");
+                    valid = false;
+                } else {
+                    $("#new-password").removeClass("is-invalid");
+                }
+
+                if (newPassword !== confirmPassword) {
+                    $("#confirm-password").addClass("is-invalid");
+                    valid = false;
+                } else {
+                    $("#confirm-password").removeClass("is-invalid");
+                }
+
+                if (valid) {
+                    alert(" Password changed successfully!");
+                }
+            });
+
+            $("#back-home-btn").click(function () {
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+
+</body>
+
+</html>
