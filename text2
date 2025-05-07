@@ -1,0 +1,94 @@
+$(function () {
+  let user = JSON.parse(localStorage.getItem("Login"));
+  let userEmail = user ? user[0].email : "";
+
+  let { Store } = JSON.parse(localStorage.getItem("Store"));
+
+  if (Store) {
+    for (const key in Store) {
+      let categoryHTML = `
+
+<div class="col-sm-3">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <img
+        class="w-50 mb-2"
+        src="/src/Components/img/Category.webp"
+        alt="${key}"
+      />
+      <button
+        type="button"
+        class="btn btn-outline-primary openCategory"
+        data-category="${key}"
+      >
+        ${key}
+      </button>
+    </div>
+  </div>
+</div>
+
+`;
+      $(".allCategory").append(categoryHTML);
+    } // End Of Catehory
+    for (let category in Store) {
+      let products = Store[category]?.ProductCategory?.Products || [];
+console.log(products);
+
+      let productsSeller = products.filter((product) => {
+        return (
+          product.SellerEmail?.trim().toLowerCase() ===
+          userEmail.trim().toLowerCase()
+        );
+      });
+
+      let categoryImg = Store[category]?.CategoryImage || "default.jpg";
+
+      let Product = productsSeller
+        .map((product) => {
+          let collapseId = `collapse-${product.ProductId}`;
+          return `
+          <div class="col-sm-3 m-2">
+          
+            <div class="card" productID="${product.ProductId}" style="width: 100%;">
+              <div class="card-header" data-bs-toggle="collapse" data-bs-target="#${collapseId}" style="cursor: pointer;">
+                <h5 class="mb-0">${product.ProductName}</h5>
+              </div>
+              <div id="${collapseId}" productCode="${product.ProductCode}" class="collapse show">
+                <img src="${product.ProductImage}" class="card-img-top" style="height:200px;" alt="${product.ProductName}" />
+                <div class="card-body">
+                  <p class="card-text">${product.ProductDescription}</p>
+                </div>
+                <div class="footer d-flex justify-content-between ps-3 pe-3 mb-3">
+                  <button class="btn btn-warning updateProduct" data-page="addproduct/product.html" data-productid="${product.ProductId}" data-productcategory="${product.ProductCategory}">Update</button>
+                  <button class="btn btn-danger deleteProduct" data-productid="${product.ProductId}" data-productcategory="${product.ProductCategory}">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        })
+        .join("");
+
+      $(".cat").append(Product);
+      // $(`.row-${category}`).append(Product);
+    }
+
+    $(".openCategory").on("click", function () {
+      let category = $(this).attr("data-category");
+      $("[class^='row-']").hide();
+      $(`.row-${category}`).show();
+    });
+
+    $(".updateProduct").on("click", function () {
+      let productIdUpdate = $(this).data("productid");
+      let productCategoryUpdate = $(this).data("productcategory");
+      console.log(Store[productCategoryUpdate].ProductCategory.Products);
+      let product = Store[
+        productCategoryUpdate
+      ].ProductCategory.Products.filter(
+        (el) => el.ProductId === productIdUpdate
+      );
+    });
+  }
+});

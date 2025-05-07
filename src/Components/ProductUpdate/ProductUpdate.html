@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product | Admin Panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3f37c9;
+      --accent-color: #4895ef;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+    }
+
+    body {
+      background-color: #f5f7fb;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .admin-container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .form-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .form-header h1 {
+      margin: 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-header h1 i {
+      font-size: 1.8rem;
+    }
+
+    .form-body {
+      padding: 2rem;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      padding: 0.75rem 1rem;
+      transition: all 0.3s;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+    }
+
+    .input-group-text {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px 0 0 8px !important;
+    }
+
+    .btn {
+      border-radius: 8px;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-primary {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-check:checked+.btn-outline-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      border: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+    }
+
+    .modal-content {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border-radius: 12px 12px 0 0 !important;
+    }
+
+    .btn-close {
+      filter: invert(1);
+    }
+
+    .alert-info {
+      background-color: rgba(72, 149, 239, 0.1);
+      border-color: rgba(72, 149, 239, 0.2);
+      color: var(--dark-color);
+    }
+
+    .price-after-discount {
+      font-weight: 700;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    .section-title {
+      color: var(--dark-color);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title i {
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .admin-container {
+        margin: 1rem;
+        border-radius: 8px;
+      }
+
+      .form-body {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="admin-container">
+    <div class="form-header">
+      <h1><i class="fas fa-plus-circle"></i> Update  Product</h1>
+    </div>
+
+    <div class="form-body">
+      <form class="needs-validation novalidate formAdd">
+        <div class="row g-4">
+          <!-- Basic Information Section -->
+          <div class="col-12">
+            <h5 class="section-title"><i class="fas fa-info-circle"></i> Basic Information</h5>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="ProductCode" placeholder="Product Code" required>
+              <label for="ProductCode">Product Code</label>
+              <div class="invalid-feedback">Please enter product code.</div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="ProductName" placeholder="Product Name" required>
+              <label for="ProductName">Product Name</label>
+              <div class="invalid-feedback">Please enter product name.</div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="number" class="form-control" id="ProductPrice" placeholder="Price" required>
+              <label for="ProductPrice">Price</label>
+              <div class="invalid-feedback">Please enter valid price.</div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-floating">
+              <input type="number" class="form-control" id="ProductCount" placeholder="Count" required>
+              <label for="ProductCount">Quantity</label>
+              <div class="invalid-feedback">Please enter quantity.</div>
+            </div>
+          </div>
+
+          <!-- Product Attributes Section -->
+          <div class="col-12 mt-4">
+            <h5 class="section-title"><i class="fas fa-tags"></i> Product Attributes</h5>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Size Options</label>
+            <div class="btn-group w-100" role="group">
+              <input type="checkbox" class="btn-check" name="productSize" id="productSize1" value="SM"
+                autocomplete="off">
+              <label class="btn btn-outline-primary" for="productSize1">S</label>
+
+              <input type="checkbox" class="btn-check" name="productSize" id="productSize2" value="Md"
+                autocomplete="off">
+              <label class="btn btn-outline-primary" for="productSize2">M</label>
+
+              <input type="checkbox" class="btn-check" name="productSize" id="productSize3" value="XL"
+                autocomplete="off">
+              <label class="btn btn-outline-primary" for="productSize3">L</label>
+
+              <input type="checkbox" class="btn-check" name="productSize" id="productSize4" value="XXL"
+                autocomplete="off">
+              <label class="btn btn-outline-primary" for="productSize4">XL</label>
+            </div>
+            <div class="invalid-feedback d-block">Please select at least one size.</div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Product Status</label>
+            <div class="btn-group w-100" role="group">
+              <input type="radio" class="btn-check" name="ProductStatus" id="ProductStatus1" value="InStore"
+                autocomplete="off" checked>
+              <label class="btn btn-outline-primary" for="ProductStatus1">In Stock</label>
+
+              <input type="radio" class="btn-check" name="ProductStatus" id="ProductStatus2" value="New"
+                autocomplete="off">
+              <label class="btn btn-outline-primary" for="ProductStatus2">New</label>
+
+              <input type="radio" class="btn-check" name="ProductStatus" id="ProductStatus3" value="Featured"
+                autocomplete="off">
+              <label class="btn btn-outline-primary" for="ProductStatus3">Featured</label>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Discount Options</label>
+            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#PriceDiscount">
+              <i class="fas fa-percentage me-2"></i>Set Discount
+            </button>
+          </div>
+
+          <!-- Categories Section -->
+          <div class="col-12 mt-4">
+            <h5 class="section-title"><i class="fas fa-layer-group"></i> Categories</h5>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-floating">
+              <select class="form-select" id="ProductCategory" required>
+                <option value="" selected disabled>Select Category</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="accessories">Accessories</option>
+              </select>
+              <label for="ProductCategory">Main Category</label>
+              <div class="invalid-feedback">Please select a category.</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-floating">
+              <select class="form-select" id="SubCategory" required>
+                <option value="" selected disabled>Select Subcategory</option>
+                <option value="menFashion">Men Fashion</option>
+                <option value="womenFashion">Women Fashion</option>
+                <option value="accessories">Accessories</option>
+              </select>
+              <label for="SubCategory">Subcategory</label>
+              <div class="invalid-feedback">Please select a subcategory.</div>
+            </div>
+          </div>
+
+          <!-- Media Section -->
+          <div class="col-12 mt-4">
+            <h5 class="section-title"><i class="fas fa-images"></i> Media</h5>
+          </div>
+
+          <div class="col-md-6">
+            <label for="ProductImage" class="form-label">Product Image</label>
+            <input type="file" class="form-control" id="ProductImage" required>
+            <div class="invalid-feedback">Please upload product image.</div>
+          </div>
+
+          <!-- Description Section -->
+          <div class="col-12 mt-4">
+            <h5 class="section-title"><i class="fas fa-align-left"></i> Description</h5>
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Product description" id="ProductDescription"
+                style="height: 120px" required></textarea>
+              <label for="ProductDescription">Product Description</label>
+              <div class="invalid-feedback">Please enter product description.</div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="col-12 mt-5">
+            <button id="add" type="submit" class="btn btn-submit text-white w-100 py-3">
+              <i class="fas fa-plus-circle me-2"></i> ADD PRODUCT
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Discount Modal -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="/src/Components/addproduct/mainProduct.js"></script>
+</body>
+
+</html>

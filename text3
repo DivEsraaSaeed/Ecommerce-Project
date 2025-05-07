@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>addProduct</title>
+    <!-- CSS
+      <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+      <link
+        rel="stylesheet"
+        href="/@fortawesome/fontawesome-free/css/all.min.css"
+      />-->
+    <link rel="stylesheet" href="/src/Components/addproduct/styleproduct.css" />
+  </head>
+  <body>
+    <div class="container m-auto p-5 mt-5">
+      <div class="row">
+        <div class="col-sm-12 ">
+       
+        <div class="form-header col-sm-12">
+          <h1 class="titleHeaderProduct"><i class="fas fa-plus-circle me-3 tex"></i>Add Product</h1>
+
+        </div>
+
+
+        <form class="needs-validation novalidate col-sm-12 formAdd">
+          <div class="row ms-4 mt-5">
+            <div class="form-floating mb-3 col-sm-3 d-none">
+              <input
+                type="text"
+                class="form-control"
+                id="ProductCode"
+                placeholder="Product Code"
+              />
+              <label class="ms-2" for="ProductCode">Product Code</label>
+              <div class="invalid-feedback">Enter Product Code.</div>
+            </div>
+            <!--End Product code-->
+
+            <div class="form-floating mb-3 col-sm-4">
+              <input
+                type="text"
+                class="form-control"
+                id="ProductName"
+                placeholder="Product Name"
+              />
+              <label class="ms-2" for="ProductName">Product Name</label>
+              <div class="invalid-feedback">Enter Product Name.</div>
+            </div>
+            <!--End Product Name-->
+
+            <div class="form-floating mb-3 col-sm-4">
+              <input
+                type="number"
+                class="form-control"
+                id="ProductPrice"
+                placeholder="Price"
+              />
+              <label class="ms-2" for="ProductPrice">Price</label>
+              <div class="invalid-feedback">Enter Product Price.</div>
+            </div>
+            <!--End Product Price-->
+
+            <div class="form-floating mb-3 col-sm-4">
+              <input
+                type="number"
+                class="form-control"
+                id="ProductCount"
+                placeholder="Count"
+              />
+              <label class="ms-2" for="ProductCount">Count</label>
+              <div class="invalid-feedback">Enter Product Count.</div>
+            </div>
+            <!--End Product Count-->
+
+            <div class="col-sm-4 mb-3">
+              <div
+                class="btn-group-horizontal btn-group-sm d-flex justify-content-between"
+                role="group"
+                aria-label="horizontal checkbox toggle button group"
+              >
+                <label for="" class="text-secondary">Size : </label>
+                <input
+                  value="SM"
+                  type="checkbox"
+                  class="btn-check"
+                  name="productSize"
+                  id="productSize1"
+                  autocomplete="off"
+                />
+                <label class="btn btn-outline-primary" for="productSize1"
+                  >Small
+                </label>
+                <input
+                  value="Md"
+                  type="checkbox"
+                  class="btn-check"
+                  name="productSize"
+                  id="productSize2"
+                  autocomplete="off"
+                />
+                <label class="btn btn-outline-primary" for="productSize2"
+                  >Medium
+                </label>
+                <input
+                  value="XL"
+                  type="checkbox"
+                  class="btn-check"
+                  name="productSize"
+                  id="productSize3"
+                  autocomplete="off"
+                />
+                <label class="btn btn-outline-primary" for="productSize3"
+                  >Large
+                </label>
+                <input
+                  value="XXL"
+                  type="checkbox"
+                  class="btn-check"
+                  name="productSize"
+                  id="productSize4"
+                  autocomplete="off"
+                />
+                <label class="btn btn-outline-primary" for="productSize4"
+                  >Over Size
+                </label>
+              </div>
+              <div class="invalid-feedback">Please select a product size.</div>
+            </div>
+            <!--End Product Size-->
+
+            <div class="col-sm-4 mb-3">
+              <div
+                class="btn-group-horizontal btn-group-sm d-flex justify-content-between"
+                role="group"
+                aria-label="horizontal radio toggle button group"
+              >
+                <label for="" class="text-secondary">Product Status : </label>
+                <input
+                  value="InStore"
+                  type="radio"
+                  class="btn-check"
+                  name="ProductStatus"
+                  id="ProductStatus1"
+                  autocomplete="off"
+                  checked=""
+                />
+                <label class="btn btn-outline-primary" for="ProductStatus1"
+                  >In Store
+                </label>
+                <input
+                  value="New"
+                  type="radio"
+                  class="btn-check"
+                  name="ProductStatus"
+                  id="2"
+                  autocomplete="off"
+                />
+                <label class="btn btn-outline-primary" for="2">New </label>
+                <input
+                  value="Featured"
+                  type="radio"
+                  class="btn-check"
+                  name="ProductStatus"
+                  id="ProductStatus3"
+                  autocomplete="off"
+                />
+                <label class="btn btn-outline-primary" for="ProductStatus3"
+                  >Featured
+                </label>
+              </div>
+            </div>
+            <!--End Product Status-->
+
+            <div class="mb-3 col-sm-4">
+              <!-- Button trigger modal -->
+              <label for="" class="text-secondary"> Price Discount : </label>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#PriceDiscount"
+              >
+                Click For Discount
+              </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="PriceDiscount"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                        Discount
+                      </h1>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <!-- <div class="form-floating mb-3 col-sm-3"> -->
+                      <div class="container mt-5">
+                        <form class="formDiscount">
+                          <div class="row">
+                            <div class="form-floating mb-3 col-sm-6 mb-3">
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="ProductPriceForDiscount"
+                                placeholder="Price"
+                              />
+                              <label class="ms-2" for="ProductPriceForDiscount"
+                                >Product Price</label
+                              >
+                              <div id="ProductPriceHelp" class="form-text ms-2">
+                                Real Price.
+                              </div>
+                            </div>
+
+                            <div class="form-floating mb-3 col-sm-6 mb-3">
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="ValueDiscount"
+                                placeholder="Price Discount"
+                              />
+                              <label class="ms-2" for="ValueDiscount">
+                                Product Discount
+                              </label>
+                              <div
+                                id="ProductDiscountHelp"
+                                class="form-text ms-2"
+                              >
+                                Discount With ( % ) Ex: 10% .
+                              </div>
+                            </div>
+
+                            <div
+                              class="col-sm-12 mb-5 mt-5 form-control alert alert-info"
+                            >
+                              <label for=""> Price After Discount : </label>
+                              <span class="priceAfterDiscount"> </span>
+                            </div>
+
+                            <button
+                              id="CheckPrice"
+                              class="btn btn-outline-primary"
+                              type="button"
+                            >
+                              Check Price
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      <!-- </div> -->
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="button"
+                        id="Discount"
+                        class="btn btn-primary"
+                        data-bs-dismiss="modal"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--End Discount-->
+
+            <div class="mb-3 col-sm-6">
+              <select class="form-select" id="ProductCategory">
+                <option value="" selected disabled>Choose Category</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="accessories">Accessories</option>
+              </select>
+              <div class="invalid-feedback">Enter Product Category.</div>
+            </div>
+            <!--End Product Category-->
+
+            <div class="mb-3 col-sm-6">
+              <select class="form-select" id="SubCategory">
+                <option value="" selected disabled>Choose Sub Category</option>
+                <option value="menFashion">Men Fashion</option>
+                <option value="womenFashion">Women Fashion</option>
+                <option value="accessories">Accessories</option>
+              </select>
+              <div class="invalid-feedback">Enter Sub Category.</div>
+            </div>
+            <!--End Sub Category-->
+
+            <div class="input-group mb-3 col-sm-6">
+              <input type="file" class="form-control" id="ProductImage" />
+              <label
+                class="input-group-text btn btn-outline-primary"
+                for="ProductImage"
+                >Product Image</label
+              >
+              <div class="invalid-feedback">Enter Product Image.</div>
+            </div>
+            <!--End Product Image-->
+
+            <div class="input-group mb-3 col-sm-6">
+              <input type="file" class="form-control" id="CategoryImage" />
+              <label
+                class="input-group-text btn btn-outline-primary"
+                for="CategoryImage"
+                >Category Image</label
+              >
+              <div class="invalid-feedback">Enter Category Image.</div>
+            </div>
+            <!--End Category Image-->
+
+            <div class="form-floating mb-3">
+              <textarea
+                class="form-control"
+                placeholder="Leave a Dec here"
+                id="ProductDescription"
+              ></textarea>
+              <label class="ms-2" for="ProductDescription"
+                >Product Description</label
+              >
+              <div class="invalid-feedback">Enter Product Description.</div>
+            </div>
+            <!--End Add  Product Description-->
+
+            <div class="form-floating mb-3 d-none">
+              <input
+                type="text"
+                class="form-control"
+                id="newProductCategory"
+                placeholder="Product Category"
+              />
+              <label class="ms-2" for="ProductCategory">
+                Add New Product Category</label
+              >
+            </div>
+            <!--End Add New Product Category-->
+
+            <button
+              id="add"
+              type="submit"
+              class="btn btn-outline-info mb-3 col-sm-3 ms-2"
+            >
+              Add Product</button
+            ><!--End Add  Product -->
+          </div>
+        </form>
+
+      <!-- End form-->
+      </div>
+    </div>
+
+    <!-- JS -->
+    <!-- <script src="/jquery/dist/jquery.min.js" defer></script> -->
+    <!-- <script src="/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script> -->
+    <script src="/src/Components/addproduct/AddProduct.js"></script>
+  </body>
+</html>

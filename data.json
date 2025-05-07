@@ -1,0 +1,237 @@
+
+{
+  "Store": {
+    "men": {
+      "CategoryImage": "https://f.nooncdn.com/mpcms/EN0003/assets/ad1e812d-4463-4c8b-a39e-4f130c3e7ae9.png",
+      "ProductCategory": {
+        "Products": [
+          {
+            "ProductId": 1,
+            "SellerName": "customer1",
+            "SellerEmail": "customer@gmail.com",
+            "ProductCode": "10",
+            "ProductName": "men",
+            "ProductColors": "Blue",
+            "ProductPrice": "199",
+            "ValueDiscount": " No Discount",
+            "priceAfterDiscount": "",
+            "ProductCount": "50",
+            "ProductSize": [
+              "SM",
+              "Md",
+              "Lg"
+            ],
+            "ProductCategory": "men",
+            "SubCategory": "menFashion",
+            "ProductStatus": "InStore",
+            "ProductImage": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/1.webp",
+            "ProductDescription": "The Blue & Black Check Shirt is a stylish and comfortable men's shirt featuring a classic check pattern. Made from high-quality fabric, it's suitable for both casual and semi-formal occasions.",
+            "ProductRate": 0,
+            "ProductReviews": 0
+          },
+          {
+            "ProductId": 2,
+            "SellerName": "customer1",
+            "SellerEmail": "customer@gmail.com",
+            "ProductCode": "20",
+            "ProductName": "men",
+            "ProductColors": "Black",
+            "ProductPrice": "450",
+            "ValueDiscount": " No Discount",
+            "priceAfterDiscount": "",
+            "ProductCount": "30",
+            "ProductSize": "",
+            "ProductCategory": "men",
+            "SubCategory": "menFashion",
+            "ProductStatus": "InStore",
+            "ProductImage": "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/1.webp",
+            "ProductDescription": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+            "ProductRate": 0,
+            "ProductReviews": 0
+          },
+          {
+            "ProductId": 3,
+            "SellerName": "customer2",
+            "SellerEmail": "customer222@gmail.com",
+            "ProductCode": "30",
+            "ProductName": "men",
+            "ProductColors": "Black",
+            "ProductPrice": "450",
+            "ValueDiscount": " No Discount",
+            "priceAfterDiscount": "",
+            "ProductCount": "30",
+            "ProductSize": "",
+            "ProductCategory": "men",
+            "SubCategory": "menFashion",
+            "ProductStatus": "InStore",
+            "ProductImage": "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/1.webp",
+            "ProductDescription": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+            "ProductRate": 0,
+            "ProductReviews": 0
+          },
+          {
+            "ProductId": 4,
+            "SellerName": "customer3",
+            "SellerEmail": "customer3333@gmail.com",
+            "ProductCode": "40",
+            "ProductName": "men",
+            "ProductColors": "Black",
+            "ProductPrice": "450",
+            "ValueDiscount": " No Discount",
+            "priceAfterDiscount": "",
+            "ProductCount": "30",
+            "ProductSize": "",
+            "ProductCategory": "men",
+            "SubCategory": "menFashion",
+            "ProductStatus": "InStore",
+            "ProductImage": "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/1.webp",
+            "ProductDescription": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+            "ProductRate": 0,
+            "ProductReviews": 0
+          }
+        ]
+      }
+    },
+    "women": {
+      "CategoryImage": "https://f.nooncdn.com/mpcms/EN0003/assets/28aca5b8-e0f5-4514-bfec-817c22625f09.png",
+      "ProductCategory": {
+        "Products": [
+          {
+            "ProductId": 1,
+            "SellerName": "customer1",
+            "SellerEmail": "customer@gmail.com",
+            "ProductCode": "110",
+            "ProductName": "women",
+            "ProductColors": "Blue",
+            "ProductPrice": "199",
+            "ValueDiscount": " No Discount",
+            "priceAfterDiscount": "",
+            "ProductCount": "50",
+            "ProductSize": [
+              "SM",
+              "Md",
+              "Lg"
+            ],
+            "ProductCategory": "women",
+            "SubCategory": "menFashion",
+            "ProductStatus": "InStore",
+            "ProductImage": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp",
+            "ProductDescription": "The Blue & Black Check Shirt is a stylish and comfortable men's shirt featuring a classic check pattern. Made from high-quality fabric, it's suitable for both casual and semi-formal occasions.",
+            "ProductRate": 0,
+            "ProductReviews": 0
+          },
+          {
+            "ProductId": 2,
+            "SellerName": "customer1",
+            "SellerEmail": "customer@gmail.com",
+            "ProductCode": "220",
+            "ProductName": "women",
+            "ProductColors": "Black",
+            "ProductPrice": "450",
+            "ValueDiscount": " No Discount",
+            "priceAfterDiscount": "",
+            "ProductCount": "30",
+            "ProductSize": "",
+            "ProductCategory": "women",
+            "SubCategory": "menFashion",
+            "ProductStatus": "InStore",
+            "ProductImage": "https://cdn.dummyjson.com/product-images/beauty/red-lipstick/1.webp",
+            "ProductDescription": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+            "ProductRate": 0,
+            "ProductReviews": 0
+          },
+          {
+            "ProductId": 3,
+            "SellerName": "customer2",
+            "SellerEmail": "customer222@gmail.com",
+            "ProductCode": "330",
+            "ProductName": "women",
+            "ProductColors": "Black",
+            "ProductPrice": "450",
+            "ValueDiscount": " No Discount",
+            "priceAfterDiscount": "",
+            "ProductCount": "30",
+            "ProductSize": "",
+            "ProductCategory": "women",
+            "SubCategory": "menFashion",
+            "ProductStatus": "InStore",
+            "ProductImage": "https://cdn.dummyjson.com/product-images/beauty/red-nail-polish/1.webp",
+            "ProductDescription": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+            "ProductRate": 0,
+            "ProductReviews": 0
+          },
+          {
+            "ProductId": 4,
+            "SellerName": "customer3",
+            "SellerEmail": "customer3333@gmail.com",
+            "ProductCode": "440",
+            "ProductName": "women",
+            "ProductColors": "Black",
+            "ProductPrice": "450",
+            "ValueDiscount": " No Discount",
+            "priceAfterDiscount": "",
+            "ProductCount": "30",
+            "ProductSize": "",
+            "ProductCategory": "women",
+            "SubCategory": "menFashion",
+            "ProductStatus": "InStore",
+            "ProductImage": "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/1.webp",
+            "ProductDescription": "The Gigabyte Aorus Men Tshirt is a cool and casual shirt for gaming enthusiasts. With the Aorus logo and sleek design, it's perfect for expressing your gaming style.",
+            "ProductRate": 0,
+            "ProductReviews": 0
+          },
+          {
+            "ProductId": 5,
+            "SellerName": "customer",
+            "SellerEmail": "ahmed@gmail.com",
+            "ProductCode": "550",
+            "ProductName": "women",
+            "ProductColors": "Colors",
+            "ProductPrice": "",
+            "ValueDiscount": " No Discount",
+            "priceAfterDiscount": "",
+            "ProductCount": "",
+            "ProductSize": "",
+            "ProductCategory": "women",
+            "SubCategory": null,
+            "ProductStatus": "InStore",
+            "ProductImage": "",
+            "ProductDescription": "",
+            "ProductRate": 0,
+            "ProductReviews": 0
+          }
+        ]
+      }
+    }
+  },
+  "Sellers": [
+    {
+      "username": "customer1",
+      "email": "customer@gmail.com",
+      "password": "1",
+      "isSeller": false,
+      "isAdmin": false
+    },
+    {
+      "username": "customer1",
+      "email": "customerrr@gmail.com",
+      "password": "1",
+      "isSeller": false,
+      "isAdmin": false
+    },
+    {
+      "username": "customer1",
+      "email": "customewwwwrrr@gmail.com",
+      "password": "1",
+      "isSeller": false,
+      "isAdmin": false
+    },
+    {
+      "username": "customer",
+      "email": "ahmed@gmail.com",
+      "password": "1",
+      "isSeller": false,
+      "isAdmin": false
+    }
+  ]
+  }

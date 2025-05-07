@@ -1,0 +1,116 @@
+$(function () {
+  let user = JSON.parse(localStorage.getItem("Login"));
+  let userEmail = user ? user[0].email : "";
+
+  let { Store } = JSON.parse(localStorage.getItem("Store"));
+
+  if (Store) {
+    for (let category in Store) {
+      let products = Store[category]?.ProductCategory?.Products || [];
+
+      let productsSeller = products.filter(
+        (product) => product.SellerEmail === userEmail
+      );
+
+      let categoryImg = Store[category]?.CategoryImage || "default.jpg";
+
+      let Product = productsSeller.map((product) => {
+        let collapseId = `collapse-${product.ProductId}`;
+        return `
+          <div class="col-sm-3 m-2">
+            <div class="card" productID="${product.ProductId}" style="width: 100%;">
+              <div class="card-header" data-bs-toggle="collapse" data-bs-target="#${collapseId}" style="cursor: pointer;">
+                <h5 class="mb-0">${product.ProductName}</h5>
+              </div>
+              <div id="${collapseId}" productCode="${product.ProductCode}" class="collapse show">
+                <img src="${product.ProductImage}" class="card-img-top" style="height:200px;" alt="${product.ProductName}" />
+                <div class="card-body">
+                  <p class="card-text">${product.ProductDescription}</p>
+                </div>
+                <div class="footer d-flex justify-content-between ps-3 pe-3 mb-3">
+                  <button class="btn btn-warning updateProduct" data-page="addproduct/product.html" data-productid="${product.ProductId}" data-productcategory="${product.ProductCategory}">Update</button>
+                  <button class="btn btn-danger deleteProduct" data-productid="${product.ProductId}" data-productcategory="${product.ProductCategory}">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      let modalId = `modal-${category.replace(/\s+/g, "-").toLowerCase()}`;
+
+      let categoryHTML = `
+        <div class="col-sm-2 mt-5 mb-5">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <img class="w-50 mb-2" src="${categoryImg}" alt=""/>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${modalId}">
+              ${category}
+            </button>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade vh-100" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}Label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-fullscreen">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="${modalId}Label">${category}</h1>
+                  <button type="button" class="btn-close text-bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="row">
+                      ${Product.join("")}
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      $(".allCategory").append(categoryHTML);
+    }
+
+    let modalUpdate = `
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="modal fade vh-100" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="updateModalLabel">Update Product</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body body-update">
+                
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="saveUpdate">Save</button>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>`;
+
+    $("body").append(modalUpdate);
+
+    $(".updateProduct").on("click", function () {
+      let productIdUpdate = $(this).data("productid");
+      let productCategoryUpdate = $(this).data("productcategory");
+      console.log(Store[productCategoryUpdate].ProductCategory.Products);
+      let product = Store[
+        productCategoryUpdate
+      ].ProductCategory.Products.filter(
+        (el) => el.ProductId === productIdUpdate
+      );
+      // let page = $(this).data("page");
+      // $(".content").load(`/src/Components/${page}`)
+    });
+  }
+});

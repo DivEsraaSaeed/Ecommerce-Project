@@ -1,0 +1,23 @@
+[
+  {
+    "username": "customer1",
+    "email": "customer@gmail.com",
+    "password": "1",
+    "isSeller": false,
+    "isAdmin": false
+  },
+  {
+    "username": "amiraabdelhameed",
+    "password": "6",
+    "email": "admin@admin.com",
+    "isSeller": false,
+    "isAdmin": true
+  },
+  {
+    "username": "amiraabdelhameed",
+    "email": "seller@gmail.com",
+    "password": "1",
+    "isSeller": true,
+    "isAdmin": false
+  }
+]

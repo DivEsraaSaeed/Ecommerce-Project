@@ -1,0 +1,291 @@
+$(function () {
+  let user = JSON.parse(localStorage.getItem("Login"));
+  let userEmail = user ? user[0].email : "";
+
+  let { Store } = JSON.parse(localStorage.getItem("Store"));
+
+  if (Store) {
+    for (const key in Store) {
+      let categoryImg = Store[key]?.CategoryImage || "default.jpg";
+      let categoryHTML = `
+      
+      <div class="col-sm-3">
+      
+  <div class="container">
+    <div class="row justify-content-center">
+      <img
+        class="w-50 mb-2"
+        src="${categoryImg}"
+        alt="${key}"
+      />
+      <button
+        type="button"
+        class="btn btn-outline-primary openCategory"
+        data-category="${key}"
+      >
+       SHOW PRODUCTS OF ${key.toUpperCase()}
+      </button>
+    </div>
+  </div>
+</div>
+
+`;
+      $(".allCategory").append(categoryHTML);
+    } // End Of Catehory
+
+    $(".openCategory").on("click", function () {
+      let categoryWannaShow = $(this).attr("data-category");
+
+      showCategoryProducts(categoryWannaShow);
+
+      function showCategoryProducts(categoryName) {
+        $(".Products").empty();
+
+        let Products = Store[categoryName]?.ProductCategory?.Products || [];
+
+        let SellerProducts = Products.filter(
+          (product) => product.SellerEmail === userEmail
+        );
+
+        let ProductHTML = SellerProducts.map((product) => {
+          let collapseId = `collapse-${product.ProductId}`;
+          return `
+     <div class="col-sm-12 d-flex p  mb-3">
+        <div class="card" productID="${product.ProductId}" style="width: 100%;">
+          <div class="card-header" data-bs-toggle="collapse" data-bs-target="#${collapseId}" style="cursor: pointer;">
+            <div class="d-flex justify-content-between">
+              <h5 class="mb-0 pt-1">#${product.ProductCode}</h5>
+           
+            </div>
+          </div>
+          
+          <div id="${collapseId}" productCode="${product.ProductCode}" class="collapse show">
+            
+            <div class="d-flex flex-md-column  flex-lg-row"> 
+              <div class="me-3" style="flex: 0 0 30%;"> 
+                <img src="${product.ProductImage}" class="img-fluid rounded-start w-50 "  alt="${product.ProductName}">
+              </div>
+              
+              <div class="card-body" style="flex: 1;"> 
+                <div class="d-flex flex-column w-100">
+                  <span><strong>Product Name:</strong> ${product.ProductName}</span>
+                  <span><strong>Price:</strong> ${product.ProductPrice} EGP</span>
+                  <span><strong>Available:</strong> ${product.ProductCount} pieces</span>
+                  <span><strong>Colors:</strong> ${product.ProductColor}</span>
+                  <span><strong>Size:</strong> ${product.ProductSize}</span>
+                  <span><strong>Description:</strong></span>
+                  <p class="text-muted">${product.ProductDescription}</p>
+                  <hr>
+                   <span><strong>Review:</strong></span>
+                  <p class="text-muted">${product.ProductDescription}</p>
+                  <div class="d-flex flex-row-reverse mt-3">
+                 
+                    <button class="btn btn-outline-danger  ms-3 deleteProduct" 
+                 data-productid="${product.ProductId}" 
+                 data-productcategory="${product.ProductCategory}" 
+                 data-bs-toggle="modal" 
+                 data-bs-target="#DeleteBtn">
+                 <i class="fa-solid fa-trash"></i>                      
+                      Delete
+                    </button>
+   <button class="btn btn-outline-primary updateProduct" 
+                            data-page="addproduct/product.html" 
+                            data-productid="${product.ProductId}" 
+                            data-productcategory="${product.ProductCategory}"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#UpdateBtn">
+                      <i class="fas fa-edit me-2"></i>Update
+                    </button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          `;
+        }).join("");
+
+   
+
+        $(".Products").append(ProductHTML);
+        
+      }
+      if ($(".Products .card").length === 0) {
+        $(".Products").html(`<div class="alert alert-warning">No products ${categoryWannaShow} to display.</div>`);
+      }
+    }); // End Of Show Category and product
+
+    $(document).on("click", ".updateProduct", function () {
+      let page = $(this).data("page");
+      let productIdUpdate = $(this).data("productid");
+      let productCategoryUpdate = $(this).data("productcategory");
+
+      let productNeedUpdate = Store[
+        productCategoryUpdate
+      ].ProductCategory.Products.filter(
+        (el) => el.ProductId === productIdUpdate
+      );
+
+      if ($("#UpdateBtn").length === 0) {
+        let ModalUpdate = `
+          <div class="modal fade modal-fullscreen" id="UpdateBtn" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="updateProductLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+              <div class="modal-content col-sm-12">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="updateProductLabel">Update Product</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-danger " data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-primary SaveUpdate" >Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        $("body").append(ModalUpdate);
+      }
+
+      $(".modal-body").load(`/src/Components/${page}`, function () {
+        $("#UpdateBtn").modal("show");
+        $(".titleHeaderProduct").html(`<h1> <i class="fa-solid fa-wrench"></i> Update Product </h1>`);
+        $("#add").addClass("d-none");
+
+        $(".SaveUpdate")
+          .off("click")
+          .on("click", function () {
+            productNeedUpdate[0].ProductCode = $("#ProductCode").val();
+            productNeedUpdate[0].ProductName = $("#ProductName").val();
+            productNeedUpdate[0].ProductColors =
+              $("#ProductColors").val() || "Colors";
+            productNeedUpdate[0].ProductPrice = $("#ProductPrice").val();
+            productNeedUpdate[0].ProductCount = $("#ProductCount").val();
+            productNeedUpdate[0].ProductStatus = $(
+              "input[name='ProductStatus']:checked"
+            ).val();
+            productNeedUpdate[0].ValueDiscount =
+              $("#ValueDiscount").val() || " No Discount";
+            productNeedUpdate[0].ProductDescription = $(
+              "#ProductDescription"
+            ).val();
+            productNeedUpdate[0].ProductCategory = $("#ProductCategory").val();
+            productNeedUpdate[0].SubCategory = $("#SubCategory").val();
+            productNeedUpdate[0].ProductImage = $("#ProductImage")
+              .val()
+              .split("\\")
+              .pop();
+            productNeedUpdate[0].CategoryImage = $("#CategoryImage")
+              .val()
+              .split("\\")
+              .pop();
+            let allData = JSON.parse(localStorage.getItem("Store"));
+            allData.Store = Store;
+            localStorage.setItem("Store", JSON.stringify(allData));
+
+            $("#UpdateBtn").modal("hide");
+            updateProductInHTML(productNeedUpdate[0]);
+            function updateProductInHTML(updatedProduct) {
+              let updatedProductHTML = `
+                <div class="col-sm-3 m-2">
+                    <div class="card" productID="${updatedProduct.ProductId}" style="width: 100%;">
+                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#collapse-${updatedProduct.ProductId}" style="cursor: pointer;">
+                            <h5 class="mb-0">${updatedProduct.ProductName}</h5>
+                        </div>
+                        <div id="collapse-${updatedProduct.ProductId}" class="collapse show">
+                            <img src="${updatedProduct.ProductImage}" class="card-img-top" style="height:200px;" alt="${updatedProduct.ProductName}" />
+                            <div class="card-body">
+                                <p class="card-text">${updatedProduct.ProductDescription}</p>
+                            </div>
+                            <div class="footer d-flex justify-content-between ps-3 pe-3 mb-3">
+                                <button class="btn btn-warning updateProduct" data-page="addproduct/product.html" data-productid="${updatedProduct.ProductId}" data-productcategory="${updatedProduct.ProductCategory}" data-bs-toggle="modal" data-bs-target="#UpdateBtn">Update</button>
+                                <button class="btn btn-danger deleteProduct" data-productid="${updatedProduct.ProductId}" data-productcategory="${updatedProduct.ProductCategory}">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+              $(`div[productID="${updatedProduct.ProductId}"]`).replaceWith(
+                updatedProductHTML
+              );
+            } //End Of Function updateProductInHTML
+          }); //End of save
+      }); //End Of Modal Update
+    }); //Enf Of Update Product
+
+    $(document).on("click", ".deleteProduct", function () {
+      let ProductDeleteId = $(this).data("productid");
+      let ProductDeleteCategory = $(this).data("productcategory");
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+        background: "#fff",
+        backdrop: "rgba(128, 9, 9, 0.4)",
+        didOpen: () => {
+          $(".swal2-icon-content").addClass("text-danger");
+          $(".swal2-icon").addClass("border border-danger");
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+        let updatedProducts =  Store[ProductDeleteCategory].ProductCategory.Products =Store[ProductDeleteCategory].ProductCategory.Products.filter((prodate)=>prodate.ProductId!==ProductDeleteId );
+        let allDate= JSON.parse(localStorage.getItem("Store"))
+          allDate.Store[ProductDeleteCategory].ProductCategory.Products=updatedProducts
+          localStorage.setItem("Store",JSON.stringify(allDate))
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+          $(`div[productID="${ProductDeleteId}"]`).remove();
+          if ($(".Products .card").length === 0) {
+            $(".Products").html(`<div class="alert alert-warning">No products ${ProductDeleteCategory} to display.</div>`);
+
+          }
+
+        }
+      }); 
+      
+
+
+//       if ($("#DeleteBtn").length === 0) {
+//         let ModalDelete = `
+//  <div class="modal fade" id="DeleteBtn" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DeleteBtnLabel" aria-hidden="true">
+//       <div class="modal-dialog modal-dialog-centered">
+//         <div class="modal-content">
+//           <div class="modal-header">
+//             <h1 class="modal-title fs-5" id="DeleteBtnLabel">Delete Product</h1>
+//             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//           </div>
+//           <div class="modal-body">
+//               Are you sure you want to delete this product?
+//           </div>
+//           <div class="modal-footer">
+//             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+//             <button type="button" class="btn btn-primary confirmDelete">Delete</button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+// `;
+
+//         $("body").append(ModalDelete);
+//       }
+//       $("#DeleteBtn").modal("show");
+    }); // End of Delete
+ 
+ 
+
+
+  } //End Cured Store 
+
+
+});
