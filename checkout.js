@@ -237,6 +237,7 @@ document.getElementById('confirm').addEventListener('click', (e) => {
 
     //start ##################saving customer order and his name in localstorage in key "confirmed orders"#############
     let customer = JSON.parse(localStorage.getItem("currentUser")).username;
+    let customerID = JSON.parse(localStorage.getItem("currentUser")).userID;
 
     let order = orders.map(item => ({
         ProductName: item.ProductName,
@@ -248,10 +249,11 @@ document.getElementById('confirm').addEventListener('click', (e) => {
         ProductId: item.ProductId,
         ProductCategory: item.ProductCategory,
     }));
+    let totalPaid=total.innerHTML
     let orderDate = new Date().toUTCString()
-    let orderID=Date.now()
+    let orderID=`#${Date.now()}`
     let confirmedOrders = JSON.parse(localStorage.getItem('confirmed_orders')) || [];
-    confirmedOrders.push({ orderDate, order, customer, paymentData, customerAddress,orderID });
+    confirmedOrders.push({ orderDate, order, customer, paymentData, customerAddress, orderID, customerID, totalPaid });
     localStorage.setItem('confirmed_orders', JSON.stringify(confirmedOrders));
     //end ##################saving customer order and his name in localstorage in key "confirmed orders"#############
 

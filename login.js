@@ -64,7 +64,8 @@ form.addEventListener('submit', (e) => {
             password: matchedUser.password,
             username: matchedUser.username,
             isSeller: matchedUser.isSeller,
-            isAdmin: matchedUser.isAdmin
+            isAdmin: matchedUser.isAdmin,
+            userID: matchedUser.userID
         };
 
         localStorage.setItem('currentUser', JSON.stringify(currentUser));

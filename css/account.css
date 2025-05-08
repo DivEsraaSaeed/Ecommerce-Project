@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    overflow-x: hidden;
+}
+
+.container {
+    background-color: white;
+    margin: auto;
+    border-radius: 25px;
+
+}
+
+.account-header {
+    background-color: #BD844C;
+    color: white;
+    padding: 1rem;
+}
+
+.account-content {
+    padding: 0;
+}
+
+.account-container {
+    min-height: 100vh;
+    margin: 0;
+    width: 100%;
+}
+
+.account-container.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.sidebar-header {
+    display: none;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    cursor: pointer;
+}
+
+aside {
+    background-color: black;
+    color: white;
+
+}
+
+.account-sidebar {
+    /* background-color: #F7F7F7; */
+    background-color: black;
+    min-height: 0px;
+}
+
+.account-sidebar .nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+
+.account-sidebar .nav-link.active {
+    color: #BD844C !important;
+}
+
+.order-item {
+    width: 100%;
+    padding-right: 1rem;
+}
+
+.card-section {
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+#personal-info .card-section {
+
+    width: 96%;
+}
+
+.sidebar-header i {
+    margin-right: 10px;
+}
+
+.account-sidebar .nav-link {
+    color: black;
+}
+
+@media (max-width: 768px) {
+
+    .account-container {
+        min-height: 0px;
+        position: relative;
+        /* flex-direction: column-reverse; */
+    }
+
+    .account-container ul {
+        position: absolute;
+        background-color: black;
+        top: 77px;
+        width: 100%;
+        left: 0;
+    }
+
+    .sidebar-header {
+        display: flex;
+        align-items: center;
+        color: white;
+    }
+
+    .account-sidebar .nav {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        /* background-color: brow; */
+        color: white !important;
+    }
+
+    .account-sidebar .nav.show {
+        max-height: 1000px;
+        transition: max-height 0.5s ease-in;
+    }
+
+    .account-sidebar .nav-link {
+        padding: 12px 20px;
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: white !important;
+    }
+
+    .account-sidebar .nav-link i {
+        width: 20px;
+        text-align: center;
+    }
+
+    aside {
+        min-height: 0vh;
+    }
+}
+
+
+#complainArea{
+    width: 100%;
+    padding: 0.5rem;
+}

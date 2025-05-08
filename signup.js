@@ -66,7 +66,7 @@ form.addEventListener('submit', (e) => {
     const email = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value;
     const isSeller = document.getElementById('isSeller').checked;
-
+    const userID = `#${Date.now()}`
     let users = JSON.parse(localStorage.getItem('users') || '[]');
 
     const emailExists = users.some(user => user.email.toLowerCase() === email);
@@ -78,7 +78,7 @@ form.addEventListener('submit', (e) => {
         return;
     }
 
-    const newUser = { username, email, password, isSeller, isAdmin: false };
+    const newUser = { username, email, password, isSeller, isAdmin: false ,userID};
     users.push(newUser);
 
     const admin = {
