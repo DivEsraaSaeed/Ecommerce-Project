@@ -4,7 +4,7 @@ $(document).ready(function () {
   $("#search-icon").click(function (e) {
     e.stopPropagation();
     if (!isOpen) {
-      $("#search-bar").animate({ width: "300px" }, 300).focus();
+      $("#search-bar").animate({ width: "240px" }, 300).focus();
       isOpen = true;
     } else {
       $("#search-bar").animate({ width: "0" }, 300);
@@ -26,54 +26,65 @@ $(document).ready(function () {
   let matchedProducts = [];
   let visibleCount = 0;
   const batchSize = 10;
+  const searchResultsContainer = $("#search-results");
+
   // Function to render a batch of search results
   function renderBatch() {
-    const searchResultsContainer = $("#search-results");
     const nextBatch = matchedProducts.slice(
       visibleCount,
       visibleCount + batchSize
     );
-    
+
     nextBatch.forEach((product) => {
       const resultItem = `
         <div id="searchResult" class="d-flex align-items-center gap-3 border-bottom py-2">
           <img src="${product.img}" alt="Product Image" style="width: 60px; height: 60px; object-fit: cover;">
-          <a href="${product.link}"  class="text-white text-decoration-none fw-bold">${product.name}</a>
+          <a href="${product.link}" class="text-white text-decoration-none fw-bold">${product.name}</a>
         </div>
       `;
       searchResultsContainer.append(resultItem);
     });
+
     visibleCount += batchSize;
   }
 
   // search bar input event
-
   $("#search-bar").on("input", function () {
     const keyword = $(this).val().toLowerCase();
-    const searchResultsContainer = $("#search-results");
     searchResultsContainer.empty().show();
     matchedProducts = [];
     visibleCount = 0;
+
     // Hide results if the input is empty
     if (keyword.trim() === "") {
       searchResultsContainer.hide();
       return;
     }
-    // Clear previous results
-    const allProducts = $(".product-stor-item, .product-card ");
+
+    // Get all products from the DOM
+    const allProducts = $(".product-stor-item, .product-card");
     allProducts.each(function () {
       const productName = $(this).find("h5 a").text().toLowerCase();
-      const productImg = $(this).find("img").attr("src");
+      const productImg = $(this).find("img").attr("src") || "default.jpg";
       const productLink = $(this).find("h5 a").attr("href") || "#";
+
       if (productName.includes(keyword)) {
-        matchedProducts.push({
-          name: productName,
-          img: productImg,
-          link: productLink,
-        });
+        // Check if this product already exists in the array
+        const isDuplicate = matchedProducts.some(
+          (p) => p.name === productName && p.link === productLink
+        );
+
+        if (!isDuplicate) {
+          matchedProducts.push({
+            name: productName,
+            img: productImg,
+            link: productLink,
+          });
+        }
       }
     });
-    // Check if any products matched the search
+
+    // Show results or "no results" message
     if (matchedProducts.length === 0) {
       searchResultsContainer.html(
         "<p class='text-white text-center'>No products found</p>"
@@ -83,8 +94,8 @@ $(document).ready(function () {
     }
   });
 
-  // scroll event on #search-results
-  $("#search-results").on("scroll", function () {
+  // scroll event to load more results
+  searchResultsContainer.on("scroll", function () {
     const container = $(this);
     if (
       container.scrollTop() + container.innerHeight() >=
@@ -94,24 +105,26 @@ $(document).ready(function () {
     }
   });
 
-  // click event on search result item
+  // Escape key to close results
   $(document).on("keydown", function (e) {
-    if (e.key === "Escape") {[]
+    if (e.key === "Escape") {
       $("#search-bar").val("");
-      $("#search-results").empty().hide();
+      searchResultsContainer.empty().hide();
     }
   });
 
-  // click event outside search bar and results
+  // Click outside to hide results
   $(document).on("click", function (e) {
     if (
       !$(e.target).closest("#search-bar").length &&
       !$(e.target).closest("#search-results").length
     ) {
-      $("#search-results").empty().hide();
+      searchResultsContainer.empty().hide();
     }
   });
 });
+
+
 //end search results============================================================
 
 
@@ -355,7 +368,7 @@ $(document).ready(function () {
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
               <li data-id="${
                 product.ProductCode
-              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-solid text-dark fa-cart-shopping"></i></li>
+              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -402,7 +415,7 @@ $(document).ready(function () {
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
               <li data-id="${
                 product.ProductCode
-              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-solid text-dark fa-cart-shopping"></i></li>
+              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -448,7 +461,7 @@ $(document).ready(function () {
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
               <li data-id="${
                 product.ProductCode
-              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-solid text-dark fa-cart-shopping"></i></li>
+              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -494,7 +507,7 @@ $(document).ready(function () {
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
               <li data-id="${
                 product.ProductCode
-              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-solid text-dark fa-cart-shopping"></i></li>
+              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -666,11 +679,11 @@ $(document).ready(function () {
   if (storedProducts) {
     likedProducts = new Set(JSON.parse(storedProducts));
     likeCount = likedProducts.size;
-    $("#shop-count").text(likeCount);
+    $("#like-count").text(likeCount);
     // Update the button icons for liked products
     likedProducts.forEach((id) => {
       $(`.shop-btn[data-id='${id}']`).html(
-        '<i class=" text-danger fa-solid fa-cart-shopping"></i>'
+        '<i class=" text-danger fa-solid fa-heart"></i>'
       );
     });
   }
@@ -681,14 +694,14 @@ $(document).ready(function () {
     if (!likedProducts.has(productId)) {
       likeCount++;
       likedProducts.add(productId);
-      $(this).html('<i class=" text-danger fa-solid fa-cart-shopping"></i>');
+      $(this).html('<i class=" text-danger fa-solid fa-heart"></i>');
     } else {
       likeCount--;
       likedProducts.delete(productId);
-      $(this).html('<i class="fa-solid fa-cart-shopping"></i>');
+      $(this).html('<i class="fa-regular text-dark fa-heart"></i>');
     }
     // Update the like count display
-    $("#shop-count").text(likeCount);
+    $("#like-count").text(likeCount);
     localStorage.setItem("likedProducts", JSON.stringify([...likedProducts]));
   });
 });

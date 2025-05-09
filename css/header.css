@@ -71,6 +71,7 @@ body {
 .form-control:focus{
     box-shadow: none;
     border: 1px solid var(--second-color) !important;
+    box-shadow: 0 0 0 .20rem #bd844c3b;
 }
 #snapbuy-nav {
     display: none;
@@ -193,7 +194,7 @@ body {
 .bg-img:hover .overlay-text p {
     color: var(--main-color);
     transition: var(--main-transition);
-
+    
 }
 
 /* start 4 section*/
@@ -339,13 +340,13 @@ body {
     background: #bd844c78;
 }
 
-#shop-count {
+#like-count {
     position: relative;
-    right: 15px;
-    font-size: 14px;
+    right: 20px;
+    font-size: 12px;
     color: var(--main-color);
     background-color: #BD844C;
     height: fit-content;
-    padding: 0 7px !important;
+    padding: 0 6px !important;
     border-radius: 50%;
 }
