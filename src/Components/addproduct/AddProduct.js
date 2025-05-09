@@ -2,39 +2,42 @@ $(function () {
   let users = JSON.parse(localStorage.getItem("Login"));
   localStorage.setItem("Login", JSON.stringify(users));
   let ProductSize = "";
+  let discount = "";
   let priceAfterDiscount = "";
   let SellerData = users[0];
 
   function generateProductCode(length = 4) {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const existingCodes = new Set(getAllProductCodes()); 
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const existingCodes = new Set(getAllProductCodes());
     let code;
-    
+
     do {
-      code = '';
+      code = "";
       for (let i = 0; i < length; i++) {
         code += chars.charAt(Math.floor(Math.random() * chars.length));
       }
     } while (existingCodes.has(code));
-    
+
     return code;
   }
-  
-function getAllProductCodes() {
-  let ProductsList = JSON.parse(localStorage.getItem("Store"))||  { Store: {}, Sellers: [] }
-  let codes=[];
-  for (const category in ProductsList.Store) {
-    ProductsList.Store[category].ProductCategory.Products.forEach(product => {
-      if (product.ProductCode) {
-        codes.push(product.ProductCode)
-      }
-      
-    });
-    return codes;
+
+  function getAllProductCodes() {
+    let ProductsList = JSON.parse(localStorage.getItem("Store")) || {
+      Store: {},
+      Sellers: [],
+    };
+    let codes = [];
+    for (const category in ProductsList.Store) {
+      ProductsList.Store[category].ProductCategory.Products.forEach(
+        (product) => {
+          if (product.ProductCode) {
+            codes.push(product.ProductCode);
+          }
+        }
+      );
+      return codes;
+    }
   }
-
-
-}
 
   $(`input[name="productSize"]`).on("change", function () {
     ProductSize = $(`input[name="productSize"]:checked`)
@@ -67,12 +70,13 @@ function getAllProductCodes() {
     }
 
     let discountAmount = (ProductPriceForDiscount * ValueDiscount) / 100;
-    let discount= ProductPriceForDiscount - discountAmount;
-    $(".priceAfterDiscount").text(discount.toFixed(2));
-    $("#Discount").on("click",function(){
+    discount = ProductPriceForDiscount - discountAmount;
 
-       priceAfterDiscount =discount
-    })
+    $(".priceAfterDiscount").text(discount.toFixed(2));
+  });
+  $("#Discount").on("click", function () {
+    priceAfterDiscount = discount;
+    $("#DiscountPrice").val(priceAfterDiscount);
   });
 
   $("#add").on("click", function (e) {
@@ -84,17 +88,21 @@ function getAllProductCodes() {
       form.reportValidity(); //Testtttt
       form.classList.add("was-validated");
 
+
+
       return;
     }
 
-    let ProductCode =   generateProductCode()    ;
+    let ProductCode = generateProductCode();
     // let ProductCode = $("#ProductCode").val();
     let ProductName = $("#ProductName").val();
     let ProductColors = $("#ProductColors").val() || "Colors";
     let ProductPrice = $("#ProductPrice").val();
     let ProductCount = $("#ProductCount").val();
+    let DiscountPrice =    $("#DiscountPrice").val();
+
     let ProductStatus = $("input[name='ProductStatus']:checked").val();
-    let ValueDiscount = $("#ValueDiscount").val() || " No Discount";
+    let ValueDiscount = $("#ValueDiscount").val() || 0;
     let ProductDescription = $("#ProductDescription").val();
     let ProductCategory = $("#ProductCategory").val();
     let SubCategory = $("#SubCategory").val();
@@ -110,12 +118,21 @@ function getAllProductCodes() {
       Store: {},
       Sellers: [],
     };
-
+    const categoryImages = {
+      men: "https://f.nooncdn.com/mpcms/EN0003/assets/ad1e812d-4463-4c8b-a39e-4f130c3e7ae9.png",
+      women: "https://f.nooncdn.com/mpcms/EN0003/assets/28aca5b8-e0f5-4514-bfec-817c22625f09.png",
+      accessories: "https://f.nooncdn.com/mpcms/EN0003/assets/28aca5b8-e0f5-4514-bfec-817c22625f09.png",
+      
+      default: "/src/Components/img/Category.webp"
+    };
     let finalNewProductCategory = newProductCategory || ProductCategory;
-
+    let normalizedCategory = finalNewProductCategory.toLowerCase();
+    let selectedCategoryImage = categoryImages[normalizedCategory] || categoryImages["default"];
     if (!ProductsList.Store[finalNewProductCategory]) {
       ProductsList.Store[finalNewProductCategory] = {
-        CategoryImage: CategoryImage || "/src/Components/img/Category.webp",
+        CategoryImage: CategoryImage
+          ? `/src/Components/img/${CategoryImage}`
+          : selectedCategoryImage,
         ProductCategory: {
           Products: [],
         },
@@ -139,13 +156,14 @@ function getAllProductCodes() {
       ProductColors,
       ProductPrice,
       ValueDiscount,
-      priceAfterDiscount,
+      DiscountPrice,
+      priceAfterDiscount: Number($("#DiscountPrice").val(priceAfterDiscount)),
       ProductCount,
       ProductSize,
       ProductCategory,
       SubCategory,
       ProductStatus,
-      ProductImage,
+      ProductImage: `/src/Components/img/${ProductImage}`,
       ProductDescription,
       ProductRate,
       ProductReviews,
@@ -154,10 +172,12 @@ function getAllProductCodes() {
     ProductsList.Store[finalNewProductCategory].ProductCategory.Products.push(
       Product
     );
-    if (!ProductsList.Sellers.some(seller => seller.email === SellerData.email)) {
+    if (
+      !ProductsList.Sellers.some((seller) => seller.email === SellerData.email)
+    ) {
       ProductsList.Sellers.push(SellerData);
     }
-    
+
     localStorage.setItem("Store", JSON.stringify(ProductsList));
 
     form.reset();
