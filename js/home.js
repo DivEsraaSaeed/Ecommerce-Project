@@ -1,4 +1,4 @@
-//search bar
+//search bar===========================================================
 $(document).ready(function () {
   let isOpen = false;
   $("#search-icon").click(function (e) {
@@ -18,32 +18,35 @@ $(document).ready(function () {
     }
   });
 });
-//end search bar
+//end search bar=======================================================================
 
-//start search results
+//start search results===================================================================
 
 $(document).ready(function () {
   let matchedProducts = [];
   let visibleCount = 0;
   const batchSize = 10;
-
+  // Function to render a batch of search results
   function renderBatch() {
     const searchResultsContainer = $("#search-results");
-
-    const nextBatch = matchedProducts.slice(visibleCount, visibleCount + batchSize);
-
-    nextBatch.forEach(product => {
+    const nextBatch = matchedProducts.slice(
+      visibleCount,
+      visibleCount + batchSize
+    );
+    
+    nextBatch.forEach((product) => {
       const resultItem = `
-        <div class="d-flex align-items-center gap-3 border-bottom py-2">
+        <div id="searchResult" class="d-flex align-items-center gap-3 border-bottom py-2">
           <img src="${product.img}" alt="Product Image" style="width: 60px; height: 60px; object-fit: cover;">
-          <a href="${product.link}" class="text-white text-decoration-none fw-bold">${product.name}</a>
+          <a href="${product.link}"  class="text-white text-decoration-none fw-bold">${product.name}</a>
         </div>
       `;
       searchResultsContainer.append(resultItem);
     });
-
     visibleCount += batchSize;
   }
+
+  // search bar input event
 
   $("#search-bar").on("input", function () {
     const keyword = $(this).val().toLowerCase();
@@ -51,19 +54,17 @@ $(document).ready(function () {
     searchResultsContainer.empty().show();
     matchedProducts = [];
     visibleCount = 0;
-
+    // Hide results if the input is empty
     if (keyword.trim() === "") {
       searchResultsContainer.hide();
       return;
     }
-
+    // Clear previous results
     const allProducts = $(".product-stor-item, .product-card ");
-
     allProducts.each(function () {
       const productName = $(this).find("h5 a").text().toLowerCase();
       const productImg = $(this).find("img").attr("src");
       const productLink = $(this).find("h5 a").attr("href") || "#";
-
       if (productName.includes(keyword)) {
         matchedProducts.push({
           name: productName,
@@ -72,9 +73,11 @@ $(document).ready(function () {
         });
       }
     });
-
+    // Check if any products matched the search
     if (matchedProducts.length === 0) {
-      searchResultsContainer.html("<p class='text-white text-center'>No products found</p>");
+      searchResultsContainer.html(
+        "<p class='text-white text-center'>No products found</p>"
+      );
     } else {
       renderBatch();
     }
@@ -83,20 +86,23 @@ $(document).ready(function () {
   // scroll event on #search-results
   $("#search-results").on("scroll", function () {
     const container = $(this);
-    if (container.scrollTop() + container.innerHeight() >= container[0].scrollHeight - 50) {
+    if (
+      container.scrollTop() + container.innerHeight() >=
+      container[0].scrollHeight - 50
+    ) {
       renderBatch();
     }
   });
 
-  // Esc key
+  // click event on search result item
   $(document).on("keydown", function (e) {
-    if (e.key === "Escape") {
+    if (e.key === "Escape") {[]
       $("#search-bar").val("");
       $("#search-results").empty().hide();
     }
   });
 
-  // click outside
+  // click event outside search bar and results
   $(document).on("click", function (e) {
     if (
       !$(e.target).closest("#search-bar").length &&
@@ -106,30 +112,12 @@ $(document).ready(function () {
     }
   });
 });
+//end search results============================================================
 
 
-//edn search results
 
+//start nav bar=====================================================================
 
-// $(document).ready(function () {
-//   $("#search-bar").on("input", function () {
-//     let keyword = $(this).val().toLowerCase();
-//     if (keyword === "") {
-//       $(".Our-Product").hide();
-//     } else {
-//       $(".Our-Product").each(function () {
-//         let text = $(this).text().toLowerCase();
-//         if (text.includes(keyword)) {
-//           $(this).show();
-//         } else {
-//           $(this).hide();
-//         }
-//       });
-//     }
-//   });
-// });
-
-//nav bar=====================
 $(document).ready(function () {
   let shown = false;
 
@@ -153,8 +141,10 @@ $(document).ready(function () {
     }
   });
 });
+//end nav bar=======================================================================================
 
-// Carousel===================
+
+// Carousel 1===========================================================================================
 $(document).ready(function () {
   const owl = $(".carousel1").owlCarousel({
     loop: true,
@@ -176,9 +166,9 @@ $(document).ready(function () {
     }, 1000);
   });
 });
-//end Carousel ==============================
+//end Carousel 1=======================================================================================================
 
-//carousel2
+//start carousel2=========================================================================================================
 
 $(document).ready(function () {
   const owl2 = $(".carousel2").owlCarousel({
@@ -201,7 +191,9 @@ $(document).ready(function () {
     },
   });
 });
-//carousel3==============================
+//end carousel2=======================================================================================================================
+
+//start carousel3==========================================================================================================================
 $(document).ready(function () {
   const owl3 = $(".carousel3").owlCarousel({
     loop: true,
@@ -211,7 +203,6 @@ $(document).ready(function () {
     autoplay: true,
     autoplayTimeout: 4000,
     smartSpeed: 2000,
-
     responsive: {
       0: {
         items: 1,
@@ -222,7 +213,9 @@ $(document).ready(function () {
     },
   });
 });
-//carousel4 ============================
+//end carousel3==============================================================================================================================
+
+//start carousel4 ==========================================================================================================================
 $(document).ready(function () {
   const owl4 = $(".carousel4").owlCarousel({
     loop: true,
@@ -234,7 +227,9 @@ $(document).ready(function () {
     items: 1,
   });
 });
-//carousel5=============================
+//end carousel4==============================================================================================================================
+
+// start carousel5==========================================================================================================================================
 $(document).ready(function () {
   const owl5 = $(".carousel5").owlCarousel({
     loop: true,
@@ -253,7 +248,6 @@ $(document).ready(function () {
       700: {
         items: 3,
       },
-
       1000: {
         items: 4,
       },
@@ -264,14 +258,10 @@ $(document).ready(function () {
   });
 });
 
-//dark mood==============
-// document.getElementById("toggle-dark").addEventListener("click", function () {
-//   document.body.classList.toggle("dark-mode");
-// });
+//end carousel5===========================================================================================================================================
 
-//=========================
 
-//important data from json file to local storage================================================
+//important data from json file to local storage=======================================================================================
 
 (async function SaveHomeDataToLocalStorage() {
   try {
@@ -285,9 +275,9 @@ $(document).ready(function () {
   }
 })();
 
-//end important data from json file to local storage==================
+//end important data from json file to local storage==========================================================================================
 
-// start load data from local storage===================
+// start load data from local storage===========================================================================================
 
 (function loadHomeData() {
   const data = JSON.parse(localStorage.getItem("home-store"));
@@ -301,7 +291,7 @@ $(document).ready(function () {
   const bestSeller = [];
   console.log(bestSeller);
 
-  //start filter data===================
+  //start filter data===========================================================================================
 
   men.forEach((product) => {
     if (product.ProductStatus === "Trending") {
@@ -343,7 +333,7 @@ $(document).ready(function () {
   const container2 = document.getElementById("trending-products");
   const container3 = document.getElementById("instore-products");
   const container4 = document.getElementById("best-seller-products");
-  // new arrival products====================
+  // new arrival products============================================================================================
   newArrival.forEach((product) => {
     const productHTML = `
       <div class="col-lg-3 col-md-6">
@@ -390,7 +380,7 @@ $(document).ready(function () {
     `;
     container.innerHTML += productHTML;
   });
-  // trending products=============================
+  // trending products=========================================================================================================
   Trending.forEach((product) => {
     const productHTML = `
       <div class="col-lg-3 col-md-6">
@@ -436,7 +426,7 @@ $(document).ready(function () {
     `;
     container2.innerHTML += productHTML;
   });
-  // in store products=====================
+  // in store products=================================================================================================================================
   inStore.forEach((product) => {
     const productHTML = `
       <div class="col-lg-3 col-md-6">
@@ -483,7 +473,7 @@ $(document).ready(function () {
     container3.innerHTML += productHTML;
   });
 
-  // best seller products=====================
+  // best seller products=================================================================================================================================
 
   fourBestSeller.forEach((product) => {
     const productHTML = `
@@ -493,9 +483,7 @@ $(document).ready(function () {
             <img src="${
               product.ProductImage
             }" class="position-absolute img-fluid" alt="${product.ProductName}">
-            <ul class="product-size m-0 w-100 align-items-center px-5 justify-content-evenly d-flex list-unstyled position-absolute">
-             ${renderSizes(product.ProductSize)}
-            </ul>
+            
             <div class="cart-btn hvr-sweep-to-right position-absolute w-100 align-items-center px-4 justify-content-evenly d-flex">
               <a class="text-decoration-none text-light" href="#">
                 <i class="fa-solid text-light fa-cart-shopping"></i> Add To Cart
@@ -530,12 +518,12 @@ $(document).ready(function () {
     `;
     container4.innerHTML += productHTML;
   });
-  // accessories products=====================
+  // accessories products=================================================================================================================================
   const container5 = document.getElementById("discover-Accessories");
 
   accessories.forEach((product) => {
     const productHTML = `<div class="item  col-12 col-md-12">
-                      <div
+      <div
                           class="d-flex flex-column flex-lg-row text-start p-4 justify-content-between product-card w-100">
                           <div class="img-prod w-100 mb-3 mb-lg-0">
                               <img class="w-100 h-100" src="${
@@ -564,8 +552,9 @@ $(document).ready(function () {
                   </div>`;
     container5.innerHTML += productHTML;
   });
-  //end accessories products=====================
-  //start trending women products=====================
+  //end accessories products=================================================================================================================================
+
+  //start trending women products=================================================================================================================================
   const container6 = document.getElementById("trending-women");
   women.forEach((product) => {
     const productHTML = ` <div class="   col-md-12">
@@ -607,7 +596,7 @@ $(document).ready(function () {
   });
 })();
 
-// start pagination ==============================
+// start pagination ==============================================================================================================================================================================
 
 function setupPagination(tabElement, itemsPerPage = 4) {
   const productList = tabElement.querySelector(".product-list");
@@ -644,8 +633,9 @@ function setupPagination(tabElement, itemsPerPage = 4) {
 document.querySelectorAll(".product-tab").forEach((tab) => {
   setupPagination(tab);
 });
-// end pagination =================================
-// function to render stars====================
+// end pagination =================================================================================================================================================================================
+
+// start function to render stars============================================================================================
 function renderStars(rate) {
   let starsHTML = "";
   for (let i = 1; i <= 5; i++) {
@@ -659,12 +649,14 @@ function renderStars(rate) {
   }
   return `<div >${starsHTML}</div>`;
 }
-//end function to render stars====================
-//start size fuction========================
+//end function to render stars============================================================================================
+
+//start size function====================================================================================================================================
 function renderSizes(sizes) {
   return sizes.map((size) => `<li>${size}</li>`).join("");
 }
-//end size function========================
+//end size function====================================================================================================================================
+
 //start shopping btn >>>>.................................
 
 $(document).ready(function () {
@@ -675,14 +667,14 @@ $(document).ready(function () {
     likedProducts = new Set(JSON.parse(storedProducts));
     likeCount = likedProducts.size;
     $("#shop-count").text(likeCount);
-
+    // Update the button icons for liked products
     likedProducts.forEach((id) => {
       $(`.shop-btn[data-id='${id}']`).html(
         '<i class=" text-danger fa-solid fa-cart-shopping"></i>'
       );
     });
   }
-
+  // Initialize the like count display
   $(".shop-btn").click(function () {
     const productId = $(this).data("id");
 
@@ -695,10 +687,10 @@ $(document).ready(function () {
       likedProducts.delete(productId);
       $(this).html('<i class="fa-solid fa-cart-shopping"></i>');
     }
-
+    // Update the like count display
     $("#shop-count").text(likeCount);
     localStorage.setItem("likedProducts", JSON.stringify([...likedProducts]));
   });
 });
 
-//end like btn >>>>.................................
+//end shopping btn >>>>.................................
