@@ -1,3 +1,5 @@
+
+
 (function () {
     $(document).ready(function () {
       function renderChart() {
@@ -42,10 +44,10 @@
               labels: productNames,
               datasets: [
                 {
-                  label: "الكمية المباعة",
+                  label: "Quantity sold  ",
                   data: salesQuantities,
-                  backgroundColor: "rgba(54, 162, 235, 0.7)",
-                  borderColor: "rgba(54, 162, 235, 1)",
+                  backgroundColor: "#BD844C",
+                  borderColor: "#BD844C",
                   borderWidth: 1,
                 },
               ],
@@ -62,7 +64,7 @@
                 tooltip: {
                   callbacks: {
                     label: function (context) {
-                      return `الكمية: ${context.raw}`;
+                      return `Quantity: ${context.raw}`;
                     },
                   },
                 },
@@ -72,13 +74,13 @@
                   beginAtZero: true,
                   title: {
                     display: true,
-                    text: "الكمية المباعة",
+                    text: "Quantity sold",
                   },
                 },
                 x: {
                   title: {
                     display: true,
-                    text: "أسماء المنتجات",
+                    text: "Product Names ",
                   },
                 },
               },
@@ -91,16 +93,16 @@
                 <h4>Unable to load sales data</h4>
                 <p>${error.message}</p>
                 <p>Click the button below to try again.</p>
-                <button id="retryBtn" class="btn btn-primary mt-3">🔄 إعادة المحاولة</button>
+                <button id="retryBtn" class="btn  border border-black fa-2x mt-3">🔄 Retry</button>
             </div>
           `);
   
-          // زرار الإعادة
+          
           $("#retryBtn").on("click", function () {
             $(".chart-container").html(`
               <canvas id="salesChart" height="400"></canvas>
             `);
-            renderChart(); // إعادة المحاولة
+            renderChart(); 
           });
         }
       }

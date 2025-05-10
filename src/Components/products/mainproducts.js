@@ -13,17 +13,17 @@ $(function () {
       
   <div class="container">
     <div class="row justify-content-center">
-      <img
-        class="w-50 mb-2"
+      <img style="width: 100%; height: 200px; object-fit: cover;"
+        class="w-50 h-20 mb-2 mt-4 "
         src="${categoryImg}"
         alt="${key}"
       />
       <button
         type="button"
-        class="btn btn-outline-primary openCategory"
+        class="btn btn-outline-primary openCategory mb-4"
         data-category="${key}"
       >
-       SHOW PRODUCTS OF ${key.toUpperCase()}
+         ${key.toUpperCase()}
       </button>
     </div>
   </div>
@@ -47,69 +47,93 @@ $(function () {
           (product) => product.SellerEmail === userEmail
         );
 
-        let ProductHTML = SellerProducts.map((product) => {
-          
-          let collapseId = `collapse-${product.ProductId}`;
-          return `
-     <div class="col-sm-12 d-flex p  mb-3">
-        <div class="card" productID="${product.ProductId}" style="width: 100%;">
-          <div class="card-header" data-bs-toggle="collapse" data-bs-target="#${collapseId}" style="cursor: pointer;">
-            <div class="d-flex justify-content-between">
-              <h5 class="mb-0 pt-1">#${product.ProductCode}</h5>
-           
-            </div>
-          </div>
-          
-          <div id="${collapseId}" productCode="${product.ProductCode}" class="collapse show">
-            
-            <div class="d-flex flex-column  flex-md-row"> 
-              <div class="me-3" style="flex: 0 0 30%;"> 
-                <img src="${product.ProductImage}" class="img-fluid rounded-start w-50 "  alt="${product.ProductName}">
-              </div>
-              
-              <div class="card-body" style="flex: 1;"> 
-                <div class="d-flex flex-column w-100">
-                  <span><strong>Product Name:</strong> ${product.ProductName}</span>
-                  <span><strong>Price:</strong> ${product.ProductPrice} EGP</span>
-                  <span><strong> Discount:</strong> ${product.priceAfterDiscount} EGP </span>
-                  <span><strong>Value Discount:</strong> ${product.ValueDiscount} EGP</span>
-                  <span><strong>Available:</strong> ${product.ProductCount} pieces</span>
-                  <span><strong>Status:</strong> ${product.ProductStatus}</span>
-                  <span><strong>Colors:</strong> ${product.ProductColors}</span>
-                  <span><strong>Size:</strong> ${product.ProductSize}</span>
-                  <span><strong>Description:</strong></span>
-                  <p class="text-muted">${product.ProductDescription}</p>
-                  <hr>
-                   <span><strong>Review:</strong></span>
-                  <p class="text-muted">${product.ProductDescription}</p>
-                  <div class="d-flex flex-row-reverse mt-3">
-                 
-                    <button class="btn btn-outline-danger  ms-3 deleteProduct" 
-                 data-productid="${product.ProductId}" 
-                 data-productcategory="${product.ProductCategory}" 
-                 data-bs-toggle="modal" 
-                 data-bs-target="#DeleteBtn">
-                 <i class="fa-solid fa-trash"></i>                      
-                      Delete
-                    </button>
-   <button class="btn btn-outline-primary updateProduct" 
-                            data-page="addproduct/product.html" 
-                            data-productid="${product.ProductId}" 
-                            data-productcategory="${product.ProductCategory}"
-                            data-bs-toggle="modal" 
-                            data-bs-target="#UpdateBtn">
-                      <i class="fas fa-edit me-2"></i>Update
-                    </button>
+    let ProductHTML = SellerProducts.map((product) => {
+  let collapseId = `collapse-${product.ProductId}`;
+  let carouselId = `productImagesCarousel-${product.ProductId}`;
 
-                  </div>
+  let images = product.ProductImage || [];
+
+  let carouselItems = images.map((img, index) => `
+    <div class="carousel-item ${index === 0 ? "active" : ""}">
+      <img src="${img}" class="d-block w-100 rounded" alt="Product Image ${index + 1}">
+    </div>
+  `).join("");
+
+  let indicators = images.map((_, index) => `
+    <button type="button" data-bs-target="#${carouselId}" data-bs-slide-to="${index}" ${index === 0 ? 'class="active" aria-current="true"' : ''} aria-label="Slide ${index + 1}"></button>
+  `).join("");
+
+  return `
+    <div class="col-sm-12 d-flex p mb-3">
+      <div class="card" productID="${product.ProductId}" style="width: 100%;">
+        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#${collapseId}" style="cursor: pointer;">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-0 pt-1">Product Code : ${product.ProductCode}</h5>
+          </div>
+        </div>
+
+        <div id="${collapseId}" productCode="${product.ProductCode}" class="collapse show">
+          <div class="d-flex flex-column flex-md-row">
+            <div class="me-3" style="flex: 0 0 30%;">
+              <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  ${carouselItems}
+                </div>
+                ${images.length > 1 ? `
+                  <button class="carousel-control-prev bg-gray" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                  <div class="carousel-indicators">
+                    ${indicators}
+                  </div>` : ''}
+              </div>
+            </div>
+
+            <div class="card-body" style="flex: 1;">
+              <div class="d-flex flex-column w-100 border p-3">
+                <span><strong>Product Name:</strong> ${product.ProductName}</span>
+                <span><strong>Price:</strong> ${product.ProductPrice} EGP</span>
+                <span><strong>Discount:</strong> ${product.priceAfterDiscount} EGP </span>
+                <span><strong>Value Discount:</strong> ${product.ValueDiscount} %</span>
+                <span><strong>Available:</strong> ${product.ProductCount} pieces</span>
+                <span><strong>Status:</strong> ${product.ProductStatus}</span>
+                <span><strong>Colors:</strong> ${product.ProductColors}</span>
+                <span><strong>Size:</strong> ${product.ProductSize}</span>
+                <span><strong>Description:</strong></span>
+                <p class="text-muted">${product.ProductDescription}</p>
+                <hr>
+
+                <div class="d-flex flex-row-reverse mt-3 p-3">
+                  <button class="btn CloseBtn ms-3 deleteProduct"
+                    data-productid="${product.ProductId}"
+                    data-productcategory="${product.ProductCategory}"
+                    data-bs-toggle="modal"
+                    data-bs-target="#DeleteBtn">
+                    <i class="fa-solid fa-trash"></i> Delete
+                  </button>
+                  <button class="btn btn-outline-primary updateProduct"
+                    data-page="addproduct/product.html"
+                    data-productid="${product.ProductId}"
+                    data-productcategory="${product.ProductCategory}"
+                    data-bs-toggle="modal"
+                    data-bs-target="#UpdateBtn">
+                    <i class="fas fa-edit me-2"></i> Update
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-          `;
-        }).join("");
+    </div>
+  `;
+}).join("");
+
 
         $(".Products").append(ProductHTML);
       }
@@ -118,6 +142,37 @@ $(function () {
           `<div class="alert alert-warning">No products ${categoryWannaShow} to display.</div>`
         );
       }
+
+
+$("#searchByCodeForm").on("keyup", function (e) {
+  e.preventDefault();
+  const searchCode = $("#searchByCodeInput").val().trim().toLowerCase();
+
+  if (!searchCode) {
+    $(".Products .card").show(); 
+    return;
+  }
+
+  $(".Products .card").each(function () {
+    const productCode = $(this)
+      .find(".card-header h5")
+      .text()
+      .replace("#", "")
+      .trim()
+      .toLowerCase();
+
+    if (productCode.includes(searchCode)) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
+});
+
+
+
+
+      
     }); // End Of Show Category and product
 
     $(document).on("click", ".updateProduct", function () {
@@ -138,12 +193,12 @@ $(function () {
               <div class="modal-content col-sm-12">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="updateProductLabel">Update Product</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close d-none" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body"></div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-danger CloseUpdate" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-outline-primary SaveUpdate" >Save</button>
+                  <button type="button" class="btn CloseBtn p-3 CloseUpdate" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-outline-primary SaveUpdate p-3" >Save</button>
                 </div>
               </div>
             </div>
@@ -167,41 +222,38 @@ $(function () {
         // }
 
         $("#UpdateBtn").on("shown.bs.modal", function () {
-          console.log(productNeedUpdate[0].priceAfterDiscount);
+     console.log(productNeedUpdate[0].priceAfterDiscount);
 
-          $("#ProductCode").val(productNeedUpdate[0].ProductCode);
-          $("#ProductName").val(productNeedUpdate[0].ProductName);
-          $("#ProductColors").val(productNeedUpdate[0].ProductColors) ||
-            "Colors";
-          $("#ProductPrice").val(productNeedUpdate[0].ProductPrice);
-          $("#ProductCount").val(productNeedUpdate[0].ProductCount);
-          $("input[name='ProductStatus']:checked").val(
-            productNeedUpdate[0].ProductStatus
-          );
-          let currentSizes = productNeedUpdate[0].ProductSize || [];
-          console.log("🚀 ~ mainproducts.js:203 ~ currentSizes:", currentSizes);
-
-          $(`input[name="productSize"]`).prop('checked', false); 
-          
-          currentSizes.forEach(size => {
-          console.log("🚀 ~ mainproducts.js:206 ~ size:", size);
-            
-              $(`input[name="productSize"][value="${size}"]`).prop('checked', true);
-          });
-          $("#DiscountPrice").val(productNeedUpdate[0].priceAfterDiscount)
-          $("#ValueDiscount").val(productNeedUpdate[0].ValueDiscount) ||
-            " No Discount";
-          $("#ProductDescription").val(productNeedUpdate[0].ProductDescription);
-          $("#ProductCategory").val(productNeedUpdate[0].ProductCategory);
-          $("#SubCategory").val(productNeedUpdate[0].SubCategory);
-          // $("#ProductImage")
-          //   .val(productNeedUpdate[0].ProductImage)
-          //   .split("\\")
-          //   .pop();
-          // $("#CategoryImage")
-          //   .val(productNeedUpdate[0].CategoryImage)
-          //   .split("\\")
-          //   .pop();
+  // Existing fields
+  $("#ProductCode").val(productNeedUpdate[0].ProductCode);
+  $("#ProductName").val(productNeedUpdate[0].ProductName);
+  $("#ProductColors").val(productNeedUpdate[0].ProductColors) || "Colors";
+  $("#ProductPrice").val(productNeedUpdate[0].ProductPrice);
+  $("#ProductCount").val(productNeedUpdate[0].ProductCount);
+  $("input[name='ProductStatus']:checked").val(
+    productNeedUpdate[0].ProductStatus
+  );
+  
+  // Sizes
+  let currentSizes = productNeedUpdate[0].ProductSize || [];
+  $(`input[name="productSize"]`).prop('checked', false); 
+  currentSizes.forEach(size => {
+    $(`input[name="productSize"][value="${size}"]`).prop('checked', true);
+  });
+  
+  // Discount fields
+  $("#DiscountPrice").val(productNeedUpdate[0].priceAfterDiscount)
+  $("#ValueDiscount").val(productNeedUpdate[0].ValueDiscount) || " No Discount";
+  
+  // Description and categories
+  $("#ProductDescription").val(productNeedUpdate[0].ProductDescription);
+  $("#ProductCategory").val(productNeedUpdate[0].ProductCategory);
+  $("#SubCategory").val(productNeedUpdate[0].SubCategory);
+  
+  // Image handling - this is the key part
+  let images = productNeedUpdate[0].ProductImage || [];
+  $("#image-input").val(images.join(", "));
+  updatePreview(); // Call this to show the preview
         });
 
 
@@ -212,33 +264,22 @@ $(function () {
           .off("click")
           .on("click", function () {
             
-            productNeedUpdate[0].ProductName = $("#ProductName").val();
-            productNeedUpdate[0].ProductColors =
-              $("#ProductColors").val() || "Colors";
-            productNeedUpdate[0].ProductPrice = $("#ProductPrice").val();
-            productNeedUpdate[0].ProductSize = $(`input[name="productSize"]:checked`)
-            .map(function() { return $(this).val(); })
-            .get();
-            productNeedUpdate[0].ProductStatus = $("input[name='ProductStatus']:checked").val();
-            productNeedUpdate[0].ProductCount = $("#ProductCount").val();
-          
-            productNeedUpdate[0].ValueDiscount =
-              $("#ValueDiscount").val() || " No Discount";
-            productNeedUpdate[0].ProductDescription = $(
-              "#ProductDescription"
-            ).val();
-            productNeedUpdate[0].priceAfterDiscount =$("#DiscountPrice").val()
-
-            // productNeedUpdate[0].ProductCategory = $("#ProductCategory").val();
-            // productNeedUpdate[0].SubCategory = $("#SubCategory").val();
-            productNeedUpdate[0].ProductImage = $("#ProductImage")
-              .val()
-              .split("\\")
-              .pop();
-            productNeedUpdate[0].CategoryImage = $("#CategoryImage")
-              .val()
-              .split("\\")
-              .pop();
+  productNeedUpdate[0].ProductName = $("#ProductName").val();
+  productNeedUpdate[0].ProductColors = $("#ProductColors").val() || "Colors";
+  productNeedUpdate[0].ProductPrice = $("#ProductPrice").val();
+  productNeedUpdate[0].ProductSize = $(`input[name="productSize"]:checked`)
+    .map(function() { return $(this).val(); })
+    .get();
+  productNeedUpdate[0].ProductStatus = $("input[name='ProductStatus']:checked").val();
+  productNeedUpdate[0].ProductCount = $("#ProductCount").val();
+  productNeedUpdate[0].ValueDiscount = $("#ValueDiscount").val() || " No Discount";
+  productNeedUpdate[0].ProductDescription = $("#ProductDescription").val();
+  productNeedUpdate[0].priceAfterDiscount = $("#DiscountPrice").val();
+  
+  productNeedUpdate[0].ProductImage = $("#image-input").val()
+    .split(",")
+    .map(img => img.trim())
+    .filter(img => img !== "");
             let allData = JSON.parse(localStorage.getItem("Store"));
             allData.Store = Store;
             localStorage.setItem("Store", JSON.stringify(allData));
@@ -370,6 +411,17 @@ $(document).on("click", ".CloseUpdate", function(){
         }
       });
 
+
+
+
+
+
+
+
+
+
+
+      
       //       if ($("#DeleteBtn").length === 0) {
       //         let ModalDelete = `
       //  <div class="modal fade" id="DeleteBtn" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="DeleteBtnLabel" aria-hidden="true">
@@ -397,3 +449,7 @@ $(document).on("click", ".CloseUpdate", function(){
     }); // End of Delete
   } //End Cured Store
 });
+
+
+
+ 

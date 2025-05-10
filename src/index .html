@@ -17,19 +17,29 @@
 </head>
 
 <body class="d-flex  flex-column vh-100">
+  <div id="up"></div>
   <!-- <header style="height: 15vh" class="ms-2 me-2 mt-1 fixed-top rounded-4"> -->
-  <div class="container vh-10">
+  <div class="container vh-10" >
     <div class="row  align-items-center">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <nav class="navbar  navbar-expand-lg  bg-body-tertiary fixed-top ">
         <div class="container-fluid border   rounded-5 p-3 ">
           <a class="navbar-brand d-flex align-items-center logo">
            <img class="w-25 me-2 ms-5  " src="Components/img/favicon.ico" alt="">SBay</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+     
+         
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+
+             
+
+
             <ul class="navbar-nav me-auto mb-2 mb-lg-0  d-lg-none">
               <li class="nav-item active h-li" data-page="Overview/Overview.html">
                 Overview
@@ -46,22 +56,29 @@
               </li>
               <!-- End Of add product-->
 
-              <li class="nav-item h-li" data-page="ProductUpdate/ProductUpdate.html">
-                Product Update
+              <li class="nav-item h-li" data-page="ProductList/ProductList.html">
+                Product List
               </li>
-              <!-- End Of  Product Update-->
+              <!-- End Of  Product List-->
             </ul>
 
-            <form class="d-flex ms-auto" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn rounded-circle" type="submit">
-                <i class="fa-solid fa-magnifying-glass text-black"></i>
-              </button>
+             
+           <form class="d-flex  ms-auto"id="searchByCodeForm" role="search">
+  <input
+    class="form-control me-2 "
+    type="search"
+    id="searchByCodeInput"
+    placeholder="Enter Product Code..."
+    aria-label="Search"
+  />
+ <i class="fa-solid fa-magnifying-glass p-3 "></i>
+
 
 
             </form>
+         
 
-            <div class="  align-items-center">
+            <div class="  align-items-center d-none d-lg-block">
               <button id="btn-message" class="button-message ms-5">
                 <div class="content-avatar">
                   <div class="status-user"></div>
@@ -83,6 +100,9 @@
         </div>
       </nav>
     </div>
+    <a href="#up" class="arrow-up-btn text-decoration-none   rounded-3 ">
+        <i class="fa-solid fa-arrow-up swep-a p-3 backGround rounded-3 btn text-black  position-fixed bottom-0 end-0 m-3 z-3"></i>
+    </a>
   </div>
   <!-- </header> -->
 
@@ -118,11 +138,13 @@
                 <span ><i class="fa-solid  pe-1 fa-square-plus"></i></span>
                 Add Product
               </li>
-
-              <li class="rounded-3 d-none  h-li mx-0 my-3" data-page="ProductUpdate/ProductUpdate.html">
-                <span ><i class="fa-solid pe-1 fa-upload"></i></span>
-                Product Update
+              <li data-page="ProductList/ProductList.html" class="rounded-3 h-li  mx-0 my-3">
+                <span ><i class="fa-solid  fa-table-list pe-1"></i></span>
+                Product List
               </li>
+
+                
+              <!-- End Of  Product List-->
               <!-- <li class=" rounded-3">
                 <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
                 Platform Partner

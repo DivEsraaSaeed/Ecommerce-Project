@@ -5,9 +5,10 @@ $(function () {
   $(".lable-message").html(users[0].username);
   $(".user-id").html(users[0].email);
   
+  // $(".content").load(`/src/Components/ProductList/ProductList.html`); //for test
   // $(".content").load(`/src/Components/Overview/Overview.html`); //for test
-  $(".content").load(`/src/Components/products/products.html`); //for test
-  // $(".content").load(`/src/Components/addproduct/product.html`); //for test
+  // $(".content").load(`/src/Components/products/products.html`); //for test
+  $(".content").load(`/src/Components/addproduct/product.html`); //for test
   $(".icon-bar-close, .icon-bar-toggle , .icon-bar-toggle-lg , .bar ul li").click(function () {
     const widthLeft = $(".bar").outerWidth(true);
     if ($(".bar").hasClass("d-block")) {

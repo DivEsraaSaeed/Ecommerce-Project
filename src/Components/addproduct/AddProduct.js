@@ -79,6 +79,22 @@ $(function () {
     $("#DiscountPrice").val(priceAfterDiscount);
   });
 
+
+       function updatePreview() {
+        const input = document.getElementById("image-input");
+        const previewContainer = document.getElementById("Preview-container");
+        var imagesArray = input.value.split(",");
+        previewContainer.innerHTML = "";
+        imagesArray.forEach((url) => {
+          const img = document.createElement("img");
+          img.src = url;
+          img.className = "img-thumbnail m-1";
+          img.style = "width: 100px; height: 100px; object-fit: cover;";
+          previewContainer.appendChild(img);
+        });
+      }
+   $("#image-input").on("input", updatePreview);
+
   $("#add").on("click", function (e) {
     e.preventDefault();
 
@@ -99,14 +115,18 @@ $(function () {
     let ProductColors = $("#ProductColors").val() || "Colors";
     let ProductPrice = $("#ProductPrice").val();
     let ProductCount = $("#ProductCount").val();
-    let DiscountPrice =    $("#DiscountPrice").val();
+    let DiscountPrice = $("#DiscountPrice").val();
 
     let ProductStatus = $("input[name='ProductStatus']:checked").val();
     let ValueDiscount = $("#ValueDiscount").val() || 0;
     let ProductDescription = $("#ProductDescription").val();
     let ProductCategory = $("#ProductCategory").val();
     let SubCategory = $("#SubCategory").val();
-    let ProductImage = $("#ProductImage").val().split("\\").pop();
+    // let ProductImage = $("#ProductImage").val().split("\\").pop();
+    let ProductImage =  $("#image-input").val().split(",").map((img) => img.trim()).filter((img) => img !== "");
+
+      console.log("🚀 ~ AddProduct.j:110 ~ ProductImage:", ProductImage);
+
     let CategoryImage = $("#CategoryImage").val().split("\\").pop();
     let newProductCategory = $("#newProductCategory").val();
     let ProductRate = $("#ProductRate").val() || 0;
@@ -114,20 +134,26 @@ $(function () {
     let SellerName = SellerData.username;
     let SellerEmail = SellerData.email;
 
+
     let ProductsList = JSON.parse(localStorage.getItem("Store")) || {
       Store: {},
       Sellers: [],
     };
     const categoryImages = {
       men: "https://f.nooncdn.com/mpcms/EN0003/assets/ad1e812d-4463-4c8b-a39e-4f130c3e7ae9.png",
-      women: "https://f.nooncdn.com/mpcms/EN0003/assets/28aca5b8-e0f5-4514-bfec-817c22625f09.png",
-      accessories: "https://f.nooncdn.com/mpcms/EN0003/assets/28aca5b8-e0f5-4514-bfec-817c22625f09.png",
-      
-      default: "/src/Components/img/Category.webp"
+      women:
+        "https://f.nooncdn.com/mpcms/EN0003/assets/28aca5b8-e0f5-4514-bfec-817c22625f09.png",
+      // accessories: "https://market-resized.envatousercontent.com/photodune.net/EVA/TRX/88/c3/3d/58/f2/v1_E10/E109KVRF.jpg?auto=format&q=94&mark=https%3A%2F%2Fassets.market-storefront.envato-static.com%2Fwatermarks%2Fphoto-260724.png&opacity=0.2&cf_fit=cover&w=500&s=54f91335d47d7f9cdef8078ab988abb91941d428b593ac58eac4d6a41c92fa56",
+      // men:"/src/Components/img/men.jpg",
+      // women: "/src/Components/img/women.jpg ",
+      accessories: "/src/Components/img/accessories.jpg",
+
+      default: "/src/Components/img/Category.webp",
     };
     let finalNewProductCategory = newProductCategory || ProductCategory;
-    let normalizedCategory = finalNewProductCategory.toLowerCase();
-    let selectedCategoryImage = categoryImages[normalizedCategory] || categoryImages["default"];
+    let normalizedCategory = finalNewProductCategory;
+    let selectedCategoryImage =
+      categoryImages[normalizedCategory] || categoryImages["default"];
     if (!ProductsList.Store[finalNewProductCategory]) {
       ProductsList.Store[finalNewProductCategory] = {
         CategoryImage: CategoryImage
@@ -163,7 +189,7 @@ $(function () {
       ProductCategory,
       SubCategory,
       ProductStatus,
-      ProductImage: `/src/Components/img/${ProductImage}`,
+      ProductImage,
       ProductDescription,
       ProductRate,
       ProductReviews,
