@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SnapBuy- Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapBuy- wishlist</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- hover lib -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <!-- animate lib -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- custom css -->
+    <style>
+        body {
+            background-color: var(--main-color);
+        }
+
+        :root {
+            --main-color: #F8F9FA !important;
+            --second-color: #BD844C !important;
+            --third-color: #010F1C !important;
+            --main-transition: all .3s !important;
+            --second-bg-background-color: #ffffffb9 !important;
+            --first-bg-background-color: #F7F7F7 !important;
+            --main-bg-background-color: white !important;
+            --transport-background-color: transparent !important;
+            --fourth-color: #dc3545 !important;
+        }
+
+        .wishlist-container {
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .wishlist-header {
+            border: 2px solid var(--second-color);
+
+
+        }
+
+        .wishlist-header h2 {
+            color: var(--second-color) !important;
+        }
+
+        .wishlist-header span {
+            background-color: var(--second-color) !important;
+            color: var(--main-color);
+        }
+
+        .product-card {
+            background-color: var(--main-color);
+            transition: var(--main-transition);
+        }
+
+        .product-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .product-img {
+            height: 270px;
+            width: 100%;
+            object-fit: contain;
+            background-color: #F2F3F5;
+        }
+
+
+        .btn-remove {
+            background-color: var(--fourth-color);
+            color: var(--main-color);
+        }
+
+        .btn-remove:hover,
+        .btn-add-to-cart:hover {
+            background-color: var(--third-color);
+            color: var(--main-color);
+        }
+
+        .btn-add-to-cart {
+            color: var(--main-color) !important;
+            background-color: var(--second-color);
+            border: 1px solid var(--second-color);
+        }
+
+        .swep-a {
+            background-color: var(--second-color);
+            color: var(--main-color);
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--second-color);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--third-color);
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <div class="container">
+        <div class="wishlist-container ">
+            <div class="wishlist-header p-4 mb-5">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="text-white  m-0"> Wish List <i class="fa-regular fs-3 fa-heart ps-2"></i></h2>
+                    <span id="wishlist-count" class="badge p-3 rounded-0 fs-5">0</span>
+
+
+                </div>
+            </div>
+
+            <div class="row" id="wishlist-container">
+
+
+
+
+                <!-- up btn -->
+                <a href="#up" class="arrow-up-btn text-decoration-none  rounded-3 ">
+                    <i class="fa-solid fa-arrow-up swep-a p-2 rounded-3 position-fixed bottom-0 end-0 m-3 z-3"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- font awesome -->
+    <script src="js/all.min.js"></script>
+    <!-- bootstrap -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            const wishlistContainer = $("#wishlist-container");
+            let likedProducts = JSON.parse(localStorage.getItem("likedProducts")) || [];
+            $("#wishlist-count").text(likedProducts.length);
+            if (likedProducts.length === 0) {
+                wishlistContainer.html("<p class='text-center'>No products in wishlist.</p>");
+                return;
+            }
+            likedProducts.forEach(product => {
+                const card = `
+            <div class="col-md-6 col-lg-4 col-xl-3">
+              <div class="product-card position-relative overflow-hidden mb-4 shadow-sm">
+                <img src="${product.ProductImage}" class="product-img img-fluid w-100" alt="img">
+                <i class="fa-solid position-absolute top-0 end-0 fs-3 text-danger p-3 fa-heart"></i>
+                <div class="product-info p-3">
+                  <h5 class="pt-1">
+                    <a class="fs-5 text-decoration-none text-dark" href="#">${product.ProductName}</a>
+                  </h5>
+                  <div class="fs-6 py-2">
+                    <h6 class="fs-5">${product.priceAfterDiscount} 
+                      <del class="fw-light fs-6">${product.ProductPrice}</del>
+                    </h6>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <button class="btn btn-sm btn-remove" data-id="${product.ProductCode}">
+                      <i class="fas fa-trash"></i> delete
+                    </button>
+                    <button class="btn btn-sm btn-add-to-cart">
+                      <i class="fas fa-shopping-cart"></i> add to cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        `;
+                wishlistContainer.append(card);
+            });
+            wishlistContainer.on("click", ".btn-remove", function () {
+                const id = $(this).data("id");
+                likedProducts = likedProducts.filter(p => p.ProductCode !== id);
+                localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
+                $(this).closest(".col-md-6").remove();
+                $("#wishlist-count").text(likedProducts.length);
+                if (likedProducts.length === 0) {
+                    wishlistContainer.html("<p class='text-center'>No products in wishlist.</p>");
+                }
+            });
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -20,14 +20,6 @@ body {
     color: var(--main-color);
 }
 
-/* .dark-mode {
-    --main-color: #1A1A1A !important;
-    --second-color: #BD844C !important;
-    --third-color: #F5F5F5 !important;
-    --second-bg-background-color: #2A2A2A !important;
-    --first-bg-background-color: #1F1F1F !important;
-   
-  } */
 
 /* scroll bar*/
 ::-webkit-scrollbar {
@@ -55,24 +47,26 @@ body {
     transition: all 0.3s;
     outline: none;
 }
+
 #search-results {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.855) !important; 
-    backdrop-filter: blur(20px) ;
+    background-color: rgba(0, 0, 0, 0.855) !important;
+    backdrop-filter: blur(20px);
     z-index: 9999;
     display: none;
     overflow-y: auto;
     max-height: 60vh;
 }
 
-.form-control:focus{
+.form-control:focus {
     box-shadow: none;
     border: 1px solid var(--second-color) !important;
     box-shadow: 0 0 0 .20rem #bd844c3b;
 }
+
 #snapbuy-nav {
     display: none;
     position: fixed;
@@ -194,7 +188,7 @@ body {
 .bg-img:hover .overlay-text p {
     color: var(--main-color);
     transition: var(--main-transition);
-    
+
 }
 
 /* start 4 section*/
@@ -252,7 +246,7 @@ body {
 
 }
 
-.product-content a:hover, .content-prod h5:hover a, .overlay-text-bg-img h5:hover a, #login-user-lg:hover, #login-user-sm:hover ,.shop-h:hover ,#search-icon:hover ,.bar-h:hover {
+.product-content a:hover, .content-prod h5:hover a, .overlay-text-bg-img h5:hover a, #login-user-lg:hover, #login-user-sm:hover, .shop-h:hover, #search-icon:hover, .bar-h:hover {
     color: var(--second-color) !important;
 }
 
@@ -340,13 +334,15 @@ body {
     background: #bd844c78;
 }
 
-#like-count {
-    position: relative;
-    right: 20px;
+#like-count ,#cart-count{
+    position: absolute;
+    left: 15px;
+    top: -7px;
     font-size: 12px;
     color: var(--main-color);
     background-color: #BD844C;
     height: fit-content;
     padding: 0 6px !important;
     border-radius: 50%;
+    
 }

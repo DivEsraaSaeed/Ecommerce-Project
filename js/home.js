@@ -124,10 +124,7 @@ $(document).ready(function () {
   });
 });
 
-
 //end search results============================================================
-
-
 
 //start nav bar=====================================================================
 
@@ -155,7 +152,6 @@ $(document).ready(function () {
   });
 });
 //end nav bar=======================================================================================
-
 
 // Carousel 1===========================================================================================
 $(document).ready(function () {
@@ -273,14 +269,13 @@ $(document).ready(function () {
 
 //end carousel5===========================================================================================================================================
 
-
 //important data from json file to local storage=======================================================================================
 
 (async function SaveHomeDataToLocalStorage() {
   try {
-    const response = await fetch("../home-store.json");
+    const response = await fetch("../Store.json");
     const data = await response.json();
-    localStorage.setItem("home-store", JSON.stringify(data));
+    localStorage.setItem("Store", JSON.stringify(data));
 
     console.log("Data saved to local storage:", data);
   } catch (error) {
@@ -293,7 +288,7 @@ $(document).ready(function () {
 // start load data from local storage===========================================================================================
 
 (function loadHomeData() {
-  const data = JSON.parse(localStorage.getItem("home-store"));
+  const data = JSON.parse(localStorage.getItem("Store"));
   const men = data.Store.men.ProductCategory.Products;
   const women = data.Store.women.Products;
   const accessories = data.Store.accessories.Products;
@@ -366,9 +361,9 @@ $(document).ready(function () {
             <ul class="social-icon list-unstyled position-absolute">
               
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
-              <li data-id="${
-                product.ProductCode
-              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+              <li data-id="${product.ProductCode}"  data-category=${
+      product.ProductCategory
+    }  class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -413,9 +408,9 @@ $(document).ready(function () {
            <ul class="social-icon list-unstyled position-absolute">
               
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
-              <li data-id="${
-                product.ProductCode
-              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+              <li data-id="${product.ProductCode}"  data-category=${
+      product.ProductCategory.product
+    }  class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -459,9 +454,9 @@ $(document).ready(function () {
             <ul class="social-icon list-unstyled position-absolute">
               
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
-              <li data-id="${
-                product.ProductCode
-              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+             <li data-id="${product.ProductCode}"  data-category=${
+      product.ProductCategory
+    }  class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -505,9 +500,9 @@ $(document).ready(function () {
              <ul class="social-icon list-unstyled position-absolute">
               
               <li class="hvr-rectangle-out d-flex"><a href="#"><i class="fa-solid text-dark fa-eye"></i></a></li>
-              <li data-id="${
-                product.ProductCode
-              }" class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
+             <li data-id="${product.ProductCode}"  data-category=${
+      product.ProductCategory
+    }  class="hvr-rectangle-out shop-btn d-flex"><i class="fa-regular text-dark fa-heart"></i></li>
             </ul>
           </div>
           <div class="product-content pt-3">
@@ -670,39 +665,46 @@ function renderSizes(sizes) {
 }
 //end size function====================================================================================================================================
 
-//start shopping btn >>>>.................................
-
 $(document).ready(function () {
-  let likeCount = 0;
-  let likedProducts = new Set();
-  const storedProducts = localStorage.getItem("likedProducts");
-  if (storedProducts) {
-    likedProducts = new Set(JSON.parse(storedProducts));
-    likeCount = likedProducts.size;
-    $("#like-count").text(likeCount);
-    // Update the button icons for liked products
-    likedProducts.forEach((id) => {
-      $(`.shop-btn[data-id='${id}']`).html(
-        '<i class=" text-danger fa-solid fa-heart"></i>'
-      );
-    });
-  }
-  // Initialize the like count display
-  $(".shop-btn").click(function () {
-    const productId = $(this).data("id");
+  let likedProducts = JSON.parse(localStorage.getItem("likedProducts")) || [];
+  $("#like-count").text(likedProducts.length);
 
-    if (!likedProducts.has(productId)) {
-      likeCount++;
-      likedProducts.add(productId);
-      $(this).html('<i class=" text-danger fa-solid fa-heart"></i>');
-    } else {
-      likeCount--;
-      likedProducts.delete(productId);
-      $(this).html('<i class="fa-regular text-dark fa-heart"></i>');
+
+  likedProducts.forEach((p) => {
+    $(`.shop-btn[data-id="${p.ProductCode}"]`).html(
+      '<i class="text-danger fa-solid fa-heart"></i>'
+    );
+  });
+
+  $(".shop-btn").on("click", function () {
+    const productId = $(this).data("id");
+    const store = JSON.parse(localStorage.getItem("Store"))?.Store;
+    console.log(JSON.parse(localStorage.getItem("Store")));
+
+    if (!store) return;
+
+    let foundProduct;
+    for (const key in store) {
+      foundProduct = store[key]?.Products?.find(
+        (p) => p.ProductCode === productId
+      );
+      if (foundProduct) break;
     }
-    // Update the like count display
-    $("#like-count").text(likeCount);
-    localStorage.setItem("likedProducts", JSON.stringify([...likedProducts]));
+
+    if (!foundProduct) return;
+
+    const isLiked = likedProducts.some((p) => p.ProductCode === productId);
+
+    if (isLiked) {
+      likedProducts = likedProducts.filter((p) => p.ProductCode !== productId);
+      $(this).html('<i class="fa-regular text-dark fa-heart"></i>');
+    } else {
+      likedProducts.push(foundProduct);
+      $(this).html('<i class="text-danger fa-solid fa-heart"></i>');
+    }
+
+    $("#like-count").text(likedProducts.length);
+    localStorage.setItem("likedProducts", JSON.stringify(likedProducts));
   });
 });
 
