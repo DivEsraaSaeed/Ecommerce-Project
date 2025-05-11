@@ -669,7 +669,6 @@ $(document).ready(function () {
   let likedProducts = JSON.parse(localStorage.getItem("likedProducts")) || [];
   $("#like-count").text(likedProducts.length);
 
-
   likedProducts.forEach((p) => {
     $(`.shop-btn[data-id="${p.ProductCode}"]`).html(
       '<i class="text-danger fa-solid fa-heart"></i>'
@@ -678,20 +677,26 @@ $(document).ready(function () {
 
   $(".shop-btn").on("click", function () {
     const productId = $(this).data("id");
-    const store = JSON.parse(localStorage.getItem("Store"))?.Store;
-    console.log(JSON.parse(localStorage.getItem("Store")));
 
-    if (!store) return;
-
-    let foundProduct;
-    for (const key in store) {
-      foundProduct = store[key]?.Products?.find(
-        (p) => p.ProductCode === productId
-      );
-      if (foundProduct) break;
-    }
-
-    if (!foundProduct) return;
+    const data = JSON.parse(localStorage.getItem("Store"));
+    const men = data.Store.men.ProductCategory.Products;
+    const women = data.Store.women.Products;
+    const accessories = data.Store.accessories.Products;
+    men.forEach((product) => {
+      if (product.ProductCode === productId) {
+        foundProduct = product;
+      }
+    });
+    women.forEach((product) => {
+      if (product.ProductCode === productId) {
+        foundProduct = product;
+      }
+    });
+    accessories.forEach((product) => {
+      if (product.ProductCode === productId) {
+        foundProduct = product;
+      }
+    });
 
     const isLiked = likedProducts.some((p) => p.ProductCode === productId);
 
