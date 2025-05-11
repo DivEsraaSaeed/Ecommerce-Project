@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+  <input type="checkbox" id="toggle-nav">
+    <!-- start the side NAV -->   
+ <div class="sidenav ">
+<div class="logo">
+    <a href="#"> <img src="img/logo.jpg"  alt="logo" class="border  border-warning  " ></a>
+</div>
+<!-- end of logo -->
+<div class="sidemenu ">
+  <div class="item" id="Dashboard">
+    <a href="#" class="btn" >
+        <!-- <i class="fa fa-solid fa-home fs-2 "> </i> -->
+        <span> Dashboard</span>
+      </a>
+  </div>
+  
+  <div class="item btn"  >
+    <a href="#" class="btn" id="Product"  >
+        <!-- <i class="fa-sharp fa-solid fa-star fs-1"></i> -->
+        <span>  product </span> 
+        <!-- <i class="fa fa-solid fa-caret-down fs-1 "> </i> -->
+      </a>
+
+      </div>
+
+<div class="item btn">
+<a href="#"  aria-expanded="false" id="sellerspages" >
+<!-- <i class="fa-solid fa-users-gear fs-1"></i> -->
+<span> sellers  </span> 
+<!-- <i class="fa fa-solid fa-caret-down fs-1"> </i> -->
+</a>
+
+</div>
+
+
+<div class="item item-customer btn">
+<a >
+    <!-- <i class="fa-solid fa-database fs-1"></i> -->
+    <span> customer</span> 
+  </a>
+  
+</div>
+
+
+<div id="serviceCustomerBtn" class="item service-customer btn">
+  <a href="#"> 
+    <!-- <i class="fa-solid fa-database fs-1"></i> -->
+    <span> customer service</span> 
+  </a>
+</div>
+
+
+<!-- <div class="item">
+<a href="#">
+<i class="fa-solid fa-calendar-days fs-1"></i>
+<span>Calender</span>
+</a>
+</div> -->
+  </div>
+</div>
+</div>
+<!-- end of sideNav -->
+<div class="main-content">
+<header>
+
+  <div class="left-header">
+<label for="toggle-nav"><i class="fa fa-solid fa-bars"> </i> </label>
+  <div class="container-fluid">
+    <!-- <form class="d-flex" role="search">
+      <input class="form-control me-2 bg-dark text-white" placeholder="Search" aria-label="Search">
+      <button class="btn btn-warning" type="submit">Search</button>
+    </form> -->
+  </div>
+  </div>
+
+
+  <div class="right-header">
+
+<div class="message">
+<i class="fa fs-solid fa-message"></i>
+<div class="message-box">
+  <span>messages</span>
+
+  <div class="message-list">
+          <div class="mess-img"><img src="img/profile.jpg" alt="">   </div>
+            
+          <div class="mess-text" > 
+               <h6> Kayla </h6>
+               <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+  </div>
+
+  <div class="message-list">
+    <div class="mess-img"><img src="img/profile.jpg" alt="">   </div>
+            
+    <div class="mess-text" > 
+         <h6> Kayla </h6>
+         <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="bell">
+  <i class="fa fs-solid fa-bell"></i>
+</div>
+
+<div class="profile">
+<img src="img/profile.jpg" >
+
+  <div class="user-menu">
+      <ul>
+          <li> <a href="#" class="fa-solid fa-arrow-right-from-bracket ">logout</a></li>
+         <li><a href="#" class="fa-solid fa-gear">Setting </a></li>
+      </ul>
+  
+   </div>
+</div>
+  </div>
+</header>
+<!-- start the content -->
+<section class="content">
+<div class="row">
+  <div class="col-lg-12 col-md-12"> 
+<div class="banner">
+  <h3> Welcome back</h3>
+  <button class="btn btn-warning " id="openModal" type="button">add</button>
+</div>
+  </div>
+</div>
+<!-- product added  show  -->
+<div class="row products-management" id="productManagement">
+  <div class="col-12">
+    <h2 class="mb-4 text-info">Product Management</h2>
+    <div class="row" id="productsContainer">
+      <!-- Added show  -->
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Sellers Management Section -->
+<div class="row sellers-management" id="sellersManagement" style="display: none;">
+  <div class="col-12">
+    <h2 class="mb-4 text-info">Sellers Management</h2>
+    <div class="buttton">
+
+    <button id="add-seller-btn" class="btn btn-success action-btn "> Add new seller </button>
+    <button id="delete-seller-btn" class=" btn btn-danger action-btn-2 "> Delete seller </button>
+    <button id="Edit-seller-btn" class=" btn btn-warning action-btn-3 "> Edit seller </button>
+
+
+
+    </div>
+
+<div id="seller-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>إضافة بائع جديد</h2>
+    <form id="seller-form">
+      <div class="form-group">
+        <label for="seller-name">اسم البائع:</label>
+        <input type="text" id="seller-name" required>
+      </div>
+      <div class="form-group">
+        <label for="seller-email">البريد الإلكتروني:</label>
+        <input type="email" id="seller-email" required>
+      </div>
+      
+      <div id="products-container">
+        <h3>المنتجات:</h3>
+        <div class="product-item">
+          <div class="form-group">
+            <label>اسم المنتج:</label>
+            <input type="text" class="product-name" required>
+          </div>
+          <div class="form-group">
+            <label>سعر المنتج:</label>
+            <input type="number" class="product-price" required>
+          </div>
+
+           <div class="form-group">
+      <label>الكمية:</label>
+      <input type="number" class="product-quantity" value="1" min="1" required>
+    </div>
+
+    <div class="form-group" >
+      <label>رابط صورة المنتج:</label>
+      <input type="url" class="product-image" placeholder="https://example.com/image.jpg">
+    </div>
+    
+          <div class="form-group">
+            <label>وصف المنتج:</label>
+            <textarea class="product-description"></textarea>
+          </div>
+          <div class="form-group">
+            <label>حالة المنتج:</label>
+            <select class="product-status">
+              <option value="In-Stock">متوفر</option>
+              <option value="Out-of-Stock">غير متوفر</option>
+              <option value="New-Arrival">وصل حديثاً</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <button type="submit" class="save-btn"> save </button>
+    </form>
+  </div>
+</div>
+    <div class="row " id="sellersContainer ">
+      <!-- سيتم عرض البائعين هنا -->
+       
+      <div class="col-12">
+       
+        <div class="seller-list">
+          <h1>products by seller</h1>
+          <div id="sellers-data">
+            
+              <div class="loading"> loading ...</div>
+              
+          </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ................................................................................ custo section -->
+<div id="customerManagement" style= "display: none;">
+    <h2 class="mb-4 text-info">customer Management</h2>  
+       <div class="buttton">
+
+    <button id="add-custo-btn" class="btn btn-success action-btn "> Add new customer </button>
+    <button id="delete-custo-btn" class=" btn btn-danger action-btn-2 "> Delete customer </button>
+    <button id="Edit-custo-btn" class=" btn btn-warning action-btn-3 "> Edit customer </button>
+    </div>
+
+<div id="addCustomerFormContainer" style="display: none; margin-top: 20px;">
+    <form id="addCustomerForm">
+          <span class="close-btn">&times;</span>
+
+        <div class="mb-3">
+            <label class="form-label">اسم المستخدم</label>
+            <input type="text" class="form-control" id="username" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">البريد الإلكتروني</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">كلمة المرور</label>
+            <input type="password" class="form-control" id="password" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">رقم الهاتف</label>
+            <input type="tel" class="form-control" id="phone" required>
+        </div>
+        <button type="submit" class="btn btn-primary">حفظ</button>
+    </form>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteCustomerModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+    <div style="background-color: white; width: 400px; max-width: 90%; margin: 100px auto; padding: 20px; border-radius: 8px;">
+        <h3>Delete Customer</h3>
+        <div class="mb-3">
+            <label class="form-label">Customer Email</label>
+            <input type="email" class="form-control" id="deleteCustomerEmail" required>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+            <button id="cancelDeleteBtn" class="btn btn-secondary">Cancel</button>
+            <button id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Edit Customer Modal -->
+<div id="editCustomerModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+    <div style="background-color: white; width: 400px; max-width: 90%; margin: 50px auto; padding: 20px; border-radius: 8px;">
+        <h3>Edit Customer</h3>
+        <div class="mb-3">
+            <label class="form-label">Customer Email</label>
+            <input type="email" class="form-control" id="editCustomerEmail" required>
+            <button id="searchCustomerBtn" class="btn btn-info mt-2">Search</button>
+        </div>
+        
+        <form id="editCustomerForm" style="display: none;">
+            <div class="mb-3">
+                <label class="form-label">اسم المستخدم</label>
+                <input type="text" class="form-control" id="editUsername" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">البريد الإلكتروني</label>
+                <input type="email" class="form-control" id="editEmail" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">كلمة المرور</label>
+                <input type="password" class="form-control" id="editPassword" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">رقم الهاتف</label>
+                <input type="tel" class="form-control" id="editPhone" required>
+            </div>
+            <input type="hidden" id="originalEmail">
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button type="button" id="cancelEditBtn" class="btn btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+ <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>اسم المستخدم</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>رقم الهاتف</th>
+                    <th>رقم ID</th>
+                </tr>
+            </thead>
+            <tbody id="customersTableBody">
+                <!-- سيتم ملء الجدول هنا بالبيانات -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="service-Management" style="display: none;">
+    <h2 class="mb-4 text-info">customer service</h2>  
+    <div class="buttton">
+
+    <button id="review-btn" class="btn btn-success action-btn">reviews</button>
+    <button id="complaint-btn" class="btn btn-danger action-btn-2">complaints</button>
+
+    </div>
+<div id="reviews-container" class="mt-4"></div>
+<div id="complaints-container" class="mt-4"></div>
+
+</div>
+
+<!-- end of first row -->
+<div class="row" id="category">
+<div class=" col-lg-3 col-md-3 ">
+ <div class="thum  btn "id="men-seller">
+   <div class="icon">
+        <i class="fa-solid fa-hand-holding-dollar" style="font-size: 60px; margin-top: 9px;"></i>
+    </div>
+     <div class="text " >
+          <h2> category </h2>
+          <h4>1</h4>
+          <span>men</span>
+    </div>
+  </div>
+ </div>
+
+ <div class="col-lg-3 col-md-3">
+  <div class="thum btn" id="women-seller">
+    <div class="icon">
+         <i class="fa-solid fa-hand-holding-dollar" style="font-size: 60px; margin-top: 9px;"></i>
+     </div>
+      <div class="text">
+         <h2>category </h2>
+         <h4>2</h4>
+         <span>women </span>
+     </div>
+   </div>
+  </div>
+
+  
+  <div class="col-lg-3 col-md-3">
+    <div class="thum btn" id="show-all-categories">
+      <div class="icon">
+           <i class="fa-solid fa-hand-holding-dollar" style="font-size: 60px; margin-top: 9px;"></i>
+       </div>
+        <div class="text">
+           <h2>category </h2>
+           <h4>3</h4>
+           <span>Accessories</span>
+       </div>
+     </div>
+    </div>
+
+    
+    <div class="col-lg-3 col-md-3">
+      <div class="thum btn" id="sports-seller">
+        <div class="icon">
+             <i class="fa-solid fa-hand-holding-dollar" style="font-size: 60px; margin-top: 9px;"></i>
+         </div>
+          <div class="text">
+             <h2>category </h2>
+             <h4>4</h4>
+             <span>sports</span>
+         </div>
+       </div>
+      </div>
+     
+</div>
+<!-- end of second row -->
+
+<div id="men-seller-data" class="data-display-container" style="display: none; margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px;"></div>
+
+<!-- ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD ADD-->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Add new product</h2>
+      <form id="productForm">
+          <div class="form-group">
+              <label for="productName"> product name:</label>
+              <input type="text" id="productName" required>
+          </div>
+          <div class="form-group">
+              <label for="productPrice">price:</label>
+              <input type="number" id="productPrice" required>
+          </div>
+          <div class="form-group">
+              <label for="productQuantity">Qantity:</label>
+              <input type="number" id="productQuantity" required>
+          </div>
+          <button type="submit" class="submit-btn"> submit </button>
+      </form>
+  </div>
+</div>
+
+  <!-- EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT EDIT -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close-edit">&times;</span>
+      <h2>Edit Product</h2>
+      <form id="editForm">
+        <input type="hidden" id="editIndex">
+        <div class="form-group">
+          <label for="editName">Product name:</label>
+          <input type="text" id="editName" required>
+        </div>
+        <div class="form-group">
+          <label for="editPrice">Price:</label>
+          <input type="number" id="editPrice" required>
+        </div>
+        <div class="form-group">
+          <label for="editQuantity">Quantity:</label>
+          <input type="number" id="editQuantity" required>
+        </div>
+        <button type="submit" class="submit-btn">Update</button>
+      </form>
+    </div>
+  </div>
+<!-- <div id="calendarModal" class="modal">
+  <div class="modal-content" style="max-width: 900px;">
+    <span class="close-calendar">&times;</span>
+    <h2>Calendar</h2>
+    <div id="calendar"></div>
+  </div>
+</div> -->
+</section>
+</div>
+
+<script>
+  // فتح وإغلاق النافذة المنبثقة
+  const modal = document.getElementById("productModal");
+  const openBtn = document.getElementById("openModal");
+  const closeBtn = document.getElementsByClassName("close")[0];
+  
+  openBtn.onclick = function() {
+      modal.style.display = "block";
+  }
+  
+  closeBtn.onclick = function() {
+      modal.style.display = "none";
+  }
+  
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  
+  // حفظ المنتج في localStorage
+  const productForm = document.getElementById("productForm");
+  
+  productForm.onsubmit = function(e) {
+      e.preventDefault();
+      
+      const productName = document.getElementById("productName").value;
+      const productPrice = document.getElementById("productPrice").value;
+      const productQuantity = document.getElementById("productQuantity").value;
+      
+      // إنشاء كائن المنتج
+      const product = {
+          name: productName,
+          price: productPrice,
+          quantity: productQuantity,
+          date: new Date().toLocaleDateString()
+      };
+      
+      // الحصول على المنتجات الحالية من localStorage أو إنشاء مصفوفة جديدة
+      let products = JSON.parse(localStorage.getItem("products")) || [];
+      
+      // إضافة المنتج الجديد
+      products.push(product);
+      
+      // حفظ المنتجات في localStorage
+      localStorage.setItem("products", JSON.stringify(products));
+      
+      // إغلاق النافذة وإعادة تعيين النموذج
+      modal.style.display = "none";
+      productForm.reset();
+      
+      // إظهار رسالة نجاح
+      alert("تم حفظ المنتج بنجاح!");
+  };
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+  // Calendar functionality
+  // document.addEventListener('DOMContentLoaded', function() {
+    // Get calendar link element
+    // const calendarLink = document.querySelector('.item:nth-last-child(3) a');
+    
+    // Get calendar modal elements
+    // const calendarModal = document.getElementById("calendarModal");
+    // const closeCalendarBtn = document.getElementsByClassName("close-calendar")[0];
+    
+    // Initialize calendar when link is clicked
+    // calendarLink.addEventListener('click', function(e) {
+      // e.preventDefault();
+      // calendarModal.style.display = "block";
+      
+      // Initialize FullCalendar
+      // const calendarEl = document.getElementById('calendar');
+      // const calendar = new FullCalendar.Calendar(calendarEl, {
+      //   initialView: 'dayGridMonth',
+      //   headerToolbar: {
+      //     left: 'prev,next today',
+      //     center: 'title',
+      //     right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      //   },
+        // dayCellDidMount: function(arg) {
+        //   // Highlight Fridays (5) and Saturdays (6)
+        //   if (arg.date.getDay() === 5) { // Friday
+        //     arg.el.style.backgroundColor = 'rgba(255, 213, 79, 0.2)';
+        //   } else if (arg.date.getDay() === 6) { // Saturday
+        //     arg.el.style.backgroundColor = 'rgba(255, 138, 101, 0.2)';
+        //   }
+        // },
+        // events: [
+          // You can add events here if needed
+          // {
+          //   title: 'Meeting',
+          //   start: '2023-04-12',
+          //   end: '2023-04-12'
+          // }
+    //     ]
+    //   });
+      
+    //   calendar.render();
+    // });
+    
+    // Close calendar modal
+  //   closeCalendarBtn.onclick = function() {
+  //     calendarModal.style.display = "none";
+  //   }
+    
+  //   window.onclick = function(event) {
+  //     if (event.target == calendarModal) {
+  //       calendarModal.style.display = "none";
+  //     }
+  //   }
+  // });
+
+// FETCH FETCH  FETCH FETCH FETCH FETCH FETCH FETCH FETCHFETCH FETCH FETCH  FETCH  FETCH FETCH FETCH FETCH 111111
+  fetch('https://dummyjson.com/products/category/mens-shirts' )
+  .then(response => response.json())
+  .then(data => {
+    // تخزين البيانات في localStorage
+    localStorage.setItem('mensShirtsData', JSON.stringify(data));
+    console.log('تم حفظ البيانات بنجاح في localStorage');
+  })
+  .catch(error => {
+    console.error('حدث خطأ أثناء جلب البيانات:', error);
+  });
+
+// عرض بيانات Men Seller عند النقر
+document.getElementById('men-seller').addEventListener('click', function() {
+  const storedData = JSON.parse(localStorage.getItem('mensShirtsData'));
+  const displayDiv = document.getElementById('men-seller-data');
+  
+  // تبديل عرض/إخفاء العنصر
+  if (displayDiv.style.display === 'none') {
+    if (storedData) {
+      // بناء HTML لعرض البيانات
+      let html = `<h3>Men's Shirts Products (${storedData.products.length})</h3>`;
+      html += `<div class="row">`;
+      
+      storedData.products.forEach(product => {
+        html += `
+          <div class="col-md-3" style="margin-bottom: 20px;  ">
+            <div class="card">
+              <img src="${product.thumbnail}" class="card-img-top" alt="${product.title}" style="height: 150px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${product.title}</h5>
+                <p class="card-text">Price: $${product.price}</p>
+                <p class="card-text">Rating: ${product.rating}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += `</div>`;
+      displayDiv.innerHTML = html;
+      displayDiv.style.display = 'block';
+    } else {
+      displayDiv.innerHTML = '<p>No data found for Men Seller</p>';
+      }
+    } else {
+      displayDiv.style.display = 'none';
+    }
+});
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// fetch fetch fetch fetch fetch fetchfetch fetch fetchfetchfetch  fetch fetch fetch fetchfetch fetch 222222222222
+fetch('https://dummyjson.com/products/category/tops')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    // تخزين البيانات في localStorage
+    localStorage.setItem('topsProducts', JSON.stringify(data));
+    console.log('تم حفظ بيانات Tops بنجاح في localStorage');
+  })
+  .catch(error => {
+    console.error('حدث خطأ أثناء جلب البيانات:', error);
+  });
+
+// عرض بيانات Men Seller عند النقر
+document.getElementById('women-seller').addEventListener('click', function() {
+  const storedData = JSON.parse(localStorage.getItem('topsProducts'));
+  const displayDiv = document.getElementById('men-seller-data');
+  
+  // تبديل عرض/إخفاء العنصر
+  if (displayDiv.style.display === 'none') {
+    if (storedData) {
+      // بناء HTML لعرض البيانات
+      let html = `<h3>women's  Products (${storedData.products.length})</h3>`;
+      html += `<div class="row">`;
+      
+      storedData.products.forEach(product => {
+        html += `
+          <div class="col-md-3" style="margin-bottom: 20px;  ">
+            <div class="card">
+              <img src="${product.thumbnail}" class="card-img-top" alt="${product.title}" style="height: 150px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${product.title}</h5>
+                <p class="card-text">Price: $${product.price}</p>
+                <p class="card-text">Rating: ${product.rating}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += `</div>`;
+      displayDiv.innerHTML = html;
+      displayDiv.style.display = 'block';
+    } else {
+      displayDiv.innerHTML = '<p>No data found for Men Seller</p>';
+      }
+    } else {
+      displayDiv.style.display = 'none';
+    }
+});
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch 33333333333
+// روابط المنتجات
+const urls = {
+  "womens-watches": "https://dummyjson.com/products/category/womens-watches",
+  "womens-bags": "https://dummyjson.com/products/category/womens-bags",
+  "womens-jewellery": "https://dummyjson.com/products/category/womens-jewellery",
+  "mens-watches": "https://dummyjson.com/products/category/mens-watches"
+};
+
+// دالة لحفظ البيانات في localStorage
+async function saveProductsToLocalStorage() {
+  for (const [key, url] of Object.entries(urls)) {
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      localStorage.setItem(key, JSON.stringify(data.products)); // بنخزن المنتجات فقط
+      console.log(`✅ ${key} saved to localStorage.`);
+    } catch (err) {
+      console.error(`❌ Error fetching ${key}:`, err);
+    }
+  }
+}
+
+// احفظ الداتا تلقائياً وقت تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  saveProductsToLocalStorage();
+});
+
+
+document.getElementById('show-all-categories').addEventListener('click', function() {
+  const displayDiv = document.getElementById('men-seller-data'); // نستخدم نفس العنصر لعرض الداتا
+  displayDiv.innerHTML = ''; // نفضي المكان
+
+  const keys = ['womens-watches', 'womens-bags', 'womens-jewellery', 'mens-watches'];
+  let allProducts = [];
+
+
+  // إذا ظاهر، نخفيه
+  if (displayDiv.style.display === 'block') {
+    displayDiv.style.display = 'none';
+    return; // نوقف هنا
+  }
+  // جمع كل المنتجات المحفوظة
+  keys.forEach(key => {
+    const stored = localStorage.getItem(key);
+    if (stored) {
+      const products = JSON.parse(stored);
+      allProducts = allProducts.concat(products);
+    }
+  });
+
+  // عرض الداتا
+  if (allProducts.length > 0) {
+    let html = `<h3> Accessories  (${allProducts.length})</h3>`;
+    html += `<div class="row">`;
+
+    allProducts.forEach(product => {
+      html += `
+        <div class="col-md-3" style="margin-bottom: 20px;">
+          <div class="card">
+            <img src="${product.thumbnail}" class="card-img-top" alt="${product.title}" style="height: 150px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">${product.title}</h5>
+              <p class="card-text">Price: $${product.price}</p>
+              <p class="card-text">Rating: ${product.rating}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    html += `</div>`;
+    displayDiv.innerHTML = html;
+    displayDiv.style.display = 'block';
+  } else {
+    displayDiv.innerHTML = '<p>لا توجد بيانات محفوظة للعرض.</p>';
+    displayDiv.style.display = 'none';  }
+  
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  fetch fetch fetch fetch fetch fetch fetch fetch fetch fetchfetch fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch fetch 4444444
+fetch('https://dummyjson.com/products/category/sports-accessories')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    // تخزين البيانات في localStorage
+    localStorage.setItem('sports', JSON.stringify(data));
+    console.log('تم حفظ بيانات Tops بنجاح في localStorage');
+  })
+  .catch(error => {
+    console.error('حدث خطأ أثناء جلب البيانات:', error);
+  });
+
+// عرض بيانات Men Seller عند النقر
+document.getElementById('sports-seller').addEventListener('click', function() {
+  const storedData = JSON.parse(localStorage.getItem('sports'));
+  const displayDiv = document.getElementById('men-seller-data');
+  
+  // تبديل عرض/إخفاء العنصر
+  if (displayDiv.style.display === 'none') {
+    if (storedData) {
+      // بناء HTML لعرض البيانات
+      let html = `<h3>sports  Products (${storedData.products.length})</h3>`;
+      html += `<div class="row">`;
+      
+      storedData.products.forEach(product => {
+        html += `
+          <div class="col-md-3" style="margin-bottom: 20px;  ">
+            <div class="card">
+              <img src="${product.thumbnail}" class="card-img-top" alt="${product.title}" style="height: 150px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">${product.title}</h5>
+                <p class="card-text">Price: $${product.price}</p>
+                <p class="card-text">Rating: ${product.rating}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += `</div>`;
+      displayDiv.innerHTML = html;
+      displayDiv.style.display = 'block';
+    } else {
+      displayDiv.innerHTML = '<p>No data found for Men Seller</p>';
+      }
+    } else {
+      displayDiv.style.display = 'none';
+    }
+});
+// ...........................................................................................add product function 
+// دالة لتحميل وعرض المنتجات
+function loadProducts() {
+  const productsContainer = document.getElementById('productsContainer');
+  const products = JSON.parse(localStorage.getItem('store')) || [];
+  
+  if (products.length === 0) {
+    productsContainer.innerHTML = '<p class="text-center text-info">No products added yet.</p>';
+    return;
+  }
+  
+  productsContainer.innerHTML = '';
+  products.forEach((product, index) => {
+    const productCard = document.createElement('div');
+    productCard.className = 'col-md-4';
+    productCard.innerHTML = `
+      <div class="product-card">
+        <h3>${product.name}</h3>
+        <p class="price">Price: $${product.price}</p>
+        <p class="quantity">Quantity: ${product.quantity}</p>
+        <p class="date">Added on: ${product.date}</p>
+        <div class="action-buttons">
+          <button class="btn btn-warning btn-sm edit-btn" data-index="${index}">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+          <button class="btn btn-danger btn-sm delete-btn" data-index="${index}">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+    `;
+    productsContainer.appendChild(productCard);
+  });
+  
+  // Add event listeners for buttons
+  document.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const index = this.getAttribute('data-index');
+      deleteProduct(index);
+    });
+  });
+  
+  document.querySelectorAll('.edit-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const index = this.getAttribute('data-index');
+      showEditModal(index);
+    });
+  });
+}
+
+// Delete product function
+function deleteProduct(index) {
+  let products = JSON.parse(localStorage.getItem('store')) || [];
+  products.splice(index, 1);
+  localStorage.setItem('store', JSON.stringify(products));
+  alert('Product deleted successfully!');
+  loadProducts();
+}
+
+// Show edit modal function
+function showEditModal(index) {
+  const products = JSON.parse(localStorage.getItem('store')) || [];
+  const product = products[index];
+  
+  document.getElementById('editIndex').value = index;
+  document.getElementById('editName').value = product.name;
+  document.getElementById('editPrice').value = product.price;
+  document.getElementById('editQuantity').value = product.quantity;
+  
+  document.getElementById('editModal').style.display = 'block';
+}
+
+// Save edits function
+document.getElementById('editForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const index = document.getElementById('editIndex').value;
+  const name = document.getElementById('editName').value;
+  const price = document.getElementById('editPrice').value;
+  const quantity = document.getElementById('editQuantity').value;
+  
+  let products = JSON.parse(localStorage.getItem('store')) || [];
+  products[index] = {
+    name: name,
+    price: price,
+    quantity: quantity,
+    date: products[index].date // Keep original date
+  };
+  
+  localStorage.setItem('store', JSON.stringify(products));
+  document.getElementById('editModal').style.display = 'none';
+  alert('Product updated successfully!');
+  loadProducts();
+});
+
+// Close edit modal
+document.querySelector('.close-edit').addEventListener('click', function() {
+  document.getElementById('editModal').style.display = 'none';
+});
+
+// Main page code
+document.addEventListener('DOMContentLoaded', function() {
+  loadProducts();
+  
+  // Open/close add product modal
+  const modal = document.getElementById("productModal");
+  const openBtn = document.getElementById("openModal");
+  const closeBtn = document.getElementsByClassName("close")[0];
+  
+  openBtn.onclick = function() {
+    modal.style.display = "block";
+  }
+  
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+    if (event.target == document.getElementById('editModal')) {
+      document.getElementById('editModal').style.display = "none";
+    }
+  }
+  
+  // Save product to localStorage
+  const productForm = document.getElementById("productForm");
+  
+  productForm.onsubmit = function(e) {
+    e.preventDefault();
+    
+    const productName = document.getElementById("productName").value;
+    const productPrice = document.getElementById("productPrice").value;
+    const productQuantity = document.getElementById("productQuantity").value;
+    
+    // Create product object
+    const product = {
+      name: productName,
+      price: productPrice,
+      quantity: productQuantity,
+      date: new Date().toLocaleDateString()
+    };
+    
+    // Get current products from localStorage or create new array
+    let products = JSON.parse(localStorage.getItem("store")) || [];
+    
+    // Add new product
+    products.push(product);
+    
+    // Save products to localStorage
+    localStorage.setItem("store", JSON.stringify(products));
+    
+    // Close modal and reset form
+    modal.style.display = "none";
+    productForm.reset();
+    
+    // Show success message
+    alert("Product added successfully!");
+    loadProducts();
+  };
+});
+// /////////////////////////////////////// ////////////////////////////////////////////fuction main يظهر فيها ايه 
+document.addEventListener('DOMContentLoaded', function () {
+    const dashboardBtn = document.querySelector('#Dashboard');
+    const editProductBtn = document.querySelector('#Product');
+    const sellerSection = document.getElementById('category');
+    const productSection = document.getElementById('productManagement');
+    const sellersPagesBtn = document.getElementById('sellerspages');
+    const sellersManagement = document.getElementById('sellersManagement');
+    const customerBtn = document.querySelector('.item-customer.btn');
+    const customerManagement = document.getElementById('customerManagement');
+    const serviceCustomerBtn = document.getElementById('serviceCustomerBtn');
+    const serviceManagement = document.getElementById('service-Management'); 
+
+    if (dashboardBtn && editProductBtn && sellerSection && productSection && 
+        sellersPagesBtn && sellersManagement && customerBtn && 
+        customerManagement && serviceCustomerBtn && serviceManagement) {
+        
+        // حدث النقر على Dashboard
+        dashboardBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            sellerSection.style.display = 'flex';
+            productSection.style.display = 'none';
+            sellersManagement.style.display = 'none';
+            customerManagement.style.display = 'none';
+            serviceManagement.style.display = 'none';
+        });
+
+        // حدث النقر على Product
+        editProductBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            sellerSection.style.display = 'none';
+            productSection.style.display = 'block';
+            sellersManagement.style.display = 'none';
+            customerManagement.style.display = 'none';
+            serviceManagement.style.display = 'none';
+        });
+
+        // حدث النقر على Sellers Pages
+        sellersPagesBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            sellerSection.style.display = 'none';
+            productSection.style.display = 'none';
+            customerManagement.style.display = 'none';
+            serviceManagement.style.display = 'none';
+            sellersManagement.style.display = 'block';
+        });
+
+        // حدث النقر على Customer
+        customerBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            sellerSection.style.display = 'none';
+            productSection.style.display = 'none';
+            sellersManagement.style.display = 'none';
+            serviceManagement.style.display = 'none';
+            customerManagement.style.display = 'block';
+        });
+
+        // حدث النقر على Customer Service
+        serviceCustomerBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            sellerSection.style.display = 'none';
+            productSection.style.display = 'none';
+            sellersManagement.style.display = 'none';
+            customerManagement.style.display = 'none';
+            serviceManagement.style.display = 'block';
+        });
+        
+    } else {
+        console.error("في عنصر ناقص من الـ DOM، راجع الـ IDs.");}
+});
+
+
+
+// sellers management show show  show  show  show  show
+// دالة لجلب البيانات من ملف JSON
+ // دالة لجلب البيانات من ملف JSON
+
+ async function fetchData() {
+  try {
+    const container = document.getElementById('sellers-data');
+    container.innerHTML = '<div class="loading">جاري تحميل البيانات...</div>';
+    
+    const response = await fetch('finaldata.json');
+    if (!response.ok) throw new Error('حدث خطأ في جلب البيانات');
+    
+    const data = await response.json();
+    localStorage.setItem("Store", JSON.stringify(data));
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    const container = document.getElementById('sellers-data');
+    container.innerHTML = `<div class="error">${error.message}</div>`;
+    return null;
+  }
+}
+
+function displaySellers(sellers) {
+  const container = document.getElementById('sellers-data');
+  container.innerHTML = '';
+
+  if (!sellers || sellers.size === 0) {
+    container.innerHTML = '<div class="error">لا توجد بيانات للعرض</div>';
+    return;
+  }
+
+
+
+  sellers.forEach((sellerData, sellerName) => {
+    const sellerSection = document.createElement('div');
+    sellerSection.classList.add('seller-section');
+    
+    sellerSection.innerHTML = `
+      <div class="seller-info">
+        <h2 class="seller-name">${sellerName}</h2>
+        <p class="seller-email">${sellerData.email}</p>
+      </div>
+      <div class="products-container" id="products-${sellerName.replace(/\s+/g, '-')}"></div>
+    `;
+
+    const productsContainer = sellerSection.querySelector(`#products-${sellerName.replace(/\s+/g, '-')}`);
+    
+    sellerData.products.forEach(product => {
+      const productCard = document.createElement('div');
+      productCard.classList.add('product-card');
+      
+      // تحديد كلاس الحالة حسب حالة المنتج
+      const statusClass = product.ProductStatus ? product.ProductStatus.replace(/\s+/g, '-') : '';
+      
+      productCard.innerHTML = `
+        ${product.ProductImage ? 
+          `<img src="${product.ProductImage}" class="product-image" alt="${product.ProductName}">` : 
+          '<div class="product-image">لا توجد صورة</div>'}
+        <h3 class="product-name">${product.ProductName}</h3>
+        <p class="product-price">السعر: ${product.ProductPrice} EGP</p>
+        ${product.ProductDescription ? 
+        //   `<p class="product-details">${product.ProductDescription}</p>` : ''}
+        // ${product.ProductStatus ? 
+          `<span class="product-status ${statusClass}">${product.ProductStatus}</span>` : ''}
+        <div class="action-buttons">
+          <button class="edit-btn">تعديل</button>
+          <button class="delete-btn">حذف</button>
+        </div>
+      `;
+      
+      productsContainer.appendChild(productCard);
+    });
+
+    container.appendChild(sellerSection);
+  });
+}
+
+// باقي الدوال كما هي (organizeBySeller, loadAndDisplaySellers)
+function organizeBySeller(data) {
+  const sellers = new Map();
+  
+  const processProducts = (products) => {
+    products?.forEach(product => {
+      if (!product.sellerName) return;
+      
+      if (!sellers.has(product.sellerName)) {
+        sellers.set(product.sellerName, {
+          email: product.sellerEmail || 'لا يوجد بريد إلكتروني',
+          products: []
+        });
+      }
+      sellers.get(product.sellerName).products.push(product);
+    });
+  };
+  
+  processProducts(data.Store?.men?.ProductCategory?.Products);
+  processProducts(data.Store?.women?.Products);
+  processProducts(data.Store?.accessories?.Products);
+  
+  return sellers;
+}
+
+async function loadAndDisplaySellers() {
+  let data;
+  const rawData = localStorage.getItem("Store");
+  
+  if (!rawData) {
+    data = await fetchData();
+  } else {
+    data = JSON.parse(rawData);
+  }
+  
+  if (data) {
+    const sellers = organizeBySeller(data);
+    displaySellers(sellers);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadAndDisplaySellers();
+});
+
+///////////////////////////////////////////////////////////////////////////////////////////////// set up seller 
+// تهيئة النموذج
+function setupSellerModal() {
+  const modal = document.getElementById('seller-modal');
+  const addBtn = document.getElementById('add-seller-btn');
+  const closeBtn = document.querySelector('.close-btn');
+  const addProductBtn = document.createElement('button'); // سنضيفه برمجياً
+  const productsContainer = document.getElementById('products-container');
+
+  // زر إضافة منتج جديد
+  addProductBtn.id = 'add-product-btn';
+  addProductBtn.textContent = 'إضافة منتج آخر';
+  addProductBtn.type = 'button';
+  addProductBtn.classList.add('add-product-btn');
+  document.getElementById('seller-form').insertBefore(addProductBtn, document.querySelector('.save-btn'));
+
+  // فتح النموذج
+  addBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+  });
+
+  // إغلاق النموذج
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  // إغلاق عند النقر خارج النموذج
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  // إضافة منتج جديد
+  addProductBtn.addEventListener('click', () => {
+    const newProduct = document.createElement('div');
+    newProduct.classList.add('product-item');
+    newProduct.innerHTML = `
+      <div class="form-group">
+        <label>اسم المنتج:</label>
+        <input type="text" class="product-name" required>
+      </div>
+      <div class="form-group">
+        <label>سعر المنتج:</label>
+        <input type="number" class="product-price" required>
+      </div>
+      <div class="form-group">
+        <label>الكمية:</label>
+        <input type="number" class="product-quantity" value="1" min="1" required>
+      </div>
+      <div class="form-group">
+        <label>رابط صورة المنتج:</label>
+        <input type="url" class="product-image" placeholder="https://example.com/image.jpg">
+      </div>
+      <div class="form-group">
+        <label>وصف المنتج:</label>
+        <textarea class="product-description"></textarea>
+      </div>
+      <div class="form-group">
+        <label>حالة المنتج:</label>
+        <select class="product-status">
+          <option value="In-Stock">متوفر</option>
+          <option value="Out-of-Stock">غير متوفر</option>
+          <option value="New-Arrival">وصل حديثاً</option>
+        </select>
+      </div>
+    `;
+    productsContainer.appendChild(newProduct);
+  });
+
+  
+  // حفظ البيانات
+  document.getElementById('seller-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    saveNewSeller();
+  });
+}
+
+// دالة حفظ البائع الجديد (كما هي لكن مصححة)
+function saveNewSeller() {
+  const sellerName = document.getElementById('seller-name').value;
+  const sellerEmail = document.getElementById('seller-email').value;
+  const productItems = document.querySelectorAll('.product-item');
+
+  const products = [];
+  productItems.forEach(item => {
+    products.push({
+      ProductName: item.querySelector('.product-name').value,
+      ProductPrice: item.querySelector('.product-price').value,
+      ProductQuantity: item.querySelector('.product-quantity').value,
+      ProductImage: item.querySelector('.product-image').value,
+      ProductDescription: item.querySelector('.product-description').value,
+      ProductStatus: item.querySelector('.product-status').value,
+      sellerName: sellerName,
+      sellerEmail: sellerEmail
+    });
+  });
+
+  const currentData = JSON.parse(localStorage.getItem('Store')) || { Store: {} };
+  
+  if (!currentData.Store.men) currentData.Store.men = { ProductCategory: { Products: [] } };
+  
+  products.forEach(product => {
+    currentData.Store.men.ProductCategory.Products.push(product);
+  });
+
+  localStorage.setItem('Store', JSON.stringify(currentData));
+  
+  // إغلاق وإعادة تعيين
+  document.getElementById('seller-modal').style.display = 'none';
+  document.getElementById('seller-form').reset();
+  document.getElementById('products-container').innerHTML = `
+    <h3>المنتجات:</h3>
+    <div class="product-item">
+      <!-- المحتوى الافتراضي -->
+    </div>
+  `;
+  
+  loadAndDisplaySellers();
+}
+
+// بدء التشغيل
+window.addEventListener('DOMContentLoaded', () => {
+  setupSellerModal();
+  loadAndDisplaySellers();
+});
+// //////////////////////////////////////////////////////////////////////////////////////////////////delete seller 
+function createDeleteModal() {
+  const modal = document.createElement('div');
+  modal.id = 'delete-seller-modal';
+  modal.className = 'modal';
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>حذف بائع</h2>
+      <form id="delete-seller-form">
+        <div class="form-group">
+          <label for="delete-seller-name">اسم البائع:</label>
+          <input type="text" id="delete-seller-name" required>
+        </div>
+        <div class="form-group">
+          <label for="delete-seller-email">البريد الإلكتروني:</label>
+          <input type="email" id="delete-seller-email" required>
+        </div>
+        <button type="submit" class="btn btn-danger">حذف</button>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+// تهيئة أحداث النموذج
+function setupDeleteModal() {
+  const deleteBtn = document.getElementById('delete-seller-btn');
+  const modal = document.getElementById('delete-seller-modal');
+  
+  deleteBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+  });
+  
+  modal.querySelector('.close-btn').addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+  
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+  
+  document.getElementById('delete-seller-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    deleteSeller();
+  });
+}
+
+// دالة حذف البائع
+function deleteSeller() {
+  const sellerName = document.getElementById('delete-seller-name').value;
+  const sellerEmail = document.getElementById('delete-seller-email').value;
+  
+  const currentData = JSON.parse(localStorage.getItem('Store')) || { Store: {} };
+  let found = false;
+  
+  // البحث عن البائع وحذف منتجاته
+  ['men', 'women', 'accessories'].forEach(category => {
+    if (currentData.Store[category]?.ProductCategory?.Products) {
+      const originalLength = currentData.Store[category].ProductCategory.Products.length;
+      currentData.Store[category].ProductCategory.Products = 
+        currentData.Store[category].ProductCategory.Products.filter(
+          product => !(product.sellerName === sellerName && product.sellerEmail === sellerEmail)
+        );
+      
+      if (currentData.Store[category].ProductCategory.Products.length < originalLength) {
+        found = true;
+      }
+    }
+  });
+  
+  if (found) {
+    localStorage.setItem('Store', JSON.stringify(currentData));
+    alert('تم حذف البائع ومنتجاته بنجاح');
+    loadAndDisplaySellers();
+  } else {
+    alert('لم يتم العثور على بائع بهذه البيانات');
+  }
+  
+  document.getElementById('delete-seller-modal').style.display = 'none';
+  document.getElementById('delete-seller-form').reset();
+}
+
+// استدعاء الدوال عند تحميل الصفحة
+window.addEventListener('DOMContentLoaded', () => {
+  createDeleteModal();
+  setupDeleteModal();
+});
+// //////////////////////////////////////////////////////////////////////////////////////////////////////ُEDIT seller
+// إنشاء نموذج التعديل
+function createEditModal() {
+  const modal = document.createElement('div');
+  modal.id = 'edit-seller-modal';
+  modal.className = 'modal';
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>تعديل بيانات البائع</h2>
+      <form id="edit-seller-form">
+        <div class="form-section">
+          <h3>البيانات الحالية</h3>
+          <div class="form-group">
+            <label for="current-seller-name">اسم البائع الحالي:</label>
+            <input type="text" id="current-seller-name" required>
+          </div>
+          <div class="form-group">
+            <label for="current-seller-email">البريد الإلكتروني الحالي:</label>
+            <input type="email" id="current-seller-email" required>
+          </div>
+        </div>
+        
+        <div class="form-section">
+          <h3>البيانات الجديدة</h3>
+          <div class="form-group">
+            <label for="new-seller-name">اسم البائع الجديد:</label>
+            <input type="text" id="new-seller-name" required>
+          </div>
+          <div class="form-group">
+            <label for="new-seller-email">البريد الإلكتروني الجديد:</label>
+            <input type="email" id="new-seller-email" required>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-warning">تحديث البيانات</button>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+// تهيئة أحداث النموذج
+function setupEditModal() {
+  const editBtn = document.getElementById('Edit-seller-btn');
+  const modal = document.getElementById('edit-seller-modal');
+  
+  editBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+  });
+  
+  modal.querySelector('.close-btn').addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+  
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+  
+  document.getElementById('edit-seller-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    updateSeller();
+  });
+}
+
+// دالة تعديل بيانات البائع
+function updateSeller() {
+  const currentName = document.getElementById('current-seller-name').value;
+  const currentEmail = document.getElementById('current-seller-email').value;
+  const newName = document.getElementById('new-seller-name').value;
+  const newEmail = document.getElementById('new-seller-email').value;
+  
+  const currentData = JSON.parse(localStorage.getItem('Store')) || { Store: {} };
+  let found = false;
+  // البحث عن البائع وتحديث بياناته
+['men', 'women', 'accessories'].forEach(category => {
+    if (currentData.Store[category]?.ProductCategory?.Products) {
+      currentData.Store[category].ProductCategory.Products.forEach(product => {
+        if (
+          product.sellerName.trim().toLowerCase() === currentName.trim().toLowerCase() &&
+          product.sellerEmail.trim().toLowerCase() === currentEmail.trim().toLowerCase()
+        ) {
+          product.sellerName = newName;
+          product.sellerEmail = newEmail;
+          found = true;
+        }
+      });
+    }
+  });
+  
+  if (found) {
+    localStorage.setItem('Store', JSON.stringify(currentData));
+    alert('تم تحديث بيانات البائع بنجاح');
+    loadAndDisplaySellers();
+  } else {
+    alert('لم يتم العثور على بائع بهذه البيانات');
+  }
+  
+  document.getElementById('edit-seller-modal').style.display = 'none';
+  document.getElementById('edit-seller-form').reset();
+}
+
+// استدعاء الدوال عند تحميل الصفحة
+window.addEventListener('DOMContentLoaded', () => {
+  createEditModal();
+  setupEditModal();
+});
+
+// //////////////////////////////////////////////////////////////////////////// ..................show custo
+document.addEventListener('DOMContentLoaded', function() {
+    const customerManagement = document.getElementById('customerManagement');
+    const customersTableBody = document.getElementById('customersTableBody');
+
+    // دالة لعرض العملاء
+    function displayCustomers() {
+        // جلب بيانات المستخدمين من localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        
+        // تصفية العملاء فقط (حيث isSeller = false و isAdmin = false)
+        const customers = users.filter(user => !user.isSeller && !user.isAdmin);
+        
+        // مسح المحتوى القديم
+        customersTableBody.innerHTML = '';
+        
+        if (customers.length === 0) {
+            customersTableBody.innerHTML = '<tr><td colspan="4" class="text-center">لا يوجد عملاء مسجلين</td></tr>';
+            return;
+        }
+        
+        // إضافة كل عميل إلى الجدول
+        customers.forEach(customer => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${customer.username}</td>
+                <td>${customer.email}</td>
+                <td>${customer.phone}</td>
+                <td>${customer.userID}</td>
+            `;
+            customersTableBody.appendChild(row);
+        });
+    }
+
+    // عرض العملاء عند فتح قسم Customer Management
+displayCustomers(); // لتحديث الجدول بعد الإضافة مباشرة
+});
+
+
+
+
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////// add
+document.addEventListener('DOMContentLoaded', function () {
+    const addCustomerBtn = document.getElementById('add-custo-btn');
+    const addCustomerFormContainer = document.getElementById('addCustomerFormContainer');
+    const addCustomerForm = document.getElementById('addCustomerForm');
+    const customersTableBody = document.getElementById('customersTableBody');
+    
+
+    
+    // عرض الفورم عند الضغط على زر الإضافة
+    addCustomerBtn.addEventListener('click', function () {
+        addCustomerFormContainer.style.display = 'block';
+    });
+
+
+    const closeBtn = document.querySelector('.close-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            addCustomerForm.reset();
+            addCustomerFormContainer.style.display = 'none';
+        });
+    }
+    
+    // عند إرسال الفورم
+    addCustomerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // تجميع البيانات
+        const newCustomer = {
+            username: document.getElementById('username').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+            phone: document.getElementById('phone').value,
+            isSeller: false,
+            isAdmin: false,
+            userID: "#" + Date.now()
+        };
+
+        // إضافة للـ localStorage
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        users.push(newCustomer);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        // إخفاء الفورم وتفريغه
+        addCustomerForm.reset();
+        addCustomerFormContainer.style.display = 'none';
+
+        // إعادة عرض الجدول
+        displayCustomers();
+
+        alert('تم حفظ العميل بنجاح');
+    });
+
+    // دالة عرض العملاء
+    function displayCustomers() {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const customers = users.filter(user => !user.isSeller && !user.isAdmin);
+
+        customersTableBody.innerHTML = '';
+
+        if (customers.length === 0) {
+            customersTableBody.innerHTML = '<tr><td colspan="4" class="text-center">لا يوجد عملاء</td></tr>';
+            return;
+        }
+
+        customers.forEach(customer => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${customer.username}</td>
+                <td>${customer.email}</td>
+                <td>${customer.phone}</td>
+                <td>${customer.userID}</td>
+            `;
+            customersTableBody.appendChild(row);
+        });
+
+        
+    }
+
+    // عرض العملاء عند التحميل
+    displayCustomers();
+    
+});
+
+
+
+
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////////// delete custo 
+document.addEventListener('DOMContentLoaded', function() {
+    // Delete Customer Functionality
+    const deleteCustomerBtn = document.getElementById('delete-custo-btn');
+    const deleteCustomerModal = document.getElementById('deleteCustomerModal');
+    const deleteCustomerEmail = document.getElementById('deleteCustomerEmail');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+
+    // Show delete modal
+    deleteCustomerBtn.addEventListener('click', function() {
+        deleteCustomerModal.style.display = 'block';
+    });
+
+    // Hide delete modal
+    cancelDeleteBtn.addEventListener('click', function() {
+        deleteCustomerModal.style.display = 'none';
+        deleteCustomerEmail.value = '';
+    });
+
+    // Confirm delete action
+    confirmDeleteBtn.addEventListener('click', function() {
+        const emailToDelete = deleteCustomerEmail.value.trim();
+        
+        if (!emailToDelete) {
+            alert('Please enter customer email');
+            return;
+        }
+
+        // Get users from localStorage
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        
+        // Find customer index
+        const customerIndex = users.findIndex(user => 
+            user.email === emailToDelete && !user.isSeller && !user.isAdmin
+        );
+
+        if (customerIndex === -1) {
+            alert('Customer not found or not a valid customer (might be a seller/admin)');
+            return;
+        }
+
+        // Confirm before deletion
+        const confirmDelete = confirm(`Are you sure you want to delete customer with email: ${emailToDelete}?`);
+        
+        if (confirmDelete) {
+            // Remove customer from array
+            users.splice(customerIndex, 1);
+            
+            // Update localStorage
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Refresh customer table
+            displayCustomers();
+            
+            // Hide modal and clear input
+            deleteCustomerModal.style.display = 'none';
+            deleteCustomerEmail.value = '';
+            
+            alert('Customer deleted successfully!');
+        }
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === deleteCustomerModal) {
+            deleteCustomerModal.style.display = 'none';
+            deleteCustomerEmail.value = '';
+        }
+    });
+});
+
+// Display customers function (should be in your existing code)
+function displayCustomers() {
+    const customersTableBody = document.getElementById('customersTableBody');
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const customers = users.filter(user => !user.isSeller && !user.isAdmin);
+    
+    customersTableBody.innerHTML = '';
+    
+    if (customers.length === 0) {
+        customersTableBody.innerHTML = '<tr><td colspan="4" class="text-center">No customers found</td></tr>';
+        return;
+    }
+    
+    customers.forEach(customer => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${customer.username}</td>
+            <td>${customer.email}</td>
+            <td>${customer.phone}</td>
+            <td>${customer.userID}</td>
+        `;
+        customersTableBody.appendChild(row);
+    });
+}
+// ////////////////////////////////////////////////////////////////////////////////////////////////////edit custo 
+document.addEventListener('DOMContentLoaded', function() {
+    // Edit Customer Functionality
+    const editCustomerBtn = document.getElementById('Edit-custo-btn');
+    const editCustomerModal = document.getElementById('editCustomerModal');
+    const editCustomerEmail = document.getElementById('editCustomerEmail');
+    const searchCustomerBtn = document.getElementById('searchCustomerBtn');
+    const editCustomerForm = document.getElementById('editCustomerForm');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+
+    // Show edit modal
+    editCustomerBtn.addEventListener('click', function() {
+        editCustomerModal.style.display = 'block';
+        editCustomerForm.style.display = 'none';
+        editCustomerEmail.value = '';
+    });
+
+    // Search for customer
+    searchCustomerBtn.addEventListener('click', function() {
+        const emailToEdit = editCustomerEmail.value.trim();
+        
+        if (!emailToEdit) {
+            alert('Please enter customer email');
+            return;
+        }
+
+        // Get users from localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        
+        // Find customer
+        const customer = users.find(user => 
+            user.email === emailToEdit && !user.isSeller && !user.isAdmin
+        );
+
+        if (!customer) {
+            alert('Customer not found or not a valid customer (might be a seller/admin)');
+            return;
+        }
+
+        // Fill the form with customer data
+        document.getElementById('editUsername').value = customer.username;
+        document.getElementById('editEmail').value = customer.email;
+        document.getElementById('editPassword').value = customer.password;
+        document.getElementById('editPhone').value = customer.phone;
+        document.getElementById('originalEmail').value = customer.email;
+        
+        // Show the form
+        editCustomerForm.style.display = 'block';
+    });
+
+    // Handle form submission
+    editCustomerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const originalEmail = document.getElementById('originalEmail').value;
+        const updatedCustomer = {
+            username: document.getElementById('editUsername').value,
+            email: document.getElementById('editEmail').value,
+            password: document.getElementById('editPassword').value,
+            phone: document.getElementById('editPhone').value,
+            isSeller: false,
+            isAdmin: false,
+            userID: '#' + Date.now() // This will be updated with the original ID
+        };
+
+        // Get users from localStorage
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        
+        // Find customer index
+        const customerIndex = users.findIndex(user => 
+            user.email === originalEmail && !user.isSeller && !user.isAdmin
+        );
+
+        if (customerIndex === -1) {
+            alert('Customer not found!');
+            return;
+        }
+
+        // Preserve the original userID
+        updatedCustomer.userID = users[customerIndex].userID;
+        
+        // Update customer data
+        users[customerIndex] = updatedCustomer;
+        
+        // Update localStorage
+        localStorage.setItem('users', JSON.stringify(users));
+        
+        // Refresh customer table
+        displayCustomers();
+        
+        // Hide modal and clear inputs
+        editCustomerModal.style.display = 'none';
+        editCustomerEmail.value = '';
+        editCustomerForm.reset();
+        editCustomerForm.style.display = 'none';
+        
+        alert('Customer updated successfully!');
+    });
+
+    // Cancel edit
+    cancelEditBtn.addEventListener('click', function() {
+        editCustomerModal.style.display = 'none';
+        editCustomerEmail.value = '';
+        editCustomerForm.reset();
+        editCustomerForm.style.display = 'none';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+        if (event.target === editCustomerModal) {
+            editCustomerModal.style.display = 'none';
+            editCustomerEmail.value = '';
+            editCustomerForm.reset();
+            editCustomerForm.style.display = 'none';
+        }
+    });
+});
+
+// Display customers function (should be in your existing code)
+function displayCustomers() {
+    const customersTableBody = document.getElementById('customersTableBody');
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const customers = users.filter(user => !user.isSeller && !user.isAdmin);
+    
+    customersTableBody.innerHTML = '';
+    
+    if (customers.length === 0) {
+        customersTableBody.innerHTML = '<tr><td colspan="4" class="text-center">No customers found</td></tr>';
+        return;
+    }
+    
+    customers.forEach(customer => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${customer.username}</td>
+            <td>${customer.email}</td>
+            <td>${customer.phone}</td>
+            <td>${customer.userID}</td>
+        `;
+        customersTableBody.appendChild(row);
+    });
+}
+// ........................................................................ REVIEW
+document.getElementById('review-btn').addEventListener('click', function() {
+  const reviewsContainer = document.getElementById('reviews-container');
+  reviewsContainer.innerHTML = ''; // تنظيف المحتوى القديم
+
+  // جلب البيانات من localStorage
+  const storedArray = JSON.parse(localStorage.getItem('Array')) || [];
+  
+  if (storedArray.length === 0) {
+    reviewsContainer.innerHTML = '<p class="text-muted">No reviews found.</p>';
+    return;
+  }
+
+  // إنشاء عنصر لعرض الـ reviews
+  const reviewsList = document.createElement('div');
+  reviewsList.className = 'list-group';
+
+  // عرض كل review
+  storedArray.forEach(item => {
+    if (item.customerReview) {
+      const review = item.customerReview;
+      const reviewElement = document.createElement('div');
+      reviewElement.className = 'list-group-item mb-3 p-3 border rounded';
+      reviewElement.innerHTML = `
+        <h5 class="mb-2">${review.customer}</h5>
+        <div class="mb-2">
+          <span class="badge bg-primary">Rating: ${review.rating}/5</span>
+        </div>
+        <p class="mb-1">${review.reviewText}</p>
+        <small class="text-muted">User ID: ${review.userID}</small>
+      `;
+      reviewsList.appendChild(reviewElement);
+    }
+  });
+
+  reviewsContainer.appendChild(reviewsList);
+});
+// ////////////////////////////////////////////////////////////////////////////////////////////// complaints
+
+document.getElementById('complaint-btn').addEventListener('click', function() {
+  const complaintsContainer = document.getElementById('complaints-container');
+  complaintsContainer.innerHTML = ''; // تنظيف المحتوى القديم
+
+  // جلب البيانات من localStorage
+  const storedArray = JSON.parse(localStorage.getItem('Array')) || [];
+  
+  if (storedArray.length === 0) {
+    complaintsContainer.innerHTML = '<p class="text-muted">No complaints found.</p>';
+    return;
+  }
+
+  // إنشاء عنصر لعرض الشكاوى
+  const complaintsList = document.createElement('div');
+  complaintsList.className = 'list-group';
+
+  // عرض كل شكوى
+  storedArray.forEach(item => {
+    if (item.customerComplains) {
+      const complaint = item.customerComplains;
+      const complaintElement = document.createElement('div');
+      complaintElement.className = 'list-group-item mb-3 p-3 border rounded bg-light';
+      complaintElement.innerHTML = `
+        <h5 class="mb-2 text-danger">${complaint.customerName}</h5>
+        <div class="mb-2">
+          <span class="badge bg-danger">Complaint</span>
+          <small class="text-muted ms-2">${new Date(complaint.date).toLocaleString()}</small>
+        </div>
+        <p class="mb-1 fw-bold">${complaint.complain}</p>
+        <small class="text-muted">Customer ID: ${complaint.customerID}</small>
+      `;
+      complaintsList.appendChild(complaintElement);
+    }
+  });
+
+  complaintsContainer.appendChild(complaintsList);
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+
+    <script src="/bootstrap.bundle.min.js"></script>
+    <script src="./dashboard.js" ></script>
+</body>
+</html>
