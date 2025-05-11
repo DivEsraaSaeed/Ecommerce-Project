@@ -1,0 +1,85 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "League Spartan", sans-serif;
+}
+:root {
+    --linear-grad: linear-gradient(to right, #141E30, #243B55);
+    --grad-clr1: #141E30;
+    --grad-clr2: #243B55;
+}
+.nav-icon{
+    color: var(--grad-clr2);
+    font-size: 23px;
+}
+#items-count{
+    color: var(--grad-clr2);
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+.cart-elemnet{
+    margin-top: 30px !important;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+.cart-elemnet p{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.remove-from-cart{
+    cursor: pointer;
+}
+.btn{
+    background-color: var(--grad-clr1) !important;
+    color: #fff !important;
+}
+.btn:hover {
+    background-color: var(--grad-clr2) !important;
+    color: #fff !important;
+}
+.cart-total{
+    margin-top: 100px;
+    font-size: 50px;
+    color: #243B55;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+#checkout{
+    background-color: var(--grad-clr1);
+    border:none;
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 1px;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+#checkout:hover{
+    background-color: var(--grad-clr2);
+}
+#total-items,#total-price{
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--grad-clr2);
+}
+.empty-cart{
+    font-size: 30px;
+    margin-top: 50px;
+    color: #8b8d8f;
+    text-align: center;
+
+}
+
+
+.quantity-controls button {
+    width: 30px;
+    height: 30px;
+    line-height: 15px;
+    padding: 0;
+    font-size: 16px;
+}
+ 
+footer{
+    background-color: var(--grad-clr1);
+}

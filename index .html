@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seller</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" integrity="sha512-csw0Ma4oXCAgd/d4nTcpoEoz4nYvvnk21a8VA2h2dzhPAvjbUIK6V3si7/g/HehwdunqqW18RwCJKpD7rL67Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="icon" href="Components/img/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/seller.css" />
+</head>
+
+<body class="d-flex  flex-column vh-100">
+  <div id="up"></div>
+  <!-- <header style="height: 15vh" class="ms-2 me-2 mt-1 fixed-top rounded-4"> -->
+  <div class="container vh-10" >
+    <div class="row  align-items-center">
+      <nav class="navbar  navbar-expand-lg  bg-body-tertiary fixed-top ">
+        <div class="container-fluid border   rounded-5 p-3 ">
+          <a class="navbar-brand d-flex align-items-center logo">
+           <img class="w-25 me-2 ms-5  " src="Components/img/favicon.ico" alt="">SnapBuy</a>
+     
+         
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+
+             
+
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0  d-lg-none">
+              <li class="nav-item active h-li" data-page="Overview/Overview.html">
+                Overview
+              </li>
+              <!-- End Of Overview-->
+
+              <li class="nav-item h-li" data-page="products/products.html">
+                Products
+              </li>
+              <!-- End Of products-->
+
+              <li class="nav-item h-li" data-page="addproduct/product.html">
+                Add Product
+              </li>
+              <!-- End Of add product-->
+
+              <li class="nav-item h-li" data-page="ProductList/ProductList.html">
+                Product List
+              </li>
+              <!-- End Of  Product List-->
+            </ul>
+
+             
+           <form class="d-flex  ms-auto"id="searchByCodeForm" role="search">
+  <input
+    class="form-control me-2 "
+    type="search"
+    id="searchByCodeInput"
+    placeholder="Enter Product Code..."
+    aria-label="Search"
+  />
+ <i class="fa-solid fa-magnifying-glass p-3 "></i>
+
+
+
+            </form>
+         
+
+            <div class="  align-items-center d-none d-lg-block">
+              <button id="btn-message" class="button-message ms-5">
+                <div class="content-avatar">
+                  <div class="status-user"></div>
+                  <div class="avatar">
+                    <img class="user-img" src="Components/img/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg"
+                      alt="User" />
+                  </div>
+                </div>
+                <div class="notice-content">
+                  <div class="username"></div>
+                  <div class="lable-message"></div>
+                  <div class="user-id"></div>
+                </div>
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+      </nav>
+    </div>
+    <a href="#up" class="arrow-up-btn text-decoration-none   rounded-3  "id="iconUP">
+        <i class="fa-solid fa-arrow-up swep-a p-3 backGround rounded-3 btn text-black  position-fixed bottom-0 end-0 m-3 z-3"></i>
+    </a>
+  </div>
+  <!-- </header> -->
+
+  <section style="height: 90vh; margin-top: 17vh">
+    <div class="container-fluid h-100">
+      <div class="row divBar position-fixed rounded-bottom-5 rounded-4">
+        <div class="bar d-none shadow-sm py-4 px-4 col-sm-12 position-relative rounded-3  vh-90  ">
+          <span class="icon-bar-close">
+            <i class="fa-solid fa-xmark text-black"></i></span>
+
+          <div class="bar-ul">
+            <ul class="list-unstyled mb-4 pt-4  ">
+              <li data-page="Overview/Overview.html" class="rounded-3 h-li mx-0 my-3">
+                <span class="hvr-forward" ><i class="fa-brands pe-1 fa-stack-overflow"></i></span>
+                Overview
+              </li>
+              <!-- End Of Overview-->
+              <li data-page="products/products.html" class="rounded-3 h-li  mx-0 my-3">
+                <span ><i class="fa-brands pe-1 fa-product-hunt"></i></span>
+                Products
+              </li>
+              <!-- End Of products-->
+
+              <!-- <li class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Orders
+              </li> -->
+              <!-- <li class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Shipment
+              </li> -->
+              <li data-page="addproduct/product.html" class="rounded-3 h-li  mx-0 my-3">
+                <span ><i class="fa-solid  pe-1 fa-square-plus"></i></span>
+                Add Product
+              </li>
+              <li data-page="ProductList/ProductList.html" class="rounded-3 h-li  mx-0 my-3">
+                <span ><i class="fa-solid  fa-table-list pe-1"></i></span>
+                Product List
+              </li>
+
+                
+              <!-- End Of  Product List-->
+              <!-- <li class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Platform Partner
+              </li> -->
+              <!-- <li class=" rounded-3">
+                <span><i class="fa-solid fa-cart-shopping animate__animated  animate__tada"></i></span>
+                Feedback
+              </li> -->
+            </ul>
+          </div>
+
+          <div>
+            <details>
+              <summary class="h-li">Help & Support</summary>
+              <div class="row ">
+               <ul class="list-unstyled">
+                <li class="m-0 mt-2 h-li"><p class="mb-1 hvr-forward"><i class="fa-brands p-2 text-dark fa-facebook"></i> facebook </i></p></li>
+                <li class="m-0 h-li"><p class="mb-1 hvr-forward"><i class="fa-brands p-2 text-dark fa-reddit"> </i>reddit</p></li>
+                <li class="m-0 h-li"><p class="mb-1 hvr-forward " ><i class="fa-brands p-2 text-dark fa-x-twitter"></i>x</p></li>
+                
+                
+               </ul>
+              </div>
+
+            </details>
+          </div>
+        </div>
+      </div>
+      <div class="row forSmallContent h-100">
+        <div class="dashboard w-90 col-sm-12 d-flex">
+          <div>
+            <i class="fa-solid fa-sliders p-2 icon-bar-toggle  d-none  d-lg-block"></i>
+          </div>
+
+          <div class="container-fluid w-100 mt-3 h-100">
+            <div class="row">
+              <div class="content col-sm-12 rounded-5 mb-5">
+                <!-- <h1>Hello Seller Name</h1> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+<!-- JS -->
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<script src="/JS/main.js" defer></script>
+
+</html>
